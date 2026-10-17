@@ -86,7 +86,7 @@ const CY = VIEW_H / 2;
 const RADII = [150, 270, 390];
 
 // Viewport heights of scroll needed to move to the next service.
-const STEP_VH = 55;
+const STEP_VH = 45;
 
 function pointOn(service: Service) {
   const rad = (service.angle * Math.PI) / 180;

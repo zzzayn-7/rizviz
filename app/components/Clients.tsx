@@ -51,7 +51,7 @@ function Group({ logos, hidden = false }: { logos: Logo[]; hidden?: boolean }) {
               src={logo.src}
               alt={hidden ? "" : logo.alt}
               sizes="200px"
-              className={`h-auto max-h-14 w-auto max-w-[80%] object-contain sm:max-h-16 ${logo.className ?? ""}`}
+              className={`h-auto max-h-10 w-auto max-w-[70%] object-contain sm:max-h-12 ${logo.className ?? ""}`}
             />
           </li>
         )),
@@ -63,7 +63,7 @@ function Group({ logos, hidden = false }: { logos: Logo[]; hidden?: boolean }) {
 export default function Clients() {
   return (
     <section id="clients" className="w-full bg-white py-20 sm:py-24 md:py-0">
-      <div className="flex flex-col gap-12 md:min-h-[44rem] md:flex-row md:items-center md:gap-0">
+      <div className="flex flex-col gap-12 md:min-h-[38rem] md:flex-row md:items-center md:gap-0">
         <div className="px-6 sm:px-10 md:flex-1 md:pl-16 md:pr-10 lg:pl-24">
           <div className="max-w-xl">
             <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-blue">
@@ -79,7 +79,7 @@ export default function Clients() {
           </div>
         </div>
 
-        <div className="group mx-6 flex h-[30rem] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_18%,black_82%,transparent)] sm:mx-10 md:mx-0 md:mr-[7%] md:h-[40rem] md:w-[40%]">
+        <div className="group mx-6 flex h-[30rem] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_18%,black_82%,transparent)] sm:mx-10 md:mx-0 md:mr-[10%] md:h-[34rem] md:w-[30%]">
           {columns.map((col, i) => (
             <div key={i} className="min-w-0 flex-1 overflow-hidden">
               <div

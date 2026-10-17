@@ -4,6 +4,7 @@ import aboutImage from "./images/about.png";
 import Navbar from "./components/Navbar";
 import Capabilities from "./components/Capabilities";
 import Clients from "./components/Clients";
+import FeaturedProducts from "./components/FeaturedProducts";
 
 export default function Home() {
   return (
@@ -58,7 +59,7 @@ export default function Home() {
           className="absolute right-0 top-0 -z-10 h-full w-full object-cover opacity-30 md:w-1/2 md:opacity-100"
         />
 
-        <div className="mx-auto w-full max-w-7xl px-6 py-24 sm:px-10 md:py-32">
+        <div className="mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 md:py-24">
           <div className="max-w-xl">
             <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-sky">
               Who we are
@@ -87,6 +88,8 @@ export default function Home() {
       <Clients />
 
       <Capabilities />
+
+      <FeaturedProducts />
     </main>
   );
 }
