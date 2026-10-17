@@ -94,7 +94,7 @@ export default function HowWeWork() {
           <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-blue">
             How We Work
           </p>
-          <h2 className="text-3xl font-semibold leading-tight text-[#F1F5F9] sm:text-4xl lg:text-5xl">
+          <h2 className="text-2xl font-semibold leading-tight text-[#F1F5F9] sm:text-3xl lg:text-4xl">
             From understanding to delivery.
           </h2>
         </div>
