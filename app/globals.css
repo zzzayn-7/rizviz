@@ -61,6 +61,15 @@
     }
   }
 
+  @keyframes marquee-y {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-50%);
+    }
+  }
+
   @keyframes fade-up {
     from {
       opacity: 0;
