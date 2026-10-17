@@ -43,7 +43,7 @@ const products: Product[] = [
   },
 ];
 
-const INTERVAL_MS = 10000;
+const INTERVAL_MS = 7000;
 
 // Each segment spans 120 degrees. Segment 0 starts in the visible quadrant of
 // the dial (bottom-left of its center, angle measured clockwise from +x).
@@ -119,7 +119,7 @@ export default function FeaturedProducts() {
   const active = step % count;
 
   // Depending on `step` restarts the timer whenever the slide changes, so a
-  // manual selection always gets its full ten seconds. Hovering the card
+  // manual selection always gets its full seven seconds. Hovering the card
   // holds the current slide; leaving it starts a fresh countdown.
   useEffect(() => {
     if (paused) return;

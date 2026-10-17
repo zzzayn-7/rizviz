@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Capabilities from "./components/Capabilities";
 import Clients from "./components/Clients";
 import FeaturedProducts from "./components/FeaturedProducts";
+import HowWeWork from "./components/HowWeWork";
 
 export default function Home() {
   return (
@@ -90,6 +91,8 @@ export default function Home() {
       <Capabilities />
 
       <FeaturedProducts />
+
+      <HowWeWork />
     </main>
   );
 }
