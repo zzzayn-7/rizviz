@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
-import EdgeShade from "../components/EdgeShade";
 import Leadership from "../components/Leadership";
 import aboutHero from "../images/about-hero.png";
 import whoWeAre from "../images/p2-s1.png";
@@ -59,7 +58,6 @@ export default function AboutPage() {
         id="who-we-are"
         className="relative isolate w-full overflow-hidden bg-white py-20 sm:py-24"
       >
-        <EdgeShade />
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-10 md:grid-cols-2 md:gap-16">
           <div className="max-w-xl">
             <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-blue">

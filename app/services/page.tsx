@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
+import ServiceSections from "../components/ServiceSections";
 import servicesHero from "../images/services-hero.png";
+import connected from "../images/p3-s1.png";
 
 export const metadata: Metadata = {
   title: "Services | Rizviz",
@@ -40,6 +42,37 @@ export default function ServicesPage() {
           </h1>
         </div>
       </section>
+
+      <section className="w-full bg-white py-16 sm:py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-10 md:grid-cols-[1.15fr_1fr] md:gap-16">
+          <div>
+            <h2 className="text-3xl font-semibold leading-tight text-brand-navy sm:text-4xl lg:text-[2.75rem]">
+              Connected expertise.
+              <br />
+              Comprehensive solutions.
+            </h2>
+            <p className="mt-6 text-base leading-relaxed text-brand-slate sm:text-lg">
+              Rizviz brings together expertise across AI, data, cloud,
+              enterprise platforms, and application development. From a focused
+              technical requirement to a complete business system, we help
+              organizations build, connect, and improve the technology they rely
+              on.
+            </p>
+          </div>
+
+          {/* The frame clips the image so it can zoom slightly on hover. */}
+          <div className="group overflow-hidden rounded-3xl shadow-xl ring-1 ring-brand-navy/10">
+            <Image
+              src={connected}
+              alt="A city skyline at night with connected icons for AI, data, DevOps, software, mobile and web"
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="h-auto w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+          </div>
+        </div>
+      </section>
+
+      <ServiceSections />
     </main>
   );
 }

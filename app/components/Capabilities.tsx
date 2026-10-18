@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type Service = {
   name: string;
   slug: string;
+  // The service page, when its address differs from the slug.
+  page?: string;
   orbit: 0 | 1 | 2;
   angle: number; // degrees, 0 = rightmost point of the orbit
   headline: string;
@@ -60,6 +63,7 @@ const services: Service[] = [
   {
     name: "App Development",
     slug: "app-development",
+    page: "mobile-app-development",
     orbit: 2,
     angle: 22,
     headline: "Your Business, Within Reach",
@@ -243,12 +247,12 @@ export default function Capabilities() {
               <p className="mt-5 text-base leading-relaxed text-brand-ice/70 sm:text-lg">
                 {current.description}
               </p>
-              <a
-                href={`/services#${current.slug}`}
+              <Link
+                href={`/services/${current.page ?? current.slug}`}
                 className="mt-8 inline-block border-b border-brand-sky pb-1 font-medium text-brand-sky transition-colors duration-300 hover:text-white"
               >
                 Explore more
-              </a>
+              </Link>
             </div>
 
             <button

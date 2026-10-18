@@ -3,7 +3,6 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
-import EdgeShade from "./EdgeShade";
 import prj1 from "../images/prj1.png";
 import prj1Img from "../images/prj1-img.png.jpeg";
 import prj2 from "../images/prj2.png";
@@ -174,7 +173,6 @@ export default function FeaturedProducts() {
       id="products"
       className="relative isolate w-full overflow-hidden bg-white py-20 sm:py-24"
     >
-      <EdgeShade />
       <div className="mx-auto flex max-w-[90rem] flex-col gap-12 px-6 sm:px-10 md:flex-row md:items-center md:gap-16 lg:px-16">
         <div className="md:flex-1">
           <div className="max-w-xl">

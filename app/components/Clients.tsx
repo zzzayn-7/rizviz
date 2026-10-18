@@ -1,5 +1,4 @@
 import Image, { type StaticImageData } from "next/image";
-import EdgeShade from "./EdgeShade";
 import cl1 from "../images/cl1.png";
 import cl2 from "../images/cl2.png";
 import cl3 from "../images/cl3.png";
@@ -8,6 +7,8 @@ import cl5 from "../images/cl5.png";
 import cl6 from "../images/cl6.png";
 import cl7 from "../images/cl7.png";
 import cl8 from "../images/cl8.png";
+import cl9 from "../images/cl9.png";
+import cl10 from "../images/cl10.png";
 
 type Logo = { src: StaticImageData; alt: string; className?: string };
 
@@ -21,6 +22,7 @@ const columns: { logos: Logo[]; reverse: boolean }[] = [
       { src: cl5, alt: "The Crew", className: "rounded-lg" },
       // White logo: inverted so it shows on the white background.
       { src: cl7, alt: "FedPoint Solutions", className: "invert" },
+      { src: cl9, alt: "Annur" },
     ],
   },
   {
@@ -35,6 +37,7 @@ const columns: { logos: Logo[]; reverse: boolean }[] = [
         alt: "Silmun",
         className: "scale-[1.5] invert hue-rotate-180",
       },
+      { src: cl10, alt: "Decimal Shift" },
     ],
   },
 ];
@@ -71,7 +74,6 @@ export default function Clients() {
       id="clients"
       className="relative isolate w-full overflow-hidden bg-white py-20 sm:py-24 md:py-0"
     >
-      <EdgeShade />
       <div className="flex flex-col gap-12 md:min-h-[38rem] md:flex-row md:items-center md:gap-0">
         <div className="px-6 sm:px-10 md:flex-1 md:pl-16 md:pr-10 lg:pl-24">
           <div className="max-w-xl">

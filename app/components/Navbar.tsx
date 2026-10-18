@@ -9,7 +9,7 @@ const links = [
 ];
 
 const linksAfterServices = [
-  { label: "Applications", href: "/applications" },
+  { label: "Products", href: "/products" },
   { label: "Careers", href: "/careers" },
 ];
 
