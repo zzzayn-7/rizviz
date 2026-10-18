@@ -3,13 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 
-// Placeholder offerings: replace with the confirmed services.
-const services = [
-  { label: "Service one", href: "/services#service-one" },
-  { label: "Service two", href: "/services#service-two" },
-  { label: "Service three", href: "/services#service-three" },
-];
-
 const links = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -40,34 +33,9 @@ export default function Navbar() {
             </Link>
           ))}
 
-          <div className="group relative">
-            <Link
-              href="/services"
-              className={`${linkClass} inline-flex items-center gap-1`}
-            >
-              Services
-              <span
-                aria-hidden
-                className="text-[10px] transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"
-              >
-                ▾
-              </span>
-            </Link>
-            <div className="invisible absolute left-0 top-full pt-3 opacity-0 transition-all duration-300 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-              <ul className="min-w-48 rounded-xl bg-brand-navy/95 p-2 shadow-lg ring-1 ring-white/10 backdrop-blur">
-                {services.map((s) => (
-                  <li key={s.href}>
-                    <Link
-                      href={s.href}
-                      className="block rounded-lg px-4 py-2 text-sm text-white/90 transition-colors hover:bg-brand-steel hover:text-white"
-                    >
-                      {s.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <Link href="/services" className={linkClass}>
+            Services
+          </Link>
 
           {linksAfterServices.map((l) => (
             <Link key={l.href} href={l.href} className={linkClass}>

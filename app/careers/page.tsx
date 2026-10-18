@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import ApplySection from "../components/ApplySection";
+import HiringProcess from "../components/HiringProcess";
 import Navbar from "../components/Navbar";
 import OpenPositions from "../components/OpenPositions";
+import WorkingAtRizviz from "../components/WorkingAtRizviz";
 import careerHero from "../images/career-hero.png";
 
 export const metadata: Metadata = {
@@ -46,6 +49,12 @@ export default function CareersPage() {
       </section>
 
       <OpenPositions />
+
+      <WorkingAtRizviz />
+
+      <HiringProcess />
+
+      <ApplySection />
     </main>
   );
 }
