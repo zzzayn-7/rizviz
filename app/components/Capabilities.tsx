@@ -101,6 +101,10 @@ function pointOn(service: Service) {
 export default function Capabilities() {
   const wrapRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
+  // Which way the skip button points. It flips to "up" on reaching the last
+  // service and back to "down" on reaching the first, and keeps its direction
+  // for the services in between.
+  const [pointsUp, setPointsUp] = useState(false);
   const count = services.length;
 
   useEffect(() => {
@@ -113,7 +117,10 @@ export default function Capabilities() {
       const rect = el.getBoundingClientRect();
       const scrollable = el.offsetHeight - window.innerHeight;
       const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
-      setActive(Math.min(count - 1, Math.floor(progress * count)));
+      const index = Math.min(count - 1, Math.floor(progress * count));
+      setActive(index);
+      if (index === count - 1) setPointsUp(true);
+      else if (index === 0) setPointsUp(false);
     };
 
     const onScroll = () => {
@@ -151,6 +158,18 @@ export default function Capabilities() {
     if (!el) return;
     const top = el.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({ top: top + el.offsetHeight, behavior: "smooth" });
+  }, []);
+
+  // From the last service the same button leads back up, past the start of
+  // the section, so the animation is skipped in that direction too.
+  const skipUp = useCallback(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: Math.max(0, top - window.innerHeight),
+      behavior: "smooth",
+    });
   }, []);
 
   const current = services[active];
@@ -257,11 +276,20 @@ export default function Capabilities() {
 
             <button
               type="button"
-              onClick={skip}
-              aria-label="Skip capabilities"
+              onClick={pointsUp ? skipUp : skip}
+              aria-label={
+                pointsUp ? "Back above capabilities" : "Skip capabilities"
+              }
               className="mt-12 flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-blue bg-brand-blue text-xl text-white transition-colors duration-500 ease-in-out hover:bg-transparent md:mt-16"
             >
-              ↓
+              <span
+                aria-hidden
+                className={`transition-transform duration-500 ${
+                  pointsUp ? "rotate-180" : ""
+                }`}
+              >
+                ↓
+              </span>
             </button>
           </div>
         </div>

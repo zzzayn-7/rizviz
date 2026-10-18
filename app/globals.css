@@ -25,6 +25,8 @@
   --animate-fade-up: fade-up 0.6s ease-out both;
   --animate-page-in: page-in 0.7s ease-out;
   --animate-peek-gap: peek-gap 7s ease-in-out infinite;
+  --animate-tick: tick-draw 0.6s ease-out 0.25s both;
+  --animate-pop-in: pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   --animate-marquee-y: marquee-y 45s linear infinite;
   --animate-breathe: breathe 4s ease-in-out infinite;
   --animate-breathe-line: breathe-line 4s ease-in-out infinite;
@@ -91,6 +93,27 @@
     }
     3.6% {
       height: 14px;
+    }
+  }
+
+  /* A check mark that draws itself. */
+  @keyframes tick-draw {
+    from {
+      stroke-dashoffset: 26;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 

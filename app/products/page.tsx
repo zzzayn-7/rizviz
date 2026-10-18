@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
+import ProductCards from "../components/ProductCards";
 import productsHero from "../images/products-hero.png";
+import portfolio from "../images/products.png";
 
 export const metadata: Metadata = {
   title: "Products | Rizviz",
@@ -36,6 +38,38 @@ export default function ProductsPage() {
           </h1>
         </div>
       </section>
+
+      <section id="our-portfolio" className="w-full bg-white py-16 sm:py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-10 md:grid-cols-[1.1fr_1fr] md:gap-16">
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-blue">
+              Our Product Portfolio
+            </p>
+            <h2 className="text-3xl font-semibold leading-tight text-brand-navy sm:text-4xl lg:text-5xl">
+              Practical solutions.
+              <br />
+              Thoughtfully built.
+            </h2>
+            <p className="mt-6 text-base leading-relaxed text-brand-slate sm:text-lg">
+              Explore products that bring Rizviz’s expertise in software, AI,
+              and data into everyday use—helping businesses manage operations,
+              connect information, and simplify complex tasks.
+            </p>
+          </div>
+
+          {/* The frame clips the image so it can zoom slightly on hover. */}
+          <div className="group overflow-hidden rounded-3xl shadow-xl ring-1 ring-brand-navy/10">
+            <Image
+              src={portfolio}
+              alt="Glass dashboard, phone and chart icons showing business data"
+              sizes="(min-width: 768px) 45vw, 100vw"
+              className="h-auto w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+          </div>
+        </div>
+      </section>
+
+      <ProductCards />
     </main>
   );
 }
