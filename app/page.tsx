@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import heroImage from "./images/home-hero.png";
 import aboutImage from "./images/about.png";
 import Navbar from "./components/Navbar";
@@ -6,6 +7,7 @@ import Capabilities from "./components/Capabilities";
 import Clients from "./components/Clients";
 import FeaturedProducts from "./components/FeaturedProducts";
 import HowWeWork from "./components/HowWeWork";
+import ContactCta from "./components/ContactCta";
 
 export default function Home() {
   return (
@@ -76,12 +78,12 @@ export default function Home() {
               technology specialists collaborate across disciplines to bring each
               solution to life.
             </p>
-            <a
+            <Link
               href="/about"
               className="mt-10 inline-block rounded-full border-2 border-brand-blue bg-brand-blue px-8 py-3.5 font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent"
             >
               More about us
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -93,6 +95,8 @@ export default function Home() {
       <FeaturedProducts />
 
       <HowWeWork />
+
+      <ContactCta />
     </main>
   );
 }

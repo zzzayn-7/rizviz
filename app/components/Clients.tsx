@@ -1,4 +1,5 @@
 import Image, { type StaticImageData } from "next/image";
+import EdgeShade from "./EdgeShade";
 import cl1 from "../images/cl1.png";
 import cl2 from "../images/cl2.png";
 import cl3 from "../images/cl3.png";
@@ -29,7 +30,11 @@ const columns: { logos: Logo[]; reverse: boolean }[] = [
       { src: cl4, alt: "FSR Consulting LLC DBA Cirrus Systems" },
       { src: cl6, alt: "Hoopoe Labs Inc" },
       // White wordmark with a cyan accent: flip lightness, keep the hue.
-      { src: cl8, alt: "Silmun", className: "scale-[1.5] invert hue-rotate-180" },
+      {
+        src: cl8,
+        alt: "Silmun",
+        className: "scale-[1.5] invert hue-rotate-180",
+      },
     ],
   },
 ];
@@ -62,7 +67,11 @@ function Group({ logos, hidden = false }: { logos: Logo[]; hidden?: boolean }) {
 
 export default function Clients() {
   return (
-    <section id="clients" className="w-full bg-white py-20 sm:py-24 md:py-0">
+    <section
+      id="clients"
+      className="relative isolate w-full overflow-hidden bg-white py-20 sm:py-24 md:py-0"
+    >
+      <EdgeShade />
       <div className="flex flex-col gap-12 md:min-h-[38rem] md:flex-row md:items-center md:gap-0">
         <div className="px-6 sm:px-10 md:flex-1 md:pl-16 md:pr-10 lg:pl-24">
           <div className="max-w-xl">
