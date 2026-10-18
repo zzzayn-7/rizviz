@@ -1,7 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import logo from "../images/logo.png";
+import ContactButton from "./ContactButton";
 
 const links = [
   { label: "Home", href: "/" },
@@ -22,8 +25,14 @@ export default function Navbar() {
   return (
     <header className="absolute inset-x-0 top-0 z-20">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 sm:px-10 md:grid md:grid-cols-[1fr_auto_1fr]">
-        <Link href="/" className="text-xl font-bold text-white">
-          Rizviz
+        <Link href="/" aria-label="Rizviz home" className="justify-self-start">
+          <Image
+            src={logo}
+            alt="Rizviz"
+            priority
+            sizes="120px"
+            className="h-9 w-auto"
+          />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -44,12 +53,9 @@ export default function Navbar() {
           ))}
         </div>
 
-        <Link
-          href="/contact"
-          className="hidden rounded-full border-2 border-brand-blue bg-brand-blue px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent md:inline-block md:justify-self-end"
-        >
+        <ContactButton className="hidden rounded-full border-2 border-brand-blue bg-brand-blue px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent md:inline-block md:justify-self-end">
           Contact Us
-        </Link>
+        </ContactButton>
 
         <button
           type="button"
@@ -81,13 +87,12 @@ export default function Navbar() {
               </li>
             ))}
             <li>
-              <Link
-                href="/contact"
+              <ContactButton
                 onClick={() => setOpen(false)}
                 className="inline-block rounded-full border-2 border-brand-blue bg-brand-blue px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent"
               >
                 Contact Us
-              </Link>
+              </ContactButton>
             </li>
           </ul>
         </div>

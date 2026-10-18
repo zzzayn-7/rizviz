@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import ctaImage from "../images/cta.png";
+import ContactButton from "./ContactButton";
 
 export default function ContactCta() {
   return (
@@ -23,12 +23,9 @@ export default function ContactCta() {
         <p className="mt-6 max-w-xl text-base leading-relaxed text-brand-slate sm:text-lg">
           Tell us what you’re planning. We’ll help you define the next steps.
         </p>
-        <Link
-          href="/contact"
-          className="mt-10 inline-block rounded-full border-2 border-brand-blue bg-brand-blue px-8 py-3.5 font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent hover:text-brand-blue"
-        >
+        <ContactButton className="mt-10 inline-block rounded-full border-2 border-brand-blue bg-brand-blue px-8 py-3.5 font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent hover:text-brand-blue">
           Start a conversation
-        </Link>
+        </ContactButton>
       </div>
     </section>
   );

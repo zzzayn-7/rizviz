@@ -1,5 +1,6 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
+import ContactButton from "./ContactButton";
 import type { ReactNode } from "react";
 
 type Props = {
@@ -25,6 +26,7 @@ type Props = {
     headline: ReactNode;
     body?: string;
     cta: string;
+    // A page address, or "contact" to open the contact form.
     href: string;
     image?: StaticImageData;
     imageAlt?: string;
@@ -128,12 +130,18 @@ export default function ServiceDetail({ achieve, deliver, featured }: Props) {
                 {featured.body}
               </p>
             )}
-            <Link
-              href={featured.href}
-              className="mt-10 inline-block rounded-full border-2 border-brand-blue bg-brand-blue px-8 py-3.5 font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent"
-            >
-              {featured.cta}
-            </Link>
+            {featured.href === "contact" ? (
+              <ContactButton className="mt-10 inline-block rounded-full border-2 border-brand-blue bg-brand-blue px-8 py-3.5 font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent">
+                {featured.cta}
+              </ContactButton>
+            ) : (
+              <Link
+                href={featured.href}
+                className="mt-10 inline-block rounded-full border-2 border-brand-blue bg-brand-blue px-8 py-3.5 font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent"
+              >
+                {featured.cta}
+              </Link>
+            )}
           </div>
 
           {featured.image && (

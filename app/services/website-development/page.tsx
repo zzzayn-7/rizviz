@@ -58,7 +58,7 @@ export default function Page() {
           headline: "From first visit to conversation.",
           body: "Bring your services, relevant work, and contact options into one clear website experience. Thoughtful page structure and focused inquiry forms help visitors understand your business and take the next step, while manageable content tools make ongoing updates easier for your team.",
           cta: "Discuss your website requirements",
-          href: "/contact",
+          href: "contact",
         }}
       />
     </ServicePage>

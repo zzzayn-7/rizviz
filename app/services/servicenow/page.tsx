@@ -59,7 +59,7 @@ export default function Page() {
           headline: "From request to resolution.",
           body: "Bring everyday employee requests into one organized workflow. From requesting equipment to getting access approvals, ServiceNow can route tasks to the right teams, track progress, and keep employees informed. Clear ownership and shared visibility help reduce scattered emails and manual follow-ups.",
           cta: "Discuss your ServiceNow requirements",
-          href: "/contact",
+          href: "contact",
         }}
       />
     </ServicePage>
