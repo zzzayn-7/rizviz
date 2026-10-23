@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import PopDialog, { PopDialogClose, type Origin } from "./PopDialog";
+import Dropdown from "./Dropdown";
 import { submitForm } from "./submitForm";
 
 const inputClass =
@@ -195,32 +196,17 @@ export default function ContactDialog({
               Which department would you like to connect with?
               <span className="text-brand-blue"> *</span>
             </label>
-            <div className="relative mt-1.5">
-              <select
+            <div className="mt-1.5">
+              <Dropdown
                 id="contact-department"
                 name="department"
-                required
+                options={DEPARTMENTS}
                 value={department}
-                onChange={(e) => setDepartment(e.target.value)}
-                className={`${inputClass} appearance-none pr-12 ${
-                  department ? "" : "text-brand-slate/60"
-                }`}
-              >
-                <option value="" disabled>
-                  Please Select
-                </option>
-                {DEPARTMENTS.map((d) => (
-                  <option key={d} value={d}>
-                    {d}
-                  </option>
-                ))}
-              </select>
-              <span
-                aria-hidden
-                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-brand-slate"
-              >
-                ▾
-              </span>
+                onChange={setDepartment}
+                placeholder="Please Select"
+                required
+                tone="light"
+              />
             </div>
           </div>
 

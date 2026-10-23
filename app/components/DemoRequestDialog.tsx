@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import PopDialog, { PopDialogClose, type Origin } from "./PopDialog";
 import { products } from "./productsData";
+import Dropdown from "./Dropdown";
 import { submitForm } from "./submitForm";
 
 export type { Origin };
@@ -117,23 +118,18 @@ export default function DemoRequestDialog({
               <label htmlFor="demo-product" className={labelClass}>
                 Product<span className="text-brand-blue"> *</span>
               </label>
-              <select
-                id="demo-product"
-                name="product"
-                required
-                value={chosen}
-                onChange={(e) => setChosen(e.target.value)}
-                className={`${inputClass} mt-1.5 h-11 ${chosen ? "" : "text-brand-slate/60"}`}
-              >
-                <option value="" disabled>
-                  Select a product
-                </option>
-                {products.map((p) => (
-                  <option key={p.name} value={p.name}>
-                    {p.name}
-                  </option>
-                ))}
-              </select>
+              <div className="mt-1.5">
+                <Dropdown
+                  id="demo-product"
+                  name="product"
+                  options={products.map((p) => p.name ?? "")}
+                  value={chosen}
+                  onChange={setChosen}
+                  placeholder="Select a product"
+                  required
+                  tone="light"
+                />
+              </div>
             </div>
           )}
 

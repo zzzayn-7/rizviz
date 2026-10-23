@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState, type FormEvent } from "react";
+import Dropdown from "./Dropdown";
 import { submitForm } from "./submitForm";
 
 const MAX_CV_BYTES = 5 * 1024 * 1024;
@@ -78,48 +79,27 @@ function Select({
       >
         {label}
       </label>
-      <div className="relative mt-1.5">
-        <select
+      <div className="mt-1.5">
+        <Dropdown
           id={name}
           name={name}
+          options={options}
           value={value}
-          onChange={(e) => onChange(e.target.value)}
-          className={`${inputClass} appearance-none pr-10 [&:has(option[value='']:checked)]:text-brand-ice/40`}
-        >
-          <option value="" disabled>
-            {placeholder}
-          </option>
-          {options.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-        <span
-          aria-hidden
-          className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-brand-ice/70"
-        >
-          ▾
-        </span>
+          onChange={onChange}
+          placeholder={placeholder}
+        />
       </div>
     </div>
   );
 }
 
 const GENDERS = ["Male", "Female"];
-const LOCATIONS = [
-  "Faisal Town, Lahore",
-  "Johar Town, Lahore",
-  "Jubilee Town, Lahore",
-  "Bahria Town, Lahore",
-];
 
 export default function ApplyForm() {
   const roleParam = useSearchParams().get("role") ?? "";
   const [desiredRole, setDesiredRole] = useState(roleParam);
   const [gender, setGender] = useState("");
   const [roleType, setRoleType] = useState("");
-  const [location, setLocation] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [error, setError] = useState("");
   const [fileName, setFileName] = useState("");
@@ -162,7 +142,6 @@ export default function ApplyForm() {
     setDesiredRole("");
     setGender("");
     setRoleType("");
-    setLocation("");
   }
 
   if (status === "sent") {
@@ -226,20 +205,13 @@ export default function ApplyForm() {
         value={desiredRole}
         onChange={setDesiredRole}
       />
-      <Select
-        label="Preferred location"
-        name="location"
-        placeholder="Select a location"
-        options={LOCATIONS}
-        value={location}
-        onChange={setLocation}
-      />
       <Field
         label="Role type"
         name="roleType"
         placeholder="Onsite, Remote or Hybrid"
         value={roleType}
         onChange={setRoleType}
+        wide
       />
 
       <div className="sm:col-span-2">
