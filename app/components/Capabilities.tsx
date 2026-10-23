@@ -179,7 +179,7 @@ export default function Capabilities() {
       id="capabilities"
       ref={wrapRef}
       style={{ height: `calc(100vh + ${count * STEP_VH}vh)` }}
-      className="relative w-full bg-brand-navy"
+      className="relative w-full"
     >
       <div className="sticky top-0 flex h-screen flex-col overflow-hidden">
         <div className="flex min-h-0 flex-1 flex-col pt-6 md:flex-row md:items-center md:pt-0">

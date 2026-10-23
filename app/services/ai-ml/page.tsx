@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import AiAutomationVisual from "../../components/AiAutomationVisual";
+import AiChipHero3D from "../../components/AiChipHero3D";
 import ServiceDetail from "../../components/ServiceDetail";
 import ServicePage from "../../components/ServicePage";
-import aiChip from "../../images/ai.png";
-import aiHero from "../../images/ai-hero.png";
 import insuranceAi from "../../images/prj3-img.png";
 
 export const metadata: Metadata = {
@@ -14,17 +14,19 @@ export default function Page() {
     <ServicePage
       name="AI / ML"
       headline={["Building Intelligence", "Into Your Business"]}
-      hero={aiHero}
-      heroAlt="A glowing circuit-brain icon above a city skyline at night"
+      scene={<AiChipHero3D />}
+      cta={{
+        headline: "Put AI to work for your business.",
+        button: "Discuss your AI project",
+      }}
     >
       <ServiceDetail
+        dark
         achieve={{
           label: "What we help you achieve",
           headline: ["Practical AI.", "Real business purpose."],
           body: "Rizviz develops AI-powered applications around the way your business operates. From simplifying repetitive tasks to helping people find and interpret information, we connect AI capabilities with practical needs. Our team works with you to identify where AI can add value and build solutions that fit your existing workflows.",
-          image: aiChip,
-          imageAlt:
-            "A glowing AI chip with a transparent neural network on top of a circuit board",
+          visual: <AiAutomationVisual />,
         }}
         deliver={{
           label: "What we deliver",

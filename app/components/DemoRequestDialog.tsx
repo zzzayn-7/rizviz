@@ -2,6 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 import PopDialog, { PopDialogClose, type Origin } from "./PopDialog";
+import { products } from "./productsData";
+import { submitForm } from "./submitForm";
 
 export type { Origin };
 
@@ -18,7 +20,8 @@ export default function DemoRequestDialog({
   origin,
   onClose,
 }: {
-  product: string;
+  // Left out when the visitor should choose the product themselves.
+  product?: string;
   origin: Origin;
   onClose: () => void;
 }) {
@@ -26,12 +29,19 @@ export default function DemoRequestDialog({
     "idle",
   );
 
+  const [error, setError] = useState("");
+  const [chosen, setChosen] = useState("");
+
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setError("");
     setStatus("sending");
-    // TODO: send `new FormData(event.currentTarget)` to the sales inbox or CRM.
-    // Nothing is delivered anywhere yet.
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    const failure = await submitForm("demo", new FormData(event.currentTarget));
+    if (failure) {
+      setError(failure);
+      setStatus("idle");
+      return;
+    }
     // The form fades away before the confirmation takes its place.
     setStatus("leaving");
     await new Promise((resolve) => setTimeout(resolve, 250));
@@ -96,11 +106,36 @@ export default function DemoRequestDialog({
               id="demo-title"
               className="text-2xl font-semibold text-brand-navy sm:text-3xl"
             >
-              {product}
+              {product ?? "Which product interests you?"}
             </h2>
           </div>
 
-          <input type="hidden" name="product" value={product} />
+          {product ? (
+            <input type="hidden" name="product" value={product} />
+          ) : (
+            <div>
+              <label htmlFor="demo-product" className={labelClass}>
+                Product<span className="text-brand-blue"> *</span>
+              </label>
+              <select
+                id="demo-product"
+                name="product"
+                required
+                value={chosen}
+                onChange={(e) => setChosen(e.target.value)}
+                className={`${inputClass} mt-1.5 h-11 ${chosen ? "" : "text-brand-slate/60"}`}
+              >
+                <option value="" disabled>
+                  Select a product
+                </option>
+                {products.map((p) => (
+                  <option key={p.name} value={p.name}>
+                    {p.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           <div>
             <label htmlFor="demo-name" className={labelClass}>
@@ -155,6 +190,12 @@ export default function DemoRequestDialog({
               className={`${inputClass} mt-1.5 resize-y py-3`}
             />
           </div>
+
+          {error && (
+            <p role="alert" className="text-sm font-medium text-red-600">
+              {error}
+            </p>
+          )}
 
           <button
             type="submit"

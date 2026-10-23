@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import AiChipHero3D from "../../components/AiChipHero3D";
 import ServiceDetail from "../../components/ServiceDetail";
 import ServicePage from "../../components/ServicePage";
-import webHero from "../../images/web-hero.png";
-import webImage from "../../images/web.png";
+import WebsiteVisual from "../../components/WebsiteVisual";
 
 export const metadata: Metadata = {
   title: "Website Development | Rizviz",
@@ -13,16 +13,19 @@ export default function Page() {
     <ServicePage
       name="Website Development"
       headline={["Building Websites", "That Mean Business"]}
-      hero={webHero}
-      heroAlt="A glowing browser and globe icon above a city skyline at night"
+      scene={<AiChipHero3D mark="website" />}
+      cta={{
+        headline: "Give your business a stronger digital presence.",
+        button: "Discuss your website",
+      }}
     >
       <ServiceDetail
+        dark
         achieve={{
           label: "What we help you achieve",
           headline: ["Your business.", "Clearly presented online."],
           body: "Rizviz develops websites that bring your brand, services, and digital experiences together. From business websites to interactive web applications, we focus on clear navigation, responsive layouts, and practical functionality. Our team works with you to create an online presence that serves your visitors and remains easy to manage as your business grows.",
-          image: webImage,
-          imageAlt: "A website layout shown on a desktop and a phone screen",
+          visual: <WebsiteVisual />,
         }}
         deliver={{
           label: "What we deliver",
@@ -55,8 +58,13 @@ export default function Page() {
         featured={{
           label: "Use case",
           projectName: "Business Website & Inquiry Journey",
-          headline: "From first visit to conversation.",
-          body: "Bring your services, relevant work, and contact options into one clear website experience. Thoughtful page structure and focused inquiry forms help visitors understand your business and take the next step, while manageable content tools make ongoing updates easier for your team.",
+          projectNameBelow: true,
+          headline: (
+            <>
+              From first visit to{" "}
+              <span className="text-brand-ice">conversation.</span>
+            </>
+          ),
           cta: "Discuss your website requirements",
           href: "contact",
         }}

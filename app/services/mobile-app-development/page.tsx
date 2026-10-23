@@ -1,30 +1,32 @@
 import type { Metadata } from "next";
+import AiChipHero3D from "../../components/AiChipHero3D";
 import ServiceDetail from "../../components/ServiceDetail";
 import ServicePage from "../../components/ServicePage";
-import mobileHero from "../../images/mobile-hero.png";
-import mobileImage from "../../images/mobile.png";
+import MobileVisual from "../../components/MobileVisual";
 import skinClin from "../../images/prj2-img.png";
 
 export const metadata: Metadata = {
-  title: "Mobile App Development | Rizviz",
+  title: "App Development | Rizviz",
 };
 
 export default function Page() {
   return (
     <ServicePage
-      name="Mobile App Development"
+      name="App Development"
       headline={["Bringing Your", "Ideas to Mobile"]}
-      hero={mobileHero}
-      heroAlt="A glowing mobile app icon above a city skyline at night"
+      scene={<AiChipHero3D mark="mobile" />}
+      cta={{
+        headline: "Bring your next app idea to life.",
+        button: "Discuss your app",
+      }}
     >
       <ServiceDetail
+        dark
         achieve={{
           label: "What we help you achieve",
           headline: ["Your ideas.", "Built for mobile."],
           body: "Rizviz develops mobile applications that connect your services with the people who use them. From customer-facing products to tools for your team, we focus on clear interfaces and practical functionality. Our developers work with you to shape the experience, connect supporting systems, and prepare your application for everyday use.",
-          image: mobileImage,
-          imageAlt:
-            "A smartphone showing an app interface between floating screens",
+          visual: <MobileVisual />,
         }}
         deliver={{
           label: "What we deliver",
@@ -57,8 +59,14 @@ export default function Page() {
         featured={{
           label: "Featured project",
           projectName: "SkinClin",
-          headline: "AI capabilities. A mobile experience.",
-          body: "SkinClin is a mobile application that uses camera images for AI-assisted skin analysis. Rizviz brought image capture and AI functionality together in a mobile interface, allowing users to submit skin images and view the resulting analysis within the app.",
+          projectNameBelow: true,
+          headline: (
+            <>
+              AI capabilities.
+              <br />
+              <span className="text-brand-ice">A mobile experience.</span>
+            </>
+          ),
           cta: "Explore SkinClin",
           href: "/products",
           image: skinClin,

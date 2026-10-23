@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import AiChipHero3D from "../../components/AiChipHero3D";
+import DataVisual from "../../components/DataVisual";
 import ServiceDetail from "../../components/ServiceDetail";
 import ServicePage from "../../components/ServicePage";
-import dataHero from "../../images/data-hero.png";
-import dataImage from "../../images/data.png";
 import intellotrade from "../../images/prj1-img.png.jpeg";
 
 export const metadata: Metadata = {
@@ -14,17 +14,19 @@ export default function Page() {
     <ServicePage
       name="Data Engineering"
       headline={["Turning Data", "Into Business Clarity"]}
-      hero={dataHero}
-      heroAlt="A glowing data chart and network globe above a city skyline at night"
+      scene={<AiChipHero3D mark="data" />}
+      cta={{
+        headline: "Make your data ready for what’s next.",
+        button: "Discuss your data needs",
+      }}
     >
       <ServiceDetail
+        dark
         achieve={{
           label: "What we help you achieve",
           headline: ["Connected data.", "A dependable foundation."],
           body: "Rizviz builds the data pipelines and systems that bring your business information together. We help collect, organize, and prepare data from different sources so it is ready for reporting, analytics, and AI. Our team works around your existing systems to make data easier to access, maintain, and use.",
-          image: dataImage,
-          imageAlt:
-            "Glass data sources linked by pipelines to a central data warehouse",
+          visual: <DataVisual />,
         }}
         deliver={{
           label: "What we deliver",
@@ -57,8 +59,14 @@ export default function Page() {
         featured={{
           label: "Featured project",
           projectName: "Intellotrade",
-          headline: "Complex trade data. Connected intelligence.",
-          body: "Intellotrade brings AI-powered trade intelligence to the Pakistan–US trade corridor. It helps users explore tariffs, HS codes, and global shipping routes, bringing key trade information together to support more informed planning.",
+          projectNameBelow: true,
+          headline: (
+            <>
+              Complex trade data.
+              <br />
+              <span className="text-brand-ice">Connected intelligence.</span>
+            </>
+          ),
           cta: "Explore Intellotrade",
           href: "/products",
           image: intellotrade,

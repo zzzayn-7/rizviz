@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import logo from "../images/logo.png";
 import ContactButton from "./ContactButton";
+import { servicesMenu } from "./servicesMenu";
 
 const links = [
   { label: "Home", href: "/" },
@@ -16,14 +17,51 @@ const linksAfterServices = [
   { label: "Careers", href: "/careers" },
 ];
 
-const linkClass =
-  "text-sm font-medium text-white/90 transition-colors duration-300 hover:text-brand-sky";
+const linkTone = {
+  dark: "text-white/90 hover:text-brand-sky",
+  // For pages whose top is light, such as the home page.
+  light: "text-brand-navy/80 hover:text-brand-blue",
+};
 
-export default function Navbar() {
+function Chevron({
+  open,
+  className = "",
+}: {
+  open: boolean;
+  className?: string;
+}) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : ""} ${className}`}
+    >
+      <path d="m5 7.5 5 5 5-5" />
+    </svg>
+  );
+}
+
+export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const [mobileServices, setMobileServices] = useState(false);
+  const linkClass = `text-sm font-medium transition-colors duration-300 ${linkTone[tone]}`;
 
   return (
-    <header className="absolute inset-x-0 top-0 z-20">
+    <header
+      className="absolute inset-x-0 top-0 z-20"
+      // The menu opens on hover and closes when the pointer leaves the header
+      // or the menu; it also toggles on click and closes on Escape.
+      onMouseLeave={() => setMenu(false)}
+      onKeyDown={(e) => {
+        if (e.key === "Escape") setMenu(false);
+      }}
+    >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 sm:px-10 md:grid md:grid-cols-[1fr_auto_1fr]">
         <Link href="/" aria-label="Rizviz home" className="justify-self-start">
           <Image
@@ -37,23 +75,44 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className={linkClass}>
+            <Link
+              key={l.href}
+              href={l.href}
+              onMouseEnter={() => setMenu(false)}
+              className={linkClass}
+            >
               {l.label}
             </Link>
           ))}
 
-          <Link href="/services" className={linkClass}>
+          <button
+            type="button"
+            aria-haspopup="true"
+            aria-expanded={menu}
+            aria-controls="services-menu"
+            onMouseEnter={() => setMenu(true)}
+            onClick={() => setMenu((m) => !m)}
+            className={`flex items-center gap-1.5 ${linkClass}`}
+          >
             Services
-          </Link>
+            <Chevron open={menu} />
+          </button>
 
           {linksAfterServices.map((l) => (
-            <Link key={l.href} href={l.href} className={linkClass}>
+            <Link
+              key={l.href}
+              href={l.href}
+              onMouseEnter={() => setMenu(false)}
+              className={linkClass}
+            >
               {l.label}
             </Link>
           ))}
         </div>
 
-        <ContactButton className="hidden rounded-full border-2 border-brand-blue bg-brand-blue px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent md:inline-block md:justify-self-end">
+        <ContactButton
+          className={`hidden rounded-full border-2 border-brand-blue bg-brand-blue px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent md:inline-block md:justify-self-end ${tone === "light" ? "hover:text-brand-blue" : ""}`}
+        >
           Contact Us
         </ContactButton>
 
@@ -62,20 +121,128 @@ export default function Navbar() {
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
-          className="text-2xl text-white md:hidden"
+          className={`text-2xl md:hidden ${tone === "light" ? "text-brand-navy" : "text-white"}`}
         >
           {open ? "✕" : "☰"}
         </button>
       </nav>
 
+      {/* The services menu: a wide panel of navy glass under the navbar. */}
+      <div
+        id="services-menu"
+        inert={!menu}
+        className={`absolute inset-x-0 top-full hidden px-4 pt-1 transition-all duration-300 ease-out md:block ${
+          menu
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-2 opacity-0"
+        }`}
+      >
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-[#07121d] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6),0_0_90px_-10px_rgba(50,159,224,0.35)]">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: [
+                "radial-gradient(45% 60% at 100% 0%, rgba(50,159,224,0.28), transparent 70%)",
+                "radial-gradient(40% 60% at 0% 100%, rgba(112,199,244,0.16), transparent 70%)",
+                "linear-gradient(180deg, #0c2236 0%, #07121d 75%)",
+              ].join(", "),
+            }}
+          />
+
+          <div className="relative grid grid-cols-[12rem_1fr] gap-8 p-8">
+            <div>
+              <div className="flex items-center justify-between rounded-xl bg-white/[0.07] px-4 py-2.5 text-xs font-semibold text-white ring-1 ring-white/10">
+                All services
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                  className="h-4 w-4 text-brand-sky"
+                >
+                  <path d="m7.5 5 5 5-5 5" />
+                </svg>
+              </div>
+            </div>
+
+            <div className="border-l border-white/10 pl-8">
+              <h2 className="text-xl font-bold text-white">Our Services</h2>
+              <p className="mt-2 text-sm text-brand-ice/80">
+                Engineering solutions, solving real business challenges.
+              </p>
+
+              <div className="mt-5 border-t border-white/10 pt-6">
+                <ul className="grid auto-rows-fr grid-cols-3 gap-4">
+                  {servicesMenu.map((s) => (
+                    <li key={s.href} className="h-full">
+                      <Link
+                        href={s.href}
+                        onClick={() => setMenu(false)}
+                        className="group flex h-full flex-col rounded-xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-300 hover:border-brand-sky/40 hover:bg-white/[0.08]"
+                      >
+                        <span className="block text-sm font-semibold leading-snug text-white transition-colors duration-300 group-hover:text-brand-sky">
+                          {s.name}
+                        </span>
+                        <span className="mt-1 block text-xs leading-relaxed text-brand-ice/70">
+                          {s.blurb}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {open && (
         <div className="mx-4 rounded-2xl bg-brand-navy/95 p-6 backdrop-blur md:hidden">
           <ul className="flex flex-col gap-4">
-            {[
-              ...links,
-              { label: "Services", href: "/services" },
-              ...linksAfterServices,
-            ].map((l) => (
+            {links.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="text-white/90 hover:text-brand-sky"
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+
+            <li>
+              <button
+                type="button"
+                aria-expanded={mobileServices}
+                onClick={() => setMobileServices((s) => !s)}
+                className="flex items-center gap-1.5 text-white/90 hover:text-brand-sky"
+              >
+                Services
+                <Chevron open={mobileServices} />
+              </button>
+              {mobileServices && (
+                <ul className="mt-3 flex flex-col gap-3 border-l border-white/15 pl-4">
+                  {servicesMenu.map((s) => (
+                    <li key={s.href}>
+                      <Link
+                        href={s.href}
+                        onClick={() => setOpen(false)}
+                        className="text-sm text-brand-ice/80 hover:text-brand-sky"
+                      >
+                        {s.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+
+            {linksAfterServices.map((l) => (
               <li key={l.href}>
                 <Link
                   href={l.href}

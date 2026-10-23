@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import PopDialog, { PopDialogClose, type Origin } from "./PopDialog";
+import { submitForm } from "./submitForm";
 
 const inputClass =
   "h-12 w-full rounded-xl border border-[#D3DFE9] bg-white px-4 text-sm text-brand-navy outline-none transition-colors duration-300 placeholder:text-brand-slate/60 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20";
@@ -62,13 +63,21 @@ export default function ContactDialog({
     "idle",
   );
   const [department, setDepartment] = useState("");
+  const [error, setError] = useState("");
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setError("");
     setStatus("sending");
-    // TODO: send `new FormData(event.currentTarget)` to the contact inbox.
-    // Nothing is delivered anywhere yet.
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    const failure = await submitForm(
+      "contact",
+      new FormData(event.currentTarget),
+    );
+    if (failure) {
+      setError(failure);
+      setStatus("idle");
+      return;
+    }
     // The form fades away before the confirmation takes its place.
     setStatus("leaving");
     await new Promise((resolve) => setTimeout(resolve, 250));
@@ -227,6 +236,15 @@ export default function ContactDialog({
               className={`${inputClass} mt-1.5 h-auto resize-y py-3`}
             />
           </div>
+
+          {error && (
+            <p
+              role="alert"
+              className="text-sm font-medium text-red-600 sm:col-span-2"
+            >
+              {error}
+            </p>
+          )}
 
           <div className="sm:col-span-2">
             <button

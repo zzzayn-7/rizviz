@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState, type FormEvent } from "react";
+import { submitForm } from "./submitForm";
 
 const MAX_CV_BYTES = 5 * 1024 * 1024;
 
@@ -10,7 +11,7 @@ export const APPLY_EVENT = "apply-for-role";
 export type ApplyDetail = { role: string; gender?: string; roleType?: string };
 
 const inputClass =
-  "h-11 w-full rounded-lg border border-[#D3DFE9] bg-white px-4 text-sm text-brand-navy outline-none transition-colors duration-300 placeholder:text-brand-slate/60 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20";
+  "h-10 w-full rounded-lg border border-white/15 bg-white/[0.06] px-4 text-sm text-white outline-none transition-colors duration-300 placeholder:text-brand-ice/40 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/25 [color-scheme:dark]";
 
 function Field({
   label,
@@ -35,10 +36,10 @@ function Field({
     <div className={wide ? "sm:col-span-2" : undefined}>
       <label
         htmlFor={name}
-        className="block text-sm font-medium text-brand-navy"
+        className="block text-sm font-medium text-brand-ice"
       >
         {label}
-        {required && <span className="text-brand-blue"> *</span>}
+        {required && <span className="text-brand-sky"> *</span>}
       </label>
       <input
         id={name}
@@ -73,7 +74,7 @@ function Select({
     <div>
       <label
         htmlFor={name}
-        className="block text-sm font-medium text-brand-navy"
+        className="block text-sm font-medium text-brand-ice"
       >
         {label}
       </label>
@@ -83,7 +84,7 @@ function Select({
           name={name}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className={`${inputClass} appearance-none pr-10 [&:has(option[value='']:checked)]:text-brand-slate/60`}
+          className={`${inputClass} appearance-none pr-10 [&:has(option[value='']:checked)]:text-brand-ice/40`}
         >
           <option value="" disabled>
             {placeholder}
@@ -96,7 +97,7 @@ function Select({
         </select>
         <span
           aria-hidden
-          className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-brand-slate"
+          className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-brand-ice/70"
         >
           ▾
         </span>
@@ -149,9 +150,12 @@ export default function ApplyForm() {
 
     setError("");
     setStatus("sending");
-    // TODO: send `data` to the hiring inbox or applicant system. Nothing is
-    // delivered anywhere yet.
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    const failure = await submitForm("application", data);
+    if (failure) {
+      setError(failure);
+      setStatus("idle");
+      return;
+    }
     setStatus("sent");
     form.reset();
     setFileName("");
@@ -164,16 +168,16 @@ export default function ApplyForm() {
   if (status === "sent") {
     return (
       <div className="py-10 text-center">
-        <h2 className="text-2xl font-semibold text-brand-navy sm:text-3xl">
+        <h2 className="text-2xl font-semibold text-white sm:text-3xl">
           Thank you for applying.
         </h2>
-        <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-brand-slate">
+        <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-brand-ice/80">
           We’ve received your application and our team will be in touch.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-8 font-medium text-brand-blue transition-colors duration-300 hover:text-brand-navy"
+          className="mt-8 font-medium text-brand-sky transition-colors duration-300 hover:text-white"
         >
           Submit another application
         </button>
@@ -182,7 +186,7 @@ export default function ApplyForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-x-6 gap-y-5 sm:grid-cols-2">
+    <form onSubmit={onSubmit} className="grid gap-x-4 gap-y-3.5 sm:grid-cols-2">
       <Field
         label="Full name"
         name="fullName"
@@ -241,9 +245,9 @@ export default function ApplyForm() {
       <div className="sm:col-span-2">
         <label
           htmlFor="cv"
-          className="block text-sm font-medium text-brand-navy"
+          className="block text-sm font-medium text-brand-ice"
         >
-          CV upload<span className="text-brand-blue"> *</span>
+          CV upload<span className="text-brand-sky"> *</span>
         </label>
         {/* The real input is visually hidden so the box can be laid out by
             hand: the button and file name line up with the other fields. */}
@@ -259,18 +263,18 @@ export default function ApplyForm() {
             onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
             className="peer absolute inset-0 h-full w-full cursor-pointer opacity-0"
           />
-          <span className="pointer-events-none rounded-full border border-brand-slate/40 px-4 py-1 text-xs font-semibold text-brand-slate transition-colors peer-hover:border-brand-blue peer-hover:text-brand-blue">
+          <span className="pointer-events-none rounded-full border border-white/30 px-4 py-1 text-xs font-semibold text-brand-ice transition-colors peer-hover:border-brand-sky peer-hover:text-white">
             Choose File
           </span>
           <span
             className={`pointer-events-none min-w-0 truncate ${
-              fileName ? "text-brand-navy" : "text-brand-slate/60"
+              fileName ? "text-white" : "text-brand-ice/40"
             }`}
           >
             {fileName || "No file chosen"}
           </span>
         </div>
-        <p className="mt-1.5 text-xs text-brand-slate">
+        <p className="mt-1 text-xs text-brand-ice/60">
           PDF or Word, up to 5 MB.
         </p>
       </div>
@@ -278,29 +282,29 @@ export default function ApplyForm() {
       <div className="sm:col-span-2">
         <label
           htmlFor="info"
-          className="block text-sm font-medium text-brand-navy"
+          className="block text-sm font-medium text-brand-ice"
         >
           Additional information
         </label>
         <textarea
           id="info"
           name="info"
-          rows={3}
+          rows={2}
           placeholder="Tell us more about your career goals, salary expectations, or availability…"
-          className={`${inputClass} mt-1.5 h-auto resize-y py-3`}
+          className={`${inputClass} mt-1.5 h-auto resize-y py-2`}
         />
       </div>
 
       <div className="sm:col-span-2">
         {error && (
-          <p role="alert" className="mb-4 text-sm font-medium text-red-600">
+          <p role="alert" className="mb-4 text-sm font-medium text-red-300">
             {error}
           </p>
         )}
         <button
           type="submit"
           disabled={status === "sending"}
-          className="rounded-full border-2 border-brand-blue bg-brand-blue px-8 py-2.5 text-sm font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent hover:text-brand-blue disabled:opacity-60"
+          className="rounded-full border-2 border-brand-blue bg-brand-blue px-8 py-2.5 text-sm font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent disabled:opacity-60"
         >
           {status === "sending" ? "Sending…" : "Submit Application"}
         </button>

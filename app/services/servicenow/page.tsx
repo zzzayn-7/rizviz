@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import AiChipHero3D from "../../components/AiChipHero3D";
 import ServiceDetail from "../../components/ServiceDetail";
 import ServicePage from "../../components/ServicePage";
-import snowHero from "../../images/snow-hero.png";
-import snowImage from "../../images/snow.png";
+import ServiceNowVisual from "../../components/ServiceNowVisual";
 
 export const metadata: Metadata = {
   title: "ServiceNow | Rizviz",
@@ -13,17 +13,19 @@ export default function Page() {
     <ServicePage
       name="ServiceNow"
       headline={["Connecting Workflows.", "Simplifying Everyday Operations."]}
-      hero={snowHero}
-      heroAlt="The ServiceNow logo glowing above a city skyline at night"
+      scene={<AiChipHero3D mark="servicenow" />}
+      cta={{
+        headline: "Make everyday work flow better.",
+        button: "Discuss your workflows",
+      }}
     >
       <ServiceDetail
+        dark
         achieve={{
           label: "What we help you achieve",
           headline: ["Connected workflows.", "Simpler everyday operations."],
           body: "Rizviz helps businesses configure and adapt ServiceNow around the way their teams work. We bring requests, approvals, and service processes into connected workflows, reducing manual coordination and improving visibility. Our team works with you to understand existing processes and develop a platform experience that supports your operational needs.",
-          image: snowImage,
-          imageAlt:
-            "A central gear connected to document, approval, file and link icons",
+          visual: <ServiceNowVisual />,
         }}
         deliver={{
           label: "What we deliver",
@@ -56,8 +58,13 @@ export default function Page() {
         featured={{
           label: "Use case",
           projectName: "Employee Service Requests",
-          headline: "From request to resolution.",
-          body: "Bring everyday employee requests into one organized workflow. From requesting equipment to getting access approvals, ServiceNow can route tasks to the right teams, track progress, and keep employees informed. Clear ownership and shared visibility help reduce scattered emails and manual follow-ups.",
+          projectNameBelow: true,
+          headline: (
+            <>
+              From request to{" "}
+              <span className="text-brand-ice">resolution.</span>
+            </>
+          ),
           cta: "Discuss your ServiceNow requirements",
           href: "contact",
         }}

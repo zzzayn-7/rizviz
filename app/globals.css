@@ -27,6 +27,11 @@
   --animate-peek-gap: peek-gap 7s ease-in-out infinite;
   --animate-tick: tick-draw 0.6s ease-out 0.25s both;
   --animate-pop-in: pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-bar-glow: bar-glow 5s ease-in-out infinite;
+  --animate-blink: blink 5s ease-in-out infinite;
+  --animate-beam: beam-flicker 3.2s ease-in-out infinite;
+  --animate-bob: bob 6s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
   --animate-marquee-y: marquee-y 45s linear infinite;
   --animate-breathe: breathe 4s ease-in-out infinite;
   --animate-breathe-line: breathe-line 4s ease-in-out infinite;
@@ -117,6 +122,64 @@
     }
   }
 
+  /* A slow, gentle glow that swells and eases back. */
+  @keyframes bar-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 36px rgba(50, 159, 224, 0.35);
+      filter: brightness(1);
+    }
+    50% {
+      box-shadow: 0 0 78px rgba(50, 159, 224, 0.7);
+      filter: brightness(1.1);
+    }
+  }
+
+  @keyframes blink {
+    0%,
+    91%,
+    100% {
+      transform: scaleY(1);
+    }
+    95% {
+      transform: scaleY(0.12);
+    }
+  }
+
+  @keyframes beam-flicker {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  /* A tiny, lazy drift, like something alive resting in place. */
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    30% {
+      transform: translate3d(2px, -5px, 0);
+    }
+    65% {
+      transform: translate3d(-2px, -2px, 0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
   @keyframes fade-up {
     from {
       opacity: 0;
@@ -140,4 +203,283 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Home hero: hardware and software scene. All of it loops forever. */
+.hw-pulse {
+  stroke-dasharray: 11 89;
+  animation: hw-pulse 3.4s linear infinite;
+}
+@keyframes hw-pulse {
+  from {
+    stroke-dashoffset: 11;
+  }
+  to {
+    stroke-dashoffset: -89;
+  }
+}
+.hw-ping {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hw-ping 2.8s ease-out infinite;
+}
+@keyframes hw-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.7;
+  }
+  80%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.hw-core {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hw-core 2.6s ease-in-out infinite;
+}
+@keyframes hw-core {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+}
+.hw-type {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: hw-type 9s linear infinite;
+}
+@keyframes hw-type {
+  0%,
+  4% {
+    transform: scaleX(0);
+  }
+  14%,
+  88% {
+    transform: scaleX(1);
+  }
+  96%,
+  100% {
+    transform: scaleX(0);
+  }
+}
+.hw-caret {
+  animation: hw-caret 1s steps(1) infinite;
+}
+@keyframes hw-caret {
+  50% {
+    opacity: 0;
+  }
+}
+.hw-bar {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: hw-bar 3.2s ease-in-out infinite alternate;
+}
+@keyframes hw-bar {
+  from {
+    transform: scaleY(0.35);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+.hw-ring {
+  animation: hw-ring 6s ease-in-out infinite;
+}
+@keyframes hw-ring {
+  0%,
+  100% {
+    stroke-dashoffset: 75;
+  }
+  50% {
+    stroke-dashoffset: 18;
+  }
+}
+.hw-drift {
+  animation: hw-drift 9s ease-in-out infinite;
+}
+@keyframes hw-drift {
+  0% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  25%,
+  70% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-34px);
+    opacity: 0;
+  }
+}
+.hw-float {
+  animation: hw-float 7s ease-in-out infinite;
+}
+@keyframes hw-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+.hw-blink {
+  animation: hw-blink 2.4s ease-in-out infinite;
+}
+@keyframes hw-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hw-pulse,
+  .hw-ping,
+  .hw-core,
+  .hw-type,
+  .hw-caret,
+  .hw-bar,
+  .hw-ring,
+  .hw-drift,
+  .hw-float,
+  .hw-blink {
+    animation: none;
+  }
+  .hw-pulse {
+    stroke-dasharray: none;
+    opacity: 0.35;
+  }
+  .hw-ping {
+    opacity: 0;
+  }
+}
+
+/* About page "Who we are" visual: each scene plays its own entrance. */
+.wv-type {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: wv-type 0.7s ease-out both;
+}
+@keyframes wv-type {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.wv-bar {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: wv-bar 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes wv-bar {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+.wv-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: wv-draw 1.7s ease-out 0.5s forwards;
+}
+@keyframes wv-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.wv-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wv-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes wv-pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.wv-rise {
+  animation: wv-rise 0.7s ease-out both;
+}
+@keyframes wv-rise {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.wv-scene {
+  animation: wv-scene 0.7s ease-out both;
+}
+@keyframes wv-scene {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.wv-bob {
+  animation: hw-float 5.5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wv-type,
+  .wv-bar,
+  .wv-pop,
+  .wv-rise,
+  .wv-scene,
+  .wv-bob {
+    animation: none;
+  }
+  .wv-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes wv-timer {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+/* An element that disappears once it has done its job. */
+.wv-gone {
+  animation: wv-gone 0.35s ease-out forwards;
+}
+@keyframes wv-gone {
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wv-gone {
+    display: none;
+  }
 }

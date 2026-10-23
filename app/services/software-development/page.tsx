@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import AiChipHero3D from "../../components/AiChipHero3D";
 import ServiceDetail from "../../components/ServiceDetail";
 import ServicePage from "../../components/ServicePage";
-import seHero from "../../images/se-hero.png";
-import seImage from "../../images/se.png";
+import hospital from "../../images/prj5.png";
+import SoftwareVisual from "../../components/SoftwareVisual";
 
 export const metadata: Metadata = {
   title: "Software Development | Rizviz",
@@ -13,17 +14,19 @@ export default function Page() {
     <ServicePage
       name="Software Development"
       headline={["Building Software", "Around Your Business"]}
-      hero={seHero}
-      heroAlt="A glowing code and gear icon above a city skyline at night"
+      scene={<AiChipHero3D mark="software" />}
+      cta={{
+        headline: "Build software around the way you work.",
+        button: "Discuss your software project",
+      }}
     >
       <ServiceDetail
+        dark
         achieve={{
           label: "What we help you achieve",
           headline: ["Your requirements.", "Thoughtfully engineered software."],
           body: "Rizviz develops software around your business processes, users, and operational needs. From internal tools to complete enterprise systems, we turn requirements into practical applications. Our team brings together planning, development, and testing to build software that supports everyday work and can evolve as your business changes.",
-          image: seImage,
-          imageAlt:
-            "Layered panels of a software application with a code icon on top",
+          visual: <SoftwareVisual />,
         }}
         deliver={{
           label: "What we deliver",
@@ -55,11 +58,22 @@ export default function Page() {
         }}
         featured={{
           label: "Featured project",
-          projectName: "ERP Suite",
-          headline: "One platform. Connected business functions.",
-          body: "Rizviz developed an ERP suite covering financial and non-financial business modules. The software brings core functions into a shared platform, helping teams manage daily operations and business records through connected modules designed to work together.",
-          cta: "Explore our ERP suite",
+          projectName: "Hospital Management System",
+          projectNameBelow: true,
+          headline: (
+            <>
+              One platform.
+              <br />
+              <span className="text-brand-ice">
+                Connected business functions.
+              </span>
+            </>
+          ),
+          cta: "Explore our Hospital Management System",
           href: "/products",
+          image: hospital,
+          imageAlt:
+            "The Hospital Management System appointments screen with a schedule table",
         }}
       />
     </ServicePage>
