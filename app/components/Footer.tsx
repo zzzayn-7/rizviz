@@ -51,11 +51,7 @@ const socials = [
 
 const phone = { label: "0327 0800639", href: "tel:+923270800639" };
 
-const emails = [
-  "info@rizviz.com.pk",
-  "hr@rizviz.com.pk",
-  "careers@rizviz.com.pk",
-];
+const emails = ["info@rizviz.com.pk", "careers@rizviz.com.pk"];
 
 // The pages that end with the closing call to action. On these the page turns
 // from navy to white through the CTA and the top of the footer, so the footer
