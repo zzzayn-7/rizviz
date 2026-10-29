@@ -3,7 +3,7 @@ import AiChipHero3D from "../../components/AiChipHero3D";
 import ServiceDetail from "../../components/ServiceDetail";
 import ServicePage from "../../components/ServicePage";
 import MobileVisual from "../../components/MobileVisual";
-import skinClin from "../../images/prj2-img.png";
+import skinClin from "../../images/prj2.png";
 
 export const metadata: Metadata = {
   title: "App Development | Rizviz",

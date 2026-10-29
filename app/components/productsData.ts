@@ -1,7 +1,7 @@
 import type { StaticImageData } from "next/image";
-import intellotrade from "../images/prj1-img.png.jpeg";
-import insuranceAi from "../images/prj3-img.png";
-import skinClin from "../images/prj2-img.png";
+import intellotrade from "../images/prj1.png";
+import insuranceAi from "../images/prj3.png";
+import skinClin from "../images/prj2.png";
 import zameendarBot from "../images/prj4.png";
 import hospital from "../images/prj5.png";
 import busTicketing from "../images/prj6.png";

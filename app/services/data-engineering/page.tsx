@@ -3,7 +3,7 @@ import AiChipHero3D from "../../components/AiChipHero3D";
 import DataVisual from "../../components/DataVisual";
 import ServiceDetail from "../../components/ServiceDetail";
 import ServicePage from "../../components/ServicePage";
-import intellotrade from "../../images/prj1-img.png.jpeg";
+import intellotrade from "../../images/prj1.png";
 
 export const metadata: Metadata = {
   title: "Data Engineering | Rizviz",

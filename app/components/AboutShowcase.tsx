@@ -59,7 +59,7 @@ export default function AboutShowcase() {
   return (
     <div
       ref={ref}
-      className="relative isolate h-[32rem] w-full overflow-hidden sm:h-[34rem] md:h-full md:min-h-[36rem]"
+      className="relative isolate h-[30rem] w-full overflow-hidden sm:h-[34rem] md:h-full md:min-h-[34rem]"
     >
       {/* No panel behind the scene: it sits straight on the page, with only a
           faint grid and a soft glow under the bars. */}
@@ -68,7 +68,7 @@ export default function AboutShowcase() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(55% 40% at 72% 68%, rgba(50,159,224,0.2), transparent 70%)",
+            "radial-gradient(55% 40% at 72% 68%, rgba(50,159,224,0.05), transparent 70%)",
         }}
       />
       <div
@@ -96,22 +96,25 @@ export default function AboutShowcase() {
         {BARS.map((h, i) => {
           const last = i === BARS.length - 1;
           return (
-            <div
-              key={h}
-              style={{
-                height: `${h}%`,
-                transformOrigin: "bottom",
-                transform: shown ? "scaleY(1)" : "scaleY(0)",
-                transitionDelay: shown ? `${i * 120}ms` : "0ms",
-                // The last bar starts breathing once it has finished rising.
-                animationDelay: last ? `${i * 120 + 1000}ms` : undefined,
-              }}
-              className={`flex-1 rounded-t-2xl border border-b-0 transition-transform duration-[900ms] ease-out motion-reduce:transition-none ${
-                last
-                  ? `${shown ? "animate-bar-glow motion-reduce:animate-none " : ""}border-brand-sky/60 bg-gradient-to-b from-brand-blue via-brand-blue/70 to-brand-blue/10 shadow-[0_0_36px_rgba(50,159,224,0.35)]`
-                  : "border-white/20 bg-gradient-to-b from-white/[0.24] to-white/[0.04]"
-              }`}
-            />
+            // The outer box never moves, so the cursor can't slip off the bar as it lifts.
+            <div key={h} style={{ height: `${h}%` }} className="group flex-1">
+              <div className="h-full transition-transform duration-500 ease-out group-hover:-translate-y-2 motion-reduce:transition-none">
+                <div
+                  style={{
+                    transformOrigin: "bottom",
+                    transform: shown ? "scaleY(1)" : "scaleY(0)",
+                    transitionDelay: shown ? `${i * 120}ms` : "0ms",
+                    // The last bar starts breathing once it has finished rising.
+                    animationDelay: last ? `${i * 120 + 1000}ms` : undefined,
+                  }}
+                  className={`h-full rounded-t-2xl border border-b-0 transition-transform duration-[900ms] ease-out motion-reduce:transition-none ${
+                    last
+                      ? `${shown ? "animate-bar-glow motion-reduce:animate-none " : ""}border-brand-sky/60 bg-gradient-to-b from-brand-blue via-brand-blue/70 to-brand-blue/10 shadow-[0_0_10px_rgba(50,159,224,0.06)]`
+                      : "border-white/20 bg-gradient-to-b from-white/[0.24] to-white/[0.04]"
+                  }`}
+                />
+              </div>
+            </div>
           );
         })}
       </div>
@@ -120,7 +123,7 @@ export default function AboutShowcase() {
       <svg
         aria-hidden
         viewBox="0 0 400 260"
-        className="absolute left-[18%] top-[14%] w-[52%]"
+        className="absolute left-[46%] top-[14%] w-[48%]"
         fill="none"
       >
         <defs>
@@ -161,24 +164,6 @@ export default function AboutShowcase() {
         className={`absolute left-[4%] top-[8%] w-[44%] max-w-[15rem] transition-all duration-700 ease-out motion-reduce:transition-none ${rise(shown)}`}
       >
         <div className={cardClass}>
-          <CardIcon>
-            <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
-            <path d="m13 8 3-3 3 3" />
-          </CardIcon>
-          <p className="mt-3 text-base font-semibold leading-snug text-white sm:text-lg">
-            Software, AI, data &amp; cloud
-          </p>
-          <p className="mt-1 text-xs leading-relaxed text-brand-ice/70 sm:text-sm">
-            Digital solutions for your business.
-          </p>
-        </div>
-      </div>
-
-      <div
-        style={enter(800)}
-        className={`absolute right-[3%] top-[36%] w-[50%] max-w-[17rem] transition-all duration-700 ease-out sm:top-[8%] sm:w-[42%] motion-reduce:transition-none ${rise(shown)}`}
-      >
-        <div className={`${cardClass} [animation-delay:-3s]`}>
           <CardIcon>
             <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
             <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />

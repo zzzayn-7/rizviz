@@ -1,18 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import DemoRequestDialog, { type Origin } from "./DemoRequestDialog";
 import { placeholders, products } from "./productsData";
 
 export default function ProductCards() {
-  // The product whose demo request form is open, if any.
-  // and where its button is, so the form can grow out of it.
-  const [demoFor, setDemoFor] = useState<{
-    product: string;
-    origin: Origin;
-  } | null>(null);
-
   return (
     <section
       id="portfolio"
@@ -87,44 +78,12 @@ export default function ProductCards() {
                       ),
                     )}
                   </ul>
-
-                  {/* Opens the demo request form for this product. The
-                      wrapper pushes it to the bottom, so the buttons line up
-                      across cards of different heights. */}
-                  <div className="mt-auto pt-8">
-                    <button
-                      type="button"
-                      onClick={(event) => {
-                        const rect =
-                          event.currentTarget.getBoundingClientRect();
-                        setDemoFor({
-                          product: name,
-                          origin: {
-                            x: rect.left + rect.width / 2,
-                            y: rect.top + rect.height / 2,
-                          },
-                        });
-                      }}
-                      className="inline-block rounded-full border-2 border-brand-blue bg-brand-blue px-7 py-3 text-sm font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent"
-                    >
-                      Request a demo
-                    </button>
-                  </div>
                 </article>
               </li>
             );
           })}
         </ul>
       </div>
-
-      {demoFor && (
-        <DemoRequestDialog
-          key={demoFor.product}
-          product={demoFor.product}
-          origin={demoFor.origin}
-          onClose={() => setDemoFor(null)}
-        />
-      )}
     </section>
   );
 }

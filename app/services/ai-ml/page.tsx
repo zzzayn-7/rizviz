@@ -3,7 +3,7 @@ import AiAutomationVisual from "../../components/AiAutomationVisual";
 import AiChipHero3D from "../../components/AiChipHero3D";
 import ServiceDetail from "../../components/ServiceDetail";
 import ServicePage from "../../components/ServicePage";
-import insuranceAi from "../../images/prj3-img.png";
+import insuranceAi from "../../images/prj3.png";
 
 export const metadata: Metadata = {
   title: "AI & Machine Learning | Rizviz",

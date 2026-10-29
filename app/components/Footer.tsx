@@ -164,8 +164,8 @@ export default function Footer() {
               <Image
                 src={logo}
                 alt="Rizviz"
-                sizes="120px"
-                className="h-9 w-auto"
+                sizes="260px"
+                className="h-14 w-auto"
               />
             </Link>
             <p className={`mt-5 text-sm leading-relaxed ${t.text}`}>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import logo from "../images/logo.png";
+import logoMark from "../images/logo-mark.png";
 import ContactButton from "./ContactButton";
 import { servicesMenu } from "./servicesMenu";
 
@@ -63,13 +63,35 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
       }}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 sm:px-10 md:grid md:grid-cols-[1fr_auto_1fr]">
-        <Link href="/" aria-label="Rizviz home" className="justify-self-start">
+        <Link
+          href="/"
+          aria-label="Rizviz home"
+          className="group relative inline-block justify-self-start"
+        >
           <Image
-            src={logo}
+            src={logoMark}
             alt="Rizviz"
             priority
-            sizes="120px"
-            className="h-9 w-auto"
+            sizes="160px"
+            quality={100}
+            className="h-11 w-auto md:h-14"
+          />
+          {/* On hover a light swells up inside the symbol. The overlay is cut to the symbol's own
+              shape, so nothing glows outside it. */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 group-focus-visible:opacity-100"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 62% 38%, rgba(190,250,255,0.95) 0%, rgba(90,225,235,0.6) 32%, rgba(40,170,200,0.15) 62%, transparent 80%)",
+              WebkitMaskImage: `url(${logoMark.src})`,
+              maskImage: `url(${logoMark.src})`,
+              WebkitMaskSize: "100% 100%",
+              maskSize: "100% 100%",
+              WebkitMaskRepeat: "no-repeat",
+              maskRepeat: "no-repeat",
+              mixBlendMode: "screen",
+            }}
           />
         </Link>
 
@@ -111,7 +133,7 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
         </div>
 
         <ContactButton
-          className={`hidden rounded-full border-2 border-brand-blue bg-brand-blue px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent md:inline-block md:justify-self-end ${tone === "light" ? "hover:text-brand-blue" : ""}`}
+          className={`hidden rounded-full border-2 border-transparent bg-origin-border bg-[linear-gradient(90deg,#3a7f80_0%,#0b1d2d_12%,#0b1d2d_66%,#285b7a_93%,#3a7f80_100%)] px-6 py-2.5 text-sm font-semibold text-white transition duration-500 ease-in-out hover:brightness-150 hover:shadow-lg md:inline-block md:justify-self-end`}
         >
           Contact Us
         </ContactButton>
@@ -256,7 +278,7 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
             <li>
               <ContactButton
                 onClick={() => setOpen(false)}
-                className="inline-block rounded-full border-2 border-brand-blue bg-brand-blue px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent"
+                className="inline-block rounded-full border-2 border-transparent bg-origin-border bg-[linear-gradient(90deg,#3a7f80_0%,#0b1d2d_12%,#0b1d2d_66%,#285b7a_93%,#3a7f80_100%)] px-6 py-2.5 text-sm font-semibold text-white transition duration-500 ease-in-out hover:brightness-150"
               >
                 Contact Us
               </ContactButton>
