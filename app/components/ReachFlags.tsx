@@ -73,7 +73,7 @@ export default function ReachFlags() {
               words like the call to action's photograph. */}
           <div
             className="absolute inset-0"
-            style={{ background: "rgba(11,29,45,0.28)" }}
+            style={{ background: "rgba(11,29,45,0.1)" }}
           />
         </div>
       </div>

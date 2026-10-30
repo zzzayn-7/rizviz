@@ -62,7 +62,7 @@ export default function Page() {
           headline: (
             <>
               From request to{" "}
-              <span className="text-brand-ice">resolution.</span>
+              <span className="text-brand-blue">resolution.</span>
             </>
           ),
           cta: "Discuss your ServiceNow requirements",

@@ -3,7 +3,8 @@ import Navbar from "../components/Navbar";
 import ContactCta from "../components/ContactCta";
 import ProductCards from "../components/ProductCards";
 import ProductsCtaActions from "../components/ProductsCtaActions";
-import ProductsHero3D from "../components/ProductsHero3D";
+import Image from "next/image";
+import heroSkyline from "../images/hero-skyline.png";
 
 export const metadata: Metadata = {
   title: "Products | Rizviz",
@@ -12,103 +13,59 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return (
     <main className="relative">
-      <Navbar tone="light" />
+      <Navbar tone="dark" />
       <div className="relative overflow-x-clip bg-brand-navy">
-        <section className="relative isolate flex min-h-[34rem] w-full items-end overflow-hidden bg-white lg:min-h-[44rem] lg:items-center">
-          {/* Pale blue light in the corners and a faint dot grid. */}
+        <section className="relative isolate flex min-h-screen w-full items-center overflow-hidden bg-brand-navy">
+          {/* The night skyline, drawn closer than on the home page so the towers rise higher and the
+              water takes less of the frame. */}
+          <Image
+            src={heroSkyline}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="-z-10 origin-bottom scale-125 object-cover object-bottom"
+          />
+          {/* A soft dark wash behind the words keeps them easy to read. */}
           <div
             aria-hidden
-            className="absolute inset-0 -z-10"
+            className="pointer-events-none absolute inset-0 -z-10"
             style={{
               background: [
-                "radial-gradient(55% 60% at 88% 10%, rgba(112,199,244,0.34), transparent 70%)",
-                "radial-gradient(45% 50% at 6% 30%, rgba(181,229,255,0.45), transparent 70%)",
+                "radial-gradient(55% 55% at 50% 46%, rgba(5,10,18,0.6), transparent 72%)",
+                "radial-gradient(700px 600px at 100% 30%, rgba(50,159,224,0.2), transparent 70%)",
+                "radial-gradient(800px 700px at 0% 85%, rgba(112,199,244,0.16), transparent 70%)",
               ].join(", "),
             }}
           />
-          <div
-            aria-hidden
-            className="absolute inset-0 -z-10 opacity-60"
-            style={{
-              backgroundImage:
-                "radial-gradient(rgba(40,91,122,0.16) 1px, transparent 1.4px)",
-              backgroundSize: "28px 28px",
-              maskImage:
-                "radial-gradient(70% 65% at 70% 40%, black, transparent 80%)",
-              WebkitMaskImage:
-                "radial-gradient(70% 65% at 70% 40%, black, transparent 80%)",
-            }}
-          />
 
-          {/* The scene fills the hero and melts into the white page below. */}
-          <div
-            className="absolute inset-0"
-            style={{
-              maskImage:
-                "linear-gradient(to bottom, black 0%, black 72%, rgba(0,0,0,0.6) 84%, rgba(0,0,0,0.2) 94%, transparent 100%)",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, black 0%, black 72%, rgba(0,0,0,0.6) 84%, rgba(0,0,0,0.2) 94%, transparent 100%)",
-            }}
-          >
-            <ProductsHero3D />
-          </div>
-          {/* A soft blue wash over the text side keeps the words readable. */}
-          <div
-            aria-hidden
-            style={{
-              maskImage:
-                "linear-gradient(to bottom, black 0%, black 40%, rgba(0,0,0,0.6) 52%, rgba(0,0,0,0.25) 63%, rgba(0,0,0,0.07) 72%, transparent 80%)",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, black 0%, black 40%, rgba(0,0,0,0.6) 52%, rgba(0,0,0,0.25) 63%, rgba(0,0,0,0.07) 72%, transparent 80%)",
-            }}
-            className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(214,235,250,0)_0%,rgba(214,235,250,0)_46%,rgba(214,235,250,0.85)_58%,rgba(214,235,250,0.85)_72%,rgba(214,235,250,0)_92%)] lg:bg-[linear-gradient(90deg,rgba(207,230,247,0.96)_0%,rgba(207,230,247,0.88)_26%,rgba(207,230,247,0.5)_44%,rgba(207,230,247,0)_62%)]"
-          />
-
-          <div className="relative mx-auto w-full max-w-7xl px-6 pb-40 pt-[21rem] sm:px-10 lg:pb-24 lg:pt-32">
-            <div className="max-w-xl text-left">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-blue">
-                Our Products
-              </p>
-              <h1 className="text-4xl font-bold leading-tight text-brand-navy sm:text-5xl lg:text-6xl">
-                Our expertise.
-                <br />
-                <span className="bg-gradient-to-r from-brand-blue to-brand-sky bg-clip-text text-transparent">
-                  Built into products.
-                </span>
-              </h1>
-            </div>
+          <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center px-6 pb-32 pt-32 text-center sm:px-10 lg:pb-40">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-ice">
+              Our Products
+            </p>
+            <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+              Our expertise.
+              <br />
+              <span className="text-brand-ice">Built into products.</span>
+            </h1>
           </div>
         </section>
 
-        {/* The change to blue starts in the last sixth of the hero and is done a
-          little way into the cards, then eases into navy. */}
-        <div aria-hidden className="relative z-[1] h-0">
-          <div
-            className="pointer-events-none absolute inset-x-0 -top-32 h-[54.5rem]"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(255,255,255,0) 0px, rgba(234,244,252,0.6) 40px, rgba(205,229,246,0.9) 80px, #9cc6e8 115px, #5f9fd0 160px, #3a82b8 215px, #2a6aa0 270px, #1d5a92 330px, #184d80 380px, #143f68 450px, #113455 520px, #0f2b45 590px, #0d2439 660px, #0c2032 730px, #0b1e2e 800px, #0b1d2d 870px)",
-            }}
-          />
-        </div>
-
-        {/* Glowing navy for the rest of the page, with blue light down the sides. */}
+        {/* Everything below the hero shares the ice-blue white page, with navy glowing in from
+            alternating sides and fading to navy at the bottom where the call to action begins. */}
         <div className="relative z-[2]">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
             style={{
               background: [
-                "linear-gradient(0deg, #0b1d2d 0px, transparent 240px)",
-                "radial-gradient(900px 700px at 100% 8%, rgba(112,199,244,0.16), transparent 70%)",
-                "radial-gradient(900px 800px at 0% 30%, rgba(50,159,224,0.22), transparent 70%)",
-                "radial-gradient(900px 800px at 100% 55%, rgba(50,159,224,0.24), transparent 70%)",
-                "radial-gradient(900px 800px at 0% 80%, rgba(112,199,244,0.18), transparent 70%)",
+                "linear-gradient(0deg, #0b1d2d 0px, transparent 200px)",
+                "radial-gradient(800px 700px at 0% 12%, rgba(11,29,45,0.2), transparent 70%)",
+                "radial-gradient(800px 700px at 100% 40%, rgba(11,29,45,0.2), transparent 70%)",
+                "radial-gradient(800px 700px at 0% 68%, rgba(11,29,45,0.2), transparent 70%)",
+                "radial-gradient(800px 700px at 100% 92%, rgba(11,29,45,0.2), transparent 70%)",
+                "linear-gradient(180deg, #f4faff 0%, #e4f2fc 50%, #f4faff 100%)",
               ].join(", "),
-              maskImage:
-                "linear-gradient(to bottom, transparent 0px, black 600px)",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, transparent 0px, black 600px)",
             }}
           />
           <ProductCards />

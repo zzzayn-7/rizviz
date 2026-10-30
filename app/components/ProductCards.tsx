@@ -7,7 +7,7 @@ export default function ProductCards() {
   return (
     <section
       id="portfolio"
-      className="relative w-full pb-24 pt-8 sm:pb-32 sm:pt-12"
+      className="relative w-full pb-28 pt-20 sm:pb-40 sm:pt-28"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
         <ul className="grid gap-8 lg:grid-cols-2">
@@ -21,7 +21,7 @@ export default function ProductCards() {
 
             return (
               <li key={i}>
-                <article className="flex h-full flex-col rounded-3xl border border-white/10 bg-gradient-to-br from-[#12304a]/95 to-[#0b1d2d]/95 p-5 shadow-[0_30px_70px_-30px_rgba(50,159,224,0.6)] transition-colors duration-300 hover:border-brand-sky/40 sm:p-6">
+                <article className="glass-navy flex h-full flex-col rounded-3xl p-5 transition duration-300 hover:-translate-y-1 sm:p-6">
                   {/* Large product screenshot */}
                   <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-[#E8F0F7] ring-1 ring-white/15">
                     {product.screenshot ? (

@@ -64,7 +64,7 @@ export default function Page() {
             <>
               One platform.
               <br />
-              <span className="text-brand-ice">
+              <span className="text-brand-blue">
                 Connected business functions.
               </span>
             </>

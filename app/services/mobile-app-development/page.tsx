@@ -6,13 +6,13 @@ import MobileVisual from "../../components/MobileVisual";
 import skinClin from "../../images/prj2.png";
 
 export const metadata: Metadata = {
-  title: "App Development | Rizviz",
+  title: "Mobile App Development | Rizviz",
 };
 
 export default function Page() {
   return (
     <ServicePage
-      name="App Development"
+      name="Mobile App Development"
       headline={["Bringing Your", "Ideas to Mobile"]}
       scene={<AiChipHero3D mark="mobile" />}
       cta={{
@@ -64,7 +64,7 @@ export default function Page() {
             <>
               AI capabilities.
               <br />
-              <span className="text-brand-ice">A mobile experience.</span>
+              <span className="text-brand-blue">A mobile experience.</span>
             </>
           ),
           cta: "Explore SkinClin",

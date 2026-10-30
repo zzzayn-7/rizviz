@@ -9,7 +9,7 @@ const directors = [
 
 function Avatar() {
   return (
-    <div className="flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-[#16456b] to-[#0a2238] shadow-[0_0_0_1px_rgba(112,199,244,0.35),0_0_30px_-4px_rgba(50,159,224,0.55)] sm:h-32 sm:w-32">
+    <div className="glass-navy flex h-28 w-28 items-center justify-center rounded-full sm:h-32 sm:w-32">
       <svg
         viewBox="0 0 24 24"
         fill="currentColor"
@@ -31,13 +31,10 @@ export default function Leadership() {
     >
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-10 md:grid-cols-[minmax(0,1fr)_auto] md:gap-16">
         <div className="max-w-md text-left">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-sky">
-            Our Board
-          </p>
-          <h2 className="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
+          <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
             Our Core Leadership
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-brand-ice/85 sm:text-lg">
+          <p className="mt-8 text-base leading-relaxed text-brand-navy/80 sm:text-lg">
             Meet the people guiding Rizviz’s direction, supporting its team, and
             shaping its long-term growth.
           </p>
@@ -51,10 +48,10 @@ export default function Leadership() {
               className="flex w-36 flex-col items-center text-center sm:w-40"
             >
               <Avatar />
-              <h3 className="mt-4 text-base font-semibold text-white">
+              <h3 className="mt-4 text-base font-semibold text-brand-navy">
                 {d.name}
               </h3>
-              <p className="mt-1 text-sm font-medium text-brand-ice/70">
+              <p className="mt-1 text-sm font-medium text-brand-steel">
                 {d.role}
               </p>
             </li>

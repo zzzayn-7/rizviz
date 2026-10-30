@@ -4,8 +4,8 @@ import ContactButton from "./ContactButton";
 import type { ReactNode } from "react";
 
 type Props = {
-  // On a page whose backdrop is already navy (the AI / ML page): no section
-  // backgrounds of its own, white text, and glass cards.
+  // Kept for the pages that still pass it; every service page now shares the
+  // ice-blue page behind it, so it no longer changes anything.
   dark?: boolean;
   // "What we help you achieve": text on the left, a picture or a graphic on
   // the right.
@@ -42,11 +42,14 @@ type Props = {
   };
 };
 
-const eyebrow = "mb-4 text-xs font-semibold uppercase tracking-widest";
-const heading = "text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl";
+// The big extra-bold section title, as on the Home and About pages, with the section's own line
+// under it in a smaller navy.
+const title =
+  "text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl";
+const subtitle = "mt-8 text-2xl font-semibold leading-snug text-brand-navy sm:text-3xl";
+const bodyText = "mt-5 text-base leading-relaxed text-brand-navy/80 sm:text-lg";
 
 export default function ServiceDetail({
-  dark = false,
   achieve,
   deliver,
   featured,
@@ -54,39 +57,23 @@ export default function ServiceDetail({
   return (
     <>
       {/* What we help you achieve */}
-      <section
-        className={
-          dark
-            ? "w-full pb-28 pt-16 sm:pb-44 sm:pt-24"
-            : "w-full bg-white py-16 sm:py-24"
-        }
-      >
+      <section className="relative w-full pb-16 pt-20 sm:pb-24 sm:pt-28">
         <div
           className={`mx-auto grid max-w-7xl gap-12 px-6 sm:px-10 md:grid-cols-[1.1fr_1fr] md:gap-16 ${
             achieve.visual ? "md:items-stretch" : "items-center"
           }`}
         >
           <div>
-            <p
-              className={`${eyebrow} ${dark ? "text-brand-ice" : "text-brand-blue"}`}
-            >
-              {achieve.label}
-            </p>
-            <h2
-              className={`${heading} ${dark ? "text-white" : "text-brand-navy"}`}
-            >
+            <h2 className={title}>{achieve.label}</h2>
+            <p className={subtitle}>
               {achieve.headline.map((line, i) => (
                 <span key={line}>
                   {i > 0 && <br />}
                   {line}
                 </span>
               ))}
-            </h2>
-            <p
-              className={`mt-6 text-base leading-relaxed sm:text-lg ${dark ? "text-white/90" : "text-brand-slate"}`}
-            >
-              {achieve.body}
             </p>
+            <p className={bodyText}>{achieve.body}</p>
           </div>
 
           {achieve.visual ? (
@@ -107,55 +94,27 @@ export default function ServiceDetail({
         </div>
       </section>
 
-      {/* What we deliver: the text stays put on the left while the cards
-          scroll past on the right, from the center of the page to the right
-          margin. */}
-      <section
-        className={
-          dark ? "w-full py-16 sm:py-28" : "w-full bg-[#F2F8FC] py-16 sm:py-24"
-        }
-      >
+      {/* What we deliver: the text stays put while the cards scroll past on the right. */}
+      <section className="relative w-full py-16 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 sm:px-10 md:grid-cols-2 md:gap-16">
           <div className="max-w-md md:sticky md:top-32 md:self-start">
-            <p
-              className={`${eyebrow} ${dark ? "text-brand-sky" : "text-brand-blue"}`}
-            >
-              {deliver.label}
-            </p>
-            <h2
-              className={`${heading} ${dark ? "text-white" : "text-brand-navy"}`}
-            >
-              {deliver.headline}
-            </h2>
-            <p
-              className={`mt-6 text-base leading-relaxed sm:text-lg ${dark ? "text-brand-ice/85" : "text-brand-slate"}`}
-            >
-              {deliver.intro}
-            </p>
+            <h2 className={title}>{deliver.label}</h2>
+            <p className={subtitle}>{deliver.headline}</p>
+            <p className={bodyText}>{deliver.intro}</p>
           </div>
 
           <ul className="flex flex-col gap-6 md:gap-8">
             {deliver.items.map((item, i) => (
               <li key={item.title}>
-                <article
-                  className={`flex min-h-[13rem] items-start gap-6 rounded-2xl border p-7 transition-all duration-300 hover:border-brand-sky sm:gap-8 sm:p-9 ${
-                    dark
-                      ? "border-white/15 bg-white/[0.06] backdrop-blur-md hover:bg-white/[0.1]"
-                      : "border-[#D3DFE9] bg-white hover:shadow-lg"
-                  }`}
-                >
-                  <span className="text-4xl font-semibold leading-none text-brand-sky">
+                <article className="glass-navy flex min-h-[13rem] items-start gap-6 rounded-2xl p-7 transition duration-300 hover:-translate-y-1 sm:gap-8 sm:p-9">
+                  <span className="text-4xl font-semibold leading-none text-brand-ice">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <h3
-                      className={`text-xl font-semibold sm:text-2xl ${dark ? "text-white" : "text-brand-navy"}`}
-                    >
+                    <h3 className="text-xl font-semibold text-white sm:text-2xl">
                       {item.title}
                     </h3>
-                    <p
-                      className={`mt-3 text-base leading-relaxed ${dark ? "text-brand-ice/80" : "text-brand-slate"}`}
-                    >
+                    <p className="mt-3 text-base leading-relaxed text-brand-ice/85">
                       {item.description}
                     </p>
                   </div>
@@ -167,48 +126,36 @@ export default function ServiceDetail({
       </section>
 
       {/* Featured project */}
-      <section
-        className={
-          dark
-            ? "w-full pb-24 pt-16 sm:pb-32 sm:pt-28"
-            : "w-full bg-brand-navy py-16 sm:py-24"
-        }
-      >
+      <section className="relative w-full pb-32 pt-16 sm:pb-52 sm:pt-24">
         <div
           className={`mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-10 md:gap-16 ${
             featured.image ? "md:grid-cols-2" : ""
           }`}
         >
           <div className={featured.image ? undefined : "max-w-3xl"}>
-            <p className={`${eyebrow} text-brand-sky`}>{featured.label}</p>
+            <h2 className={title}>{featured.label}</h2>
             {featured.projectName && !featured.projectNameBelow && (
-              <p className="text-lg font-semibold text-brand-ice">
+              <p className="mt-8 text-lg font-semibold text-brand-steel">
                 {featured.projectName}
               </p>
             )}
-            <h2
-              className={`${heading} text-white ${featured.projectName ? "mt-3" : ""}`}
-            >
+            <p className={featured.projectName && !featured.projectNameBelow ? "mt-3 text-2xl font-semibold leading-snug text-brand-navy sm:text-3xl" : subtitle}>
               {featured.headline}
-            </h2>
+            </p>
             {featured.projectName && featured.projectNameBelow && (
-              <p className="mt-4 text-lg font-semibold text-brand-ice">
+              <p className="mt-4 text-lg font-semibold text-brand-steel">
                 {featured.projectName}
               </p>
             )}
-            {featured.body && (
-              <p className="mt-6 text-base leading-relaxed text-brand-ice/90 sm:text-lg">
-                {featured.body}
-              </p>
-            )}
+            {featured.body && <p className={bodyText}>{featured.body}</p>}
             {featured.href === "contact" ? (
-              <ContactButton className="mt-10 inline-block rounded-full border-2 border-brand-blue bg-brand-blue px-8 py-3.5 font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent">
+              <ContactButton className="glass-navy mt-10 inline-block rounded-full px-8 py-3.5 font-semibold text-white transition duration-500 ease-in-out hover:brightness-125">
                 {featured.cta}
               </ContactButton>
             ) : (
               <Link
                 href={featured.href}
-                className="mt-10 inline-block rounded-full border-2 border-brand-blue bg-brand-blue px-8 py-3.5 font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent"
+                className="glass-navy mt-10 inline-block rounded-full px-8 py-3.5 font-semibold text-white transition duration-500 ease-in-out hover:brightness-125"
               >
                 {featured.cta}
               </Link>
@@ -217,7 +164,7 @@ export default function ServiceDetail({
 
           {featured.image && (
             <div
-              className={`group overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/10 ${
+              className={`group overflow-hidden rounded-3xl shadow-2xl ring-1 ring-brand-navy/10 ${
                 featured.imagePortrait ? "mx-auto w-full max-w-[17rem]" : ""
               }`}
             >

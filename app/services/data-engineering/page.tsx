@@ -64,7 +64,7 @@ export default function Page() {
             <>
               Complex trade data.
               <br />
-              <span className="text-brand-ice">Connected intelligence.</span>
+              <span className="text-brand-blue">Connected intelligence.</span>
             </>
           ),
           cta: "Explore Intellotrade",

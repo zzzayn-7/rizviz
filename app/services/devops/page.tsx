@@ -66,7 +66,7 @@ export default function Page() {
           headline: (
             <>
               Simplifying delivery behind{" "}
-              <span className="text-brand-ice">everyday operations.</span>
+              <span className="text-brand-blue">everyday operations.</span>
             </>
           ),
           cta: "Explore our ERP suite",

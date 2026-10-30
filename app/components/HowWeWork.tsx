@@ -232,7 +232,7 @@ function Bubble({
         animationDelay: `${floatDelay}s`,
         padding: `calc(var(--u) * ${(size * 0.19).toFixed(2)})`,
       }}
-      className={`relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-full border border-white/20 bg-gradient-to-br from-brand-sky/[0.26] via-brand-blue/[0.12] to-white/[0.03] text-center shadow-[0_0_60px_-10px_rgba(50,159,224,0.5),inset_0_0_40px_rgba(181,229,255,0.09)] backdrop-blur-sm motion-reduce:animate-none ${
+      className={`relative flex h-full w-full flex-col items-center justify-center overflow-hidden glass-navy rounded-full text-center motion-reduce:animate-none ${
         float ? "animate-bob" : ""
       }`}
     >
@@ -312,11 +312,8 @@ export default function HowWeWork() {
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
         <div className="grid items-center gap-14 lg:grid-cols-[40%_60%] lg:gap-6">
           <div className="max-w-md">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-sky">
+            <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
               How We Work
-            </p>
-            <h2 className="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
-              From understanding to delivery.
             </h2>
           </div>
 

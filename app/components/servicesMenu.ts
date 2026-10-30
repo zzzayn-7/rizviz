@@ -27,12 +27,12 @@ export const servicesMenu = [
     blurb: "Custom systems built around your processes.",
   },
   {
-    name: "App Development",
+    name: "Mobile App Development",
     href: "/services/mobile-app-development",
     blurb: "Your services, accessible on the go.",
   },
   {
-    name: "Website Development",
+    name: "Web Development",
     href: "/services/website-development",
     blurb: "Clear, responsive sites that say who you are.",
   },

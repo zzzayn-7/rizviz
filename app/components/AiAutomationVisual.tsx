@@ -701,7 +701,7 @@ export default function AiAutomationVisual() {
   return (
     // A pane of blue glass: frosted, lit from the top-left, with everything
     // drawn on it in white. It fills the height of its column.
-    <div className="relative isolate flex h-full min-h-[22rem] flex-col overflow-hidden rounded-3xl border border-white/45 bg-[rgba(110,185,242,0.36)] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.65),inset_0_0_60px_rgba(255,255,255,0.1),0_24px_60px_-20px_rgba(8,50,100,0.35)] backdrop-blur-2xl sm:p-4">
+    <div className="relative isolate flex h-full min-h-[22rem] flex-col overflow-hidden glass-navy rounded-3xl p-3 sm:p-4">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"

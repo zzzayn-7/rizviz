@@ -50,6 +50,10 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
+  const contactClass =
+    tone === "dark"
+      ? "border-brand-sky/40 bg-brand-navy text-white hover:border-brand-ice hover:bg-brand-steel"
+      : "border-transparent bg-origin-border bg-[linear-gradient(90deg,#3a7f80_0%,#0b1d2d_12%,#0b1d2d_66%,#285b7a_93%,#3a7f80_100%)] text-white hover:brightness-150";
   const linkClass = `text-sm font-medium transition-colors duration-300 ${linkTone[tone]}`;
 
   return (
@@ -133,7 +137,7 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
         </div>
 
         <ContactButton
-          className={`hidden rounded-full border-2 border-transparent bg-origin-border bg-[linear-gradient(90deg,#3a7f80_0%,#0b1d2d_12%,#0b1d2d_66%,#285b7a_93%,#3a7f80_100%)] px-6 py-2.5 text-sm font-semibold text-white transition duration-500 ease-in-out hover:brightness-150 hover:shadow-lg md:inline-block md:justify-self-end`}
+          className={`hidden rounded-full border-2 px-6 py-2.5 text-sm font-semibold transition duration-500 ease-in-out md:inline-block md:justify-self-end ${contactClass}`}
         >
           Contact Us
         </ContactButton>
@@ -149,7 +153,8 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
         </button>
       </nav>
 
-      {/* The services menu: a wide panel of navy glass under the navbar. */}
+      {/* The services menu: a wide panel under the navbar, in the same ice-blue white as the pages, with
+          navy glowing in from the sides. */}
       <div
         id="services-menu"
         inert={!menu}
@@ -159,22 +164,22 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
             : "pointer-events-none -translate-y-2 opacity-0"
         }`}
       >
-        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-[#07121d] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6),0_0_90px_-10px_rgba(50,159,224,0.35)]">
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-brand-navy/15 bg-[#f4faff] shadow-[0_30px_80px_-20px_rgba(11,29,45,0.45)]">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
             style={{
               background: [
-                "radial-gradient(45% 60% at 100% 0%, rgba(50,159,224,0.28), transparent 70%)",
-                "radial-gradient(40% 60% at 0% 100%, rgba(112,199,244,0.16), transparent 70%)",
-                "linear-gradient(180deg, #0c2236 0%, #07121d 75%)",
+                "radial-gradient(55% 80% at 100% 8%, rgba(11,29,45,0.2), transparent 70%)",
+                "radial-gradient(50% 80% at 0% 92%, rgba(11,29,45,0.2), transparent 70%)",
+                "linear-gradient(180deg, #f4faff 0%, #e4f2fc 100%)",
               ].join(", "),
             }}
           />
 
           <div className="relative grid grid-cols-[12rem_1fr] gap-8 p-8">
             <div>
-              <div className="flex items-center justify-between rounded-xl bg-white/[0.07] px-4 py-2.5 text-xs font-semibold text-white ring-1 ring-white/10">
+              <div className="flex items-center justify-between rounded-xl border border-brand-navy/20 bg-[#f4faff] px-4 py-2.5 text-xs font-semibold text-brand-navy shadow-[0_6px_20px_-10px_rgba(11,29,45,0.3)]">
                 All services
                 <svg
                   viewBox="0 0 20 20"
@@ -184,32 +189,32 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   aria-hidden
-                  className="h-4 w-4 text-brand-sky"
+                  className="h-4 w-4 text-brand-navy"
                 >
                   <path d="m7.5 5 5 5-5 5" />
                 </svg>
               </div>
             </div>
 
-            <div className="border-l border-white/10 pl-8">
-              <h2 className="text-xl font-bold text-white">Our Services</h2>
-              <p className="mt-2 text-sm text-brand-ice/80">
+            <div className="border-l border-brand-navy/15 pl-8">
+              <h2 className="text-xl font-bold text-brand-navy">Our Services</h2>
+              <p className="mt-2 text-sm text-brand-navy/75">
                 Engineering solutions, solving real business challenges.
               </p>
 
-              <div className="mt-5 border-t border-white/10 pt-6">
+              <div className="mt-5 border-t border-brand-navy/15 pt-6">
                 <ul className="grid auto-rows-fr grid-cols-3 gap-4">
                   {servicesMenu.map((s) => (
                     <li key={s.href} className="h-full">
                       <Link
                         href={s.href}
                         onClick={() => setMenu(false)}
-                        className="group flex h-full flex-col rounded-xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-300 hover:border-brand-sky/40 hover:bg-white/[0.08]"
+                        className="group flex h-full flex-col rounded-xl border border-brand-navy/20 bg-[#f4faff] p-5 shadow-[0_6px_20px_-10px_rgba(11,29,45,0.3)] transition duration-300 hover:-translate-y-0.5 hover:border-brand-navy/40 hover:shadow-[0_12px_28px_-12px_rgba(11,29,45,0.5)]"
                       >
-                        <span className="block text-sm font-semibold leading-snug text-white transition-colors duration-300 group-hover:text-brand-sky">
+                        <span className="block text-sm font-semibold leading-snug text-brand-navy">
                           {s.name}
                         </span>
-                        <span className="mt-1 block text-xs leading-relaxed text-brand-ice/70">
+                        <span className="mt-1 block text-xs leading-relaxed text-brand-navy/75">
                           {s.blurb}
                         </span>
                       </Link>
@@ -278,7 +283,7 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
             <li>
               <ContactButton
                 onClick={() => setOpen(false)}
-                className="inline-block rounded-full border-2 border-transparent bg-origin-border bg-[linear-gradient(90deg,#3a7f80_0%,#0b1d2d_12%,#0b1d2d_66%,#285b7a_93%,#3a7f80_100%)] px-6 py-2.5 text-sm font-semibold text-white transition duration-500 ease-in-out hover:brightness-150"
+                className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold transition duration-500 ease-in-out ${contactClass}`}
               >
                 Contact Us
               </ContactButton>

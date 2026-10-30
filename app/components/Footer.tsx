@@ -19,8 +19,8 @@ const services = [
   { label: "Data Engineering", href: "/services/data-engineering" },
   { label: "ServiceNow", href: "/services/servicenow" },
   { label: "Software Development", href: "/services/software-development" },
-  { label: "App Development", href: "/services/mobile-app-development" },
-  { label: "Website Development", href: "/services/website-development" },
+  { label: "Mobile App Development", href: "/services/mobile-app-development" },
+  { label: "Web Development", href: "/services/website-development" },
 ];
 
 const offices = [
@@ -88,49 +88,9 @@ const themes = {
 const LIGHT_BACKGROUND =
   "linear-gradient(180deg, #4a8ec2 0.0%, #68a5d4 3.8%, #93c0e4 7.6%, #b4d5ef 11.4%, #d0e6f7 15.2%, #dfeffa 19.0%, #ecf5fc 22.8%, #f4f9fd 26.6%, #fafcfe 30.4%, #fefeff 34.2%, #ffffff 38.0%, #ffffff 100%)";
 
-// For a page with no call to action above the footer (Careers): the navy of the
-// page turns into the white footer within the first 240px, by the same steps of
-// blue used elsewhere on the site.
-const FROM_NAVY_PX = 240;
-const FROM_NAVY_BACKGROUND = (() => {
-  const palette = [
-    "#0b1d2d",
-    "#0d2439",
-    "#113455",
-    "#143f68",
-    "#184d80",
-    "#1d5a92",
-    "#2a6aa0",
-    "#3a82b8",
-    "#5f9fd0",
-    "#9cc6e8",
-    "#cde5f6",
-    "#eaf4fc",
-    "#ffffff",
-  ].map((c) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16)));
-  const at = (t: number) => {
-    const e = t * t * (3 - 2 * t);
-    const x = e * (palette.length - 1);
-    const i = Math.min(Math.floor(x), palette.length - 2);
-    const a = palette[i];
-    const b = palette[i + 1];
-    return (
-      "#" +
-      a
-        .map((v, k) =>
-          Math.round(v + (b[k] - v) * (x - i))
-            .toString(16)
-            .padStart(2, "0"),
-        )
-        .join("")
-    );
-  };
-  const stops = Array.from({ length: 13 }, (_, n) => {
-    const p = n / 12;
-    return `${at(p)} ${Math.round(p * FROM_NAVY_PX)}px`;
-  });
-  return `linear-gradient(180deg, ${stops.join(", ")}, #ffffff 100%)`;
-})();
+// Careers has no call to action above the footer, and its page is the ice-blue white all the way
+// down, so the footer simply carries on in the same colour, with no change of colour at the join.
+const CAREERS_BACKGROUND = "#f4faff";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -151,12 +111,12 @@ export default function Footer() {
       className={t.footer}
       style={
         t === themes.light
-          ? { background: fromNavy ? FROM_NAVY_BACKGROUND : LIGHT_BACKGROUND }
+          ? { background: fromNavy ? CAREERS_BACKGROUND : LIGHT_BACKGROUND }
           : undefined
       }
     >
       <div
-        className={`mx-auto max-w-7xl px-6 pb-8 sm:px-10 ${fromNavy ? "pt-64" : t.inner}`}
+        className={`mx-auto max-w-7xl px-6 pb-8 sm:px-10 ${fromNavy ? "pt-16" : t.inner}`}
       >
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.65fr_1.05fr_1fr_1.2fr] lg:gap-8">
           <div className="max-w-xs">

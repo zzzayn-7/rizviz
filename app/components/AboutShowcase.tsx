@@ -7,7 +7,7 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 const BARS = [24, 36, 48, 60, 72, 90];
 
 const cardClass =
-  "animate-float rounded-3xl border border-brand-sky/30 bg-white/[0.1] p-4 shadow-xl backdrop-blur-md motion-reduce:animate-none sm:p-5";
+  "glass-navy animate-float rounded-3xl p-4 motion-reduce:animate-none sm:p-5";
 
 // An outline icon with no background, drawn in the cards' light blue.
 function CardIcon({ children }: { children: React.ReactNode }) {
@@ -68,7 +68,7 @@ export default function AboutShowcase() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(55% 40% at 72% 68%, rgba(50,159,224,0.05), transparent 70%)",
+            "radial-gradient(55% 40% at 72% 68%, rgba(11,29,45,0.12), transparent 70%)",
         }}
       />
       <div
@@ -76,7 +76,7 @@ export default function AboutShowcase() {
         className="absolute inset-0 -z-10 opacity-[0.07]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(181,229,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(181,229,255,1) 1px, transparent 1px)",
+            "linear-gradient(rgba(11,29,45,1) 1px, transparent 1px), linear-gradient(90deg, rgba(11,29,45,1) 1px, transparent 1px)",
           backgroundSize: "56px 56px",
           maskImage:
             "radial-gradient(60% 45% at 60% 50%, black, transparent 80%)",
@@ -88,7 +88,7 @@ export default function AboutShowcase() {
       {/* The baseline the bars stand on */}
       <div
         aria-hidden
-        className="absolute inset-x-[4%] bottom-0 h-px bg-gradient-to-r from-transparent via-brand-sky/60 to-transparent shadow-[0_0_14px_2px_rgba(112,199,244,0.35)]"
+        className="absolute inset-x-[4%] bottom-0 h-px bg-gradient-to-r from-transparent via-brand-navy/40 to-transparent"
       />
 
       {/* Rising bars */}
@@ -109,8 +109,8 @@ export default function AboutShowcase() {
                   }}
                   className={`h-full rounded-t-2xl border border-b-0 transition-transform duration-[900ms] ease-out motion-reduce:transition-none ${
                     last
-                      ? `${shown ? "animate-bar-glow motion-reduce:animate-none " : ""}border-brand-sky/60 bg-gradient-to-b from-brand-blue via-brand-blue/70 to-brand-blue/10 shadow-[0_0_10px_rgba(50,159,224,0.06)]`
-                      : "border-white/20 bg-gradient-to-b from-white/[0.24] to-white/[0.04]"
+                      ? `${shown ? "animate-bar-glow motion-reduce:animate-none " : ""}border-brand-navy/40 bg-gradient-to-b from-brand-navy via-brand-steel/80 to-brand-steel/20 shadow-[0_0_10px_rgba(11,29,45,0.08)]`
+                      : "border-brand-navy/15 bg-gradient-to-b from-brand-navy/30 to-brand-navy/[0.05]"
                   }`}
                 />
               </div>
@@ -129,8 +129,8 @@ export default function AboutShowcase() {
         <defs>
           <linearGradient id="arrow-grad" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0" stopColor="#285b7a" stopOpacity="0" />
-            <stop offset="0.5" stopColor="#329fe0" />
-            <stop offset="1" stopColor="#b5e5ff" />
+            <stop offset="0.5" stopColor="#285b7a" />
+            <stop offset="1" stopColor="#0b1d2d" />
           </linearGradient>
         </defs>
         <path
@@ -147,7 +147,7 @@ export default function AboutShowcase() {
         />
         <path
           d="M287 89 L320 80 L311 113"
-          stroke="#b5e5ff"
+          stroke="#0b1d2d"
           strokeWidth="4"
           strokeLinecap="round"
           strokeLinejoin="round"

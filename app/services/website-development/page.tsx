@@ -5,13 +5,13 @@ import ServicePage from "../../components/ServicePage";
 import WebsiteVisual from "../../components/WebsiteVisual";
 
 export const metadata: Metadata = {
-  title: "Website Development | Rizviz",
+  title: "Web Development | Rizviz",
 };
 
 export default function Page() {
   return (
     <ServicePage
-      name="Website Development"
+      name="Web Development"
       headline={["Building Websites", "That Mean Business"]}
       scene={<AiChipHero3D mark="website" />}
       cta={{
@@ -62,7 +62,7 @@ export default function Page() {
           headline: (
             <>
               From first visit to{" "}
-              <span className="text-brand-ice">conversation.</span>
+              <span className="text-brand-blue">conversation.</span>
             </>
           ),
           cta: "Discuss your website requirements",

@@ -99,7 +99,7 @@ export default function RobotProjector({ items }: { items: Product[] }) {
           transitionDelay: shown ? "350ms" : "0ms",
           transformOrigin: "left bottom",
         }}
-        className={`grid overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#12304a]/95 to-[#0b1d2d]/95 shadow-[0_30px_70px_-30px_rgba(50,159,224,0.6)] transition-all duration-700 ease-out motion-reduce:transition-none ${
+        className={`grid overflow-hidden rounded-3xl glass-navy transition-all duration-700 ease-out motion-reduce:transition-none ${
           shown
             ? "translate-x-0 scale-100 opacity-100 blur-0"
             : "-translate-x-8 scale-[0.85] opacity-0 blur-sm"

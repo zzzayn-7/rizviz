@@ -76,34 +76,31 @@ export default function Clients() {
       id="clients"
       className="relative isolate w-full overflow-hidden py-20 sm:py-24 md:py-0"
     >
-      <div className="flex flex-col gap-12 md:min-h-[38rem] md:flex-row md:items-center md:gap-0">
-        <div className="px-6 sm:px-10 md:flex-1 md:pl-16 md:pr-10 lg:pl-24">
+      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 sm:px-10 md:min-h-[38rem] md:flex-row md:items-center md:gap-0">
+        <div className="md:flex-1 md:pr-10">
           <div className="max-w-xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-sky">
+            <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
               Our Clients
-            </p>
-            <h2 className="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
-              Trusted by the teams we build for.
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-brand-ice/80 sm:text-lg">
+            <p className="mt-8 text-base leading-relaxed text-brand-navy/80 sm:text-lg">
               Organizations across healthcare, tourism, and technology rely on
               Rizviz to build digital solutions that fit the way they work.
             </p>
           </div>
         </div>
 
-        {/* Same size and place as before. Two frosted glass panels, one per
-            scroller, come out of an accent slab on the right. The logos keep
-            are drawn in white so they stay readable on the dark glass. */}
-        <div className="group relative mx-6 flex h-[30rem] items-stretch sm:mx-10 md:mx-0 md:mr-[10%] md:h-[34rem] md:w-[30%]">
+        {/* Same size and place as before. Two frosted navy glass panels, one per
+            scroller, come out of a navy slab on the right. The logos are drawn
+            in white so they stay readable on the dark glass. */}
+        <div className="group relative flex h-[30rem] items-stretch md:mr-[4%] md:h-[34rem] md:w-[38%]">
           <div
             aria-hidden
-            className="absolute inset-y-8 right-0 w-[40%] rounded-[2rem] bg-gradient-to-b from-brand-sky via-brand-blue to-[#1f6f9c] shadow-[0_0_70px_rgba(50,159,224,0.55)]"
+            className="absolute inset-y-8 right-0 w-[40%] rounded-[2rem] bg-gradient-to-b from-brand-steel via-brand-navy/90 to-brand-navy shadow-[0_0_60px_rgba(11,29,45,0.35)]"
           />
           {columns.map((col, i) => (
             <div
               key={i}
-              className={`relative z-10 min-w-0 flex-1 overflow-hidden rounded-[2rem] border border-white/15 bg-white/[0.07] shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)] backdrop-blur-md ${
+              className={`relative z-10 min-w-0 flex-1 glass-navy overflow-hidden rounded-[2rem] ${
                 i === 0 ? "mr-3" : "mr-[16%]"
               }`}
             >

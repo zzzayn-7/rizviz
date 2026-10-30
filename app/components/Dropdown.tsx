@@ -34,6 +34,20 @@ const tones = {
     selected: "text-brand-blue",
     tick: "text-brand-blue",
   },
+  // Transparent, for forms that sit straight on the ice-blue page: only a thin navy outline, with the
+  // list in the site's navy glass.
+  glass: {
+    button:
+      "h-11 rounded-xl border border-brand-navy/25 bg-transparent px-4 text-sm text-brand-navy hover:border-brand-navy/50 focus-visible:border-brand-navy focus-visible:ring-2 focus-visible:ring-brand-navy/15 data-[open=true]:border-brand-navy",
+    placeholder: "text-brand-navy/50",
+    chevron: "text-brand-navy/70",
+    // The site's navy, fully opaque so the fields behind the list never show through.
+    panel: "glass-navy-solid",
+    option:
+      "text-white/90 hover:text-white ring-transparent hover:ring-brand-ice/70 data-[active=true]:ring-brand-ice/70",
+    selected: "text-brand-ice",
+    tick: "text-brand-ice",
+  },
 } as const;
 
 export default function Dropdown({

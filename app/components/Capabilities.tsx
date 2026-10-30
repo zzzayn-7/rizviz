@@ -9,7 +9,7 @@ type Service = {
   // The service page, when its address differs from the slug.
   page?: string;
   orbit: 0 | 1 | 2;
-  angle: number; // degrees, 0 = rightmost point of the orbit
+  angle: number; // degrees, 0 = the point of the orbit furthest from the screen edge
   headline: string;
   description: string;
 };
@@ -61,7 +61,7 @@ const services: Service[] = [
       "Custom software designed around your business processes and requirements.",
   },
   {
-    name: "App Development",
+    name: "Mobile App Development",
     slug: "app-development",
     page: "mobile-app-development",
     orbit: 2,
@@ -71,7 +71,7 @@ const services: Service[] = [
       "Mobile applications with intuitive interfaces and dependable functionality.",
   },
   {
-    name: "Website Development",
+    name: "Web Development",
     slug: "website-development",
     orbit: 2,
     angle: 62,
@@ -82,10 +82,10 @@ const services: Service[] = [
 ];
 
 // Orbit geometry in SVG units (viewBox 640 x 840). Orbits share a center on
-// the left edge, so only their right halves are visible.
+// the right edge, so only their left halves are visible.
 const VIEW_W = 640;
 const VIEW_H = 840;
-const CX = 40;
+const CX = VIEW_W - 40;
 const CY = VIEW_H / 2;
 const RADII = [150, 270, 390];
 
@@ -95,7 +95,7 @@ const STEP_VH = 45;
 function pointOn(service: Service) {
   const rad = (service.angle * Math.PI) / 180;
   const r = RADII[service.orbit];
-  return { x: CX + r * Math.cos(rad), y: CY + r * Math.sin(rad) };
+  return { x: CX - r * Math.cos(rad), y: CY + r * Math.sin(rad) };
 }
 
 export default function Capabilities() {
@@ -182,9 +182,9 @@ export default function Capabilities() {
       className="relative w-full"
     >
       <div className="sticky top-0 flex h-screen flex-col overflow-hidden">
-        <div className="flex min-h-0 flex-1 flex-col pt-6 md:flex-row md:items-center md:pt-0">
+        <div className="flex min-h-0 flex-1 flex-col pt-6 md:flex-row-reverse md:items-center md:pt-0">
           {/* Orbits */}
-          <div className="flex shrink-0 items-center md:w-[45%]">
+          <div className="flex shrink-0 items-center justify-end md:w-[45%]">
             <div
               className="relative h-[40vh] md:h-[90vh]"
               style={{ aspectRatio: `${VIEW_W} / ${VIEW_H}` }}
@@ -206,8 +206,8 @@ export default function Capabilities() {
                       strokeWidth={isActive ? 2.5 : 1.5}
                       className={`transition-all duration-700 ${
                         isActive
-                          ? "stroke-brand-sky drop-shadow-[0_0_6px_rgba(112,199,244,0.6)]"
-                          : "stroke-brand-steel/70"
+                          ? "stroke-brand-navy"
+                          : "stroke-brand-navy/25"
                       }`}
                     />
                   );
@@ -226,21 +226,22 @@ export default function Capabilities() {
                     style={{
                       left: `${(x / VIEW_W) * 100}%`,
                       top: `${(y / VIEW_H) * 100}%`,
+                      transform: "translate(calc(-100% + 7px), -50%)",
                     }}
-                    className="absolute flex -translate-x-[7px] -translate-y-1/2 items-center gap-2 whitespace-nowrap"
+                    className="absolute flex flex-row-reverse items-center gap-2 whitespace-nowrap"
                   >
                     <span
                       className={`block shrink-0 rounded-full transition-all duration-500 ${
                         isActive
-                          ? "h-4 w-4 -translate-x-[1px] border-2 border-white bg-brand-sky shadow-[0_0_12px_rgba(112,199,244,0.9)]"
-                          : "h-3.5 w-3.5 bg-brand-sky"
+                          ? "h-4 w-4 translate-x-[1px] border-2 border-brand-ice bg-brand-navy shadow-[0_0_10px_rgba(11,29,45,0.45)]"
+                          : "h-3.5 w-3.5 bg-brand-navy/70"
                       }`}
                     />
                     <span
                       className={`rounded-full border px-3 py-1 text-[11px] transition-colors duration-500 sm:text-sm ${
                         isActive
-                          ? "border-brand-sky bg-brand-sky font-medium text-brand-navy"
-                          : "border-white/10 bg-brand-navy/80 text-white/90 hover:border-brand-sky/60"
+                          ? "glass-navy font-medium text-white"
+                          : "border-brand-navy/20 bg-white/50 text-brand-navy backdrop-blur-md hover:border-brand-navy/50"
                       }`}
                     >
                       {s.name}
@@ -252,23 +253,23 @@ export default function Capabilities() {
           </div>
 
           {/* Details */}
-          <div className="flex flex-1 flex-col justify-center px-6 pb-8 sm:px-10 md:px-12 md:pb-0 lg:px-20">
-            <h2 className="mb-8 text-2xl font-semibold text-white sm:text-3xl md:mb-10 md:text-4xl">
+          <div className="page-left-edge flex flex-1 flex-col justify-center px-6 pb-8 sm:px-10 md:pb-0 md:pr-12">
+            <h2 className="mb-8 text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl md:mb-10 lg:text-7xl">
               Our Capabilities
             </h2>
             <div key={current.slug} className="max-w-2xl animate-fade-up">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-sky sm:text-sm">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-steel sm:text-sm">
                 {current.name}
               </p>
-              <h3 className="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
+              <h3 className="text-3xl font-semibold leading-tight text-brand-navy sm:text-4xl lg:text-5xl">
                 {current.headline}
               </h3>
-              <p className="mt-5 text-base leading-relaxed text-brand-ice/70 sm:text-lg">
+              <p className="mt-5 text-base leading-relaxed text-brand-navy/75 sm:text-lg">
                 {current.description}
               </p>
               <Link
                 href={`/services/${current.page ?? current.slug}`}
-                className="mt-8 inline-block border-b border-brand-sky pb-1 font-medium text-brand-sky transition-colors duration-300 hover:text-white"
+                className="glass-navy mt-8 inline-block rounded-full px-8 py-3 font-semibold text-white transition duration-500 ease-in-out hover:brightness-125"
               >
                 Explore more
               </Link>
@@ -280,7 +281,7 @@ export default function Capabilities() {
               aria-label={
                 pointsUp ? "Back above capabilities" : "Skip capabilities"
               }
-              className="mt-12 flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-blue bg-brand-blue text-xl text-white transition-colors duration-500 ease-in-out hover:bg-transparent md:mt-16"
+              className="mt-12 flex h-12 w-12 items-center justify-center glass-navy rounded-full text-xl text-white transition duration-500 ease-in-out hover:brightness-125 md:mt-16"
             >
               <span
                 aria-hidden

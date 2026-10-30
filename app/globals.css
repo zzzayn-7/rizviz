@@ -522,3 +522,64 @@ body {
   filter: brightness(1.12) saturate(1.1);
 }
 
+
+/* Frosted glass in the portal's navy: for cards, circles and buttons that sit on light backgrounds */
+.glass-navy {
+  /* Navy first, easing to steel blue at the far corner: the same blend as the last bar of the
+     "Who we are" graph. */
+  background: linear-gradient(
+    165deg,
+    rgb(11 29 45 / 0.97) 0%,
+    rgb(11 29 45 / 0.92) 50%,
+    rgb(40 91 122 / 0.88) 100%
+  );
+  border: 1px solid rgb(181 229 255 / 0.3);
+  box-shadow:
+    0 10px 34px rgb(11 29 45 / 0.3),
+    inset 0 1px 0 rgb(255 255 255 / 0.2);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+}
+
+
+
+/* glass-navy refreshed */
+
+/* refresh */
+
+/* r */
+
+/* r2 */
+
+/* Starts a block on the same left line as the page's max-w-7xl container, even when the block sits in a
+   full-width row. Percentages here are of the row's width. */
+@media (min-width: 768px) {
+  .page-left-edge {
+    padding-left: max(2.5rem, calc((100% - 80rem) / 2 + 2.5rem));
+  }
+}
+
+/* r3 */
+
+/* r4 */
+
+/* r5 */
+
+/* r6 */
+
+/* r7 */
+
+/* The navy of .glass-navy with no see-through, for pop-up lists that open over other content */
+.glass-navy-solid {
+  background: linear-gradient(165deg, #0b1d2d 0%, #0e2336 50%, #1c4560 100%);
+  border: 1px solid rgb(181 229 255 / 0.3);
+  box-shadow:
+    0 14px 40px rgb(11 29 45 / 0.4),
+    inset 0 1px 0 rgb(255 255 255 / 0.2);
+}
+
+/* r8 */
+
+/* r9 */
+
+/* r10 */

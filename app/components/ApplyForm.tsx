@@ -12,7 +12,7 @@ export const APPLY_EVENT = "apply-for-role";
 export type ApplyDetail = { role: string; gender?: string; roleType?: string };
 
 const inputClass =
-  "h-10 w-full rounded-lg border border-white/15 bg-white/[0.06] px-4 text-sm text-white outline-none transition-colors duration-300 placeholder:text-brand-ice/40 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/25 [color-scheme:dark]";
+  "h-11 w-full rounded-xl border border-brand-navy/25 bg-transparent px-4 text-sm text-brand-navy outline-none transition-colors duration-300 placeholder:text-brand-navy/50 hover:border-brand-navy/50 focus:border-brand-navy focus:bg-white/30 focus:ring-2 focus:ring-brand-navy/15";
 
 function Field({
   label,
@@ -37,10 +37,10 @@ function Field({
     <div className={wide ? "sm:col-span-2" : undefined}>
       <label
         htmlFor={name}
-        className="block text-sm font-medium text-brand-ice"
+        className="block text-sm font-semibold text-brand-navy"
       >
         {label}
-        {required && <span className="text-brand-sky"> *</span>}
+        {required && <span className="text-brand-blue"> *</span>}
       </label>
       <input
         id={name}
@@ -75,7 +75,7 @@ function Select({
     <div>
       <label
         htmlFor={name}
-        className="block text-sm font-medium text-brand-ice"
+        className="block text-sm font-semibold text-brand-navy"
       >
         {label}
       </label>
@@ -87,6 +87,7 @@ function Select({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          tone="glass"
         />
       </div>
     </div>
@@ -147,16 +148,16 @@ export default function ApplyForm() {
   if (status === "sent") {
     return (
       <div className="py-10 text-center">
-        <h2 className="text-2xl font-semibold text-white sm:text-3xl">
+        <h2 className="text-2xl font-semibold text-brand-navy sm:text-3xl">
           Thank you for applying.
         </h2>
-        <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-brand-ice/80">
+        <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-brand-navy/80">
           We’ve received your application and our team will be in touch.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-8 font-medium text-brand-sky transition-colors duration-300 hover:text-white"
+          className="mt-8 font-semibold text-brand-navy underline decoration-brand-navy/30 underline-offset-4 transition-colors duration-300 hover:decoration-brand-navy"
         >
           Submit another application
         </button>
@@ -217,14 +218,14 @@ export default function ApplyForm() {
       <div className="sm:col-span-2">
         <label
           htmlFor="cv"
-          className="block text-sm font-medium text-brand-ice"
+          className="block text-sm font-semibold text-brand-navy"
         >
-          CV upload<span className="text-brand-sky"> *</span>
+          CV upload<span className="text-brand-blue"> *</span>
         </label>
         {/* The real input is visually hidden so the box can be laid out by
             hand: the button and file name line up with the other fields. */}
         <div
-          className={`${inputClass} relative mt-1.5 flex items-center gap-3 px-2 focus-within:border-brand-blue focus-within:ring-2 focus-within:ring-brand-blue/20`}
+          className={`${inputClass} relative mt-1.5 flex items-center gap-3 px-2 focus-within:border-brand-navy focus-within:ring-2 focus-within:ring-brand-navy/15`}
         >
           <input
             id="cv"
@@ -235,18 +236,18 @@ export default function ApplyForm() {
             onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
             className="peer absolute inset-0 h-full w-full cursor-pointer opacity-0"
           />
-          <span className="pointer-events-none rounded-full border border-white/30 px-4 py-1 text-xs font-semibold text-brand-ice transition-colors peer-hover:border-brand-sky peer-hover:text-white">
+          <span className="pointer-events-none rounded-full border border-brand-navy/30 bg-brand-navy/[0.04] px-4 py-1 text-xs font-semibold text-brand-navy transition-colors peer-hover:border-brand-navy peer-hover:bg-brand-navy peer-hover:text-white">
             Choose File
           </span>
           <span
             className={`pointer-events-none min-w-0 truncate ${
-              fileName ? "text-white" : "text-brand-ice/40"
+              fileName ? "text-brand-navy" : "text-brand-navy/50"
             }`}
           >
             {fileName || "No file chosen"}
           </span>
         </div>
-        <p className="mt-1 text-xs text-brand-ice/60">
+        <p className="mt-1.5 text-xs text-brand-navy/60">
           PDF or Word, up to 5 MB.
         </p>
       </div>
@@ -254,7 +255,7 @@ export default function ApplyForm() {
       <div className="sm:col-span-2">
         <label
           htmlFor="info"
-          className="block text-sm font-medium text-brand-ice"
+          className="block text-sm font-semibold text-brand-navy"
         >
           Additional information
         </label>
@@ -269,14 +270,14 @@ export default function ApplyForm() {
 
       <div className="sm:col-span-2">
         {error && (
-          <p role="alert" className="mb-4 text-sm font-medium text-red-300">
+          <p role="alert" className="mb-4 text-sm font-medium text-red-600">
             {error}
           </p>
         )}
         <button
           type="submit"
           disabled={status === "sending"}
-          className="rounded-full border-2 border-brand-blue bg-brand-blue px-8 py-2.5 text-sm font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-transparent disabled:opacity-60"
+          className="glass-navy rounded-full px-8 py-3 text-sm font-semibold text-white transition duration-500 ease-in-out hover:brightness-125 disabled:opacity-60"
         >
           {status === "sending" ? "Sending…" : "Submit Application"}
         </button>

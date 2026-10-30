@@ -61,14 +61,13 @@ function StepIcon({ name, className }: { name: IconName; className?: string }) {
     </svg>
   );
 }
-// Path geometry (px). The path starts low at the left margin and runs right,
-// up, right, down, right, up, right, so the four horizontal runs alternate
-// low / high. Each run has a checkpoint in its center.
-const HEIGHT = 380;
-const HIGH_Y = 120;
-const LOW_Y = 270;
-const RISE = LOW_Y - HIGH_Y;
+// Path geometry (px). The road is a staircase climbing to the right: each step is a flat run with a
+// checkpoint in its center, and a vertical riser lifts the road to the next step.
+const HEIGHT = 560;
+const LOW_Y = 500;
+const RISE = 110;
 const LINE = 2;
+const stepY = (index: number) => LOW_Y - index * RISE;
 
 // Which steps have already been revealed. These live outside the component,
 // so leaving the page and coming back keeps them shown; a reload resets them.
@@ -83,19 +82,15 @@ const TRIGGER = 0.88; // fraction of the screen height
 function Checkpoint({
   step,
   index,
-  level,
   active,
   register,
 }: {
   step: Step;
   index: number;
-  level: "high" | "low";
   active: boolean;
   register: (index: number, el: HTMLElement | null) => void;
 }) {
-  // Checkpoints on the low run show their icon above and heading below;
-  // the high run is the other way round.
-  const imageUp = level === "low";
+  // Every checkpoint shows its icon above the road and its heading below it.
   const ease = "cubic-bezier(0.34, 1.56, 0.64, 1)";
 
   return (
@@ -103,42 +98,32 @@ function Checkpoint({
       className="absolute h-0 w-0"
       style={{
         left: `${index * 25 + 12.5}%`,
-        top: level === "low" ? LOW_Y : HIGH_Y,
+        top: stepY(index),
       }}
     >
       <span
         ref={(el) => register(index, el)}
-        className={`absolute left-0 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-brand-blue transition-all duration-500 ${
+        className={`absolute left-0 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-brand-navy transition-all duration-500 ${
           active
-            ? "scale-110 bg-brand-blue shadow-[0_0_14px_rgba(50,159,224,0.8)]"
-            : "bg-brand-navy"
+            ? "scale-110 bg-brand-navy shadow-[0_0_12px_rgba(11,29,45,0.45)]"
+            : "bg-white"
         }`}
       />
 
       <div
-        className={`absolute left-0 -translate-x-1/2 ${
-          imageUp ? "bottom-9" : "top-9"
-        }`}
+        className="absolute bottom-9 left-0 -translate-x-1/2"
       >
         <div
           style={{ transitionTimingFunction: ease }}
-          className={`flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-brand-ice/40 bg-white/[0.06] text-brand-ice shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_0_30px_rgba(50,159,224,0.45)] backdrop-blur-md transition-all duration-500 lg:h-20 lg:w-20 ${
-            imageUp ? "origin-bottom" : "origin-top"
-          } ${active ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
+          className={`glass-navy flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full text-brand-ice transition-all duration-500 lg:h-20 lg:w-20 origin-bottom ${active ? "scale-100 opacity-100" : "scale-50 opacity-0"}`}
         >
           <StepIcon name={step.icon} className="h-8 w-8 lg:h-9 lg:w-9" />
         </div>
       </div>
       <h3
         style={{ transitionDelay: active ? "150ms" : "0ms" }}
-        className={`absolute left-0 w-48 -translate-x-1/2 text-center text-lg font-semibold text-white transition-all duration-500 lg:w-56 ${
-          imageUp ? "top-7" : "bottom-7"
-        } ${
-          active
-            ? "translate-y-0 opacity-100"
-            : imageUp
-              ? "-translate-y-2 opacity-0"
-              : "translate-y-2 opacity-0"
+        className={`absolute left-0 top-7 w-40 -translate-x-1/2 text-center text-lg font-semibold text-brand-navy transition-all duration-500 lg:w-44 ${
+          active ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
         }`}
       >
         {step.title}
@@ -177,12 +162,12 @@ function MobileStep({ step, index }: { step: Step; index: number }) {
     >
       <span
         aria-hidden
-        className="absolute left-0 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-brand-blue bg-brand-blue shadow-[0_0_10px_rgba(50,159,224,0.8)]"
+        className="absolute left-0 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-brand-navy bg-brand-navy"
       />
-      <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-brand-ice/40 bg-white/[0.06] text-brand-ice shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_0_24px_rgba(50,159,224,0.4)]">
+      <span className="glass-navy flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-brand-ice">
         <StepIcon name={step.icon} className="h-6 w-6" />
       </span>
-      <h3 className="text-lg font-semibold text-white">{step.title}</h3>{" "}
+      <h3 className="text-lg font-semibold text-brand-navy">{step.title}</h3>{" "}
     </li>
   );
 }
@@ -246,52 +231,51 @@ export default function HiringProcess() {
   return (
     <section id="hiring-process" className="relative w-full py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
-        <div className="max-w-2xl text-left">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-sky">
-            Our Hiring Process
-          </p>
-          <h2 className="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
-            Your next steps.
-          </h2>
-        </div>
+        <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] md:gap-6 lg:gap-12">
+          {/* The heading sits on the left, about halfway down the staircase. */}
+          <div className="text-left">
+            <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
+              Our Hiring Process
+            </h2>
+          </div>
 
-        {/* Wide screens: the path is always in place; each checkpoint shows
-            its picture and heading when scrolled to. */}
-        <div
-          style={{ height: HEIGHT }}
-          className="relative mt-8 hidden md:block"
-        >
-          {[
-            line("0%", LOW_Y - LINE / 2, "25%", LINE),
-            line("calc(25% - 1px)", HIGH_Y, LINE, RISE),
-            line("25%", HIGH_Y - LINE / 2, "25%", LINE),
-            line("calc(50% - 1px)", HIGH_Y, LINE, RISE),
-            line("50%", LOW_Y - LINE / 2, "25%", LINE),
-            line("calc(75% - 1px)", HIGH_Y, LINE, RISE),
-            line("75%", HIGH_Y - LINE / 2, "25%", LINE),
-          ].map((style, i) => (
-            <div
-              key={i}
-              aria-hidden
-              className="absolute bg-brand-blue shadow-[0_0_12px_rgba(50,159,224,0.7)]"
-              style={style}
-            />
-          ))}
+          {/* Wide screens: the staircase is always in place; each checkpoint shows its picture and
+              heading when scrolled to. */}
+          <div
+            style={{ height: HEIGHT }}
+            className="relative hidden md:block"
+          >
+            {steps.flatMap((_, i) => {
+              const y = stepY(i);
+              const run = line(`${i * 25}%`, y - LINE / 2, "25%", LINE);
+              const riser =
+                i < steps.length - 1
+                  ? line(`calc(${(i + 1) * 25}% - 1px)`, stepY(i + 1) - LINE / 2, LINE, RISE + LINE)
+                  : null;
+              return [run, riser].filter(Boolean) as React.CSSProperties[];
+            }).map((style, i) => (
+              <div
+                key={i}
+                aria-hidden
+                className="absolute bg-brand-navy"
+                style={style}
+              />
+            ))}
 
-          {steps.map((step, i) => (
-            <Checkpoint
-              key={step.title}
-              step={step}
-              index={i}
-              level={i % 2 === 0 ? "low" : "high"}
-              active={revealed[i]}
-              register={register}
-            />
-          ))}
+            {steps.map((step, i) => (
+              <Checkpoint
+                key={step.title}
+                step={step}
+                index={i}
+                active={revealed[i]}
+                register={register}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Phones: a simple vertical list. */}
-        <ol className="relative mt-10 ml-2 border-l-2 border-brand-blue/70 md:hidden">
+        <ol className="relative mt-10 ml-2 border-l-2 border-brand-navy/60 md:hidden">
           {steps.map((step, i) => (
             <MobileStep key={step.title} step={step} index={i} />
           ))}
