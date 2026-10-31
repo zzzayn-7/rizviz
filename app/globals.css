@@ -583,3 +583,62 @@ body {
 /* r9 */
 
 /* r10 */
+
+/* ---------- Lively page background (see LivelyBackdrop) ---------- */
+@keyframes lively-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(90px, 60px, 0) scale(1.08);
+  }
+}
+@keyframes lively-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(-80px, 70px, 0) scale(0.94);
+  }
+}
+.lively-drift-a {
+  animation: lively-drift-a 34s ease-in-out infinite;
+  will-change: transform;
+}
+.lively-drift-b {
+  animation: lively-drift-b 42s ease-in-out infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lively-drift-a,
+  .lively-drift-b {
+    animation: none;
+  }
+}
+
+/* r11 */
+
+/* r12 */
+
+/* "Industries we serve": the card row and its arrows start on the same left line as the page's
+   max-w-7xl container (padding in % is of the row's own width, the full page width). */
+.industries-row,
+.industries-controls {
+  padding-left: 1.5rem;
+}
+@media (min-width: 640px) {
+  .industries-row,
+  .industries-controls {
+    padding-left: max(2.5rem, calc((100% - 80rem) / 2 + 2.5rem));
+  }
+}
+.industries-row {
+  scroll-padding-left: 1.5rem;
+}
+@media (min-width: 640px) {
+  .industries-row {
+    scroll-padding-left: max(2.5rem, calc((100% - 80rem) / 2 + 2.5rem));
+  }
+}

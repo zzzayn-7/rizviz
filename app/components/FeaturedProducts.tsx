@@ -13,26 +13,28 @@ export default function FeaturedProducts() {
   return (
     <section id="products" className="relative w-full py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
-        <div className="grid gap-6">
+        <div className="grid gap-8 md:grid-cols-2 md:gap-16">
+          {/* the heading on the left, with the button right under it */}
           <div>
-            <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
+            <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
               Featured Products
             </h2>
-          </div>
-
-          <div className="max-w-2xl">
-            <p className="text-base leading-relaxed text-brand-navy/80 sm:text-lg">
-              Explore products built by Rizviz to address real business needs.
-              Our engineers, developers, and AI specialists combine technical
-              expertise with thoughtful design to turn complex requirements into
-              practical, intuitive applications.
-            </p>
             <Link
               href="/products"
               className="glass-navy mt-8 inline-block rounded-full px-8 py-3.5 font-semibold text-white transition duration-500 ease-in-out hover:brightness-125"
             >
               View more
             </Link>
+          </div>
+
+          {/* the paragraph on the right */}
+          <div className="md:pt-3">
+            <p className="text-base leading-relaxed text-brand-navy/80 sm:text-lg">
+              Explore products built by Rizviz to address real business needs.
+              Our engineers, developers, and AI specialists combine technical
+              expertise with thoughtful design to turn complex requirements into
+              practical, intuitive applications.
+            </p>
           </div>
         </div>
 

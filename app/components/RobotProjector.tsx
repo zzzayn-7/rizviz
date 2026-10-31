@@ -99,7 +99,9 @@ export default function RobotProjector({ items }: { items: Product[] }) {
           transitionDelay: shown ? "350ms" : "0ms",
           transformOrigin: "left bottom",
         }}
-        className={`grid overflow-hidden rounded-3xl glass-navy transition-all duration-700 ease-out motion-reduce:transition-none ${
+        // The solid navy, not the frosted glass: a backdrop blur behind a card that fades and blurs in
+        // and out can leave a stray bright line across it while it repaints.
+        className={`grid overflow-hidden rounded-3xl glass-navy-solid transition-all duration-700 ease-out motion-reduce:transition-none ${
           shown
             ? "translate-x-0 scale-100 opacity-100 blur-0"
             : "-translate-x-8 scale-[0.85] opacity-0 blur-sm"

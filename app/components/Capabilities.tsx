@@ -241,7 +241,7 @@ export default function Capabilities() {
                       className={`rounded-full border px-3 py-1 text-[11px] transition-colors duration-500 sm:text-sm ${
                         isActive
                           ? "glass-navy font-medium text-white"
-                          : "border-brand-navy/20 bg-white/50 text-brand-navy backdrop-blur-md hover:border-brand-navy/50"
+                          : "border-brand-navy/25 bg-transparent text-brand-navy hover:border-brand-navy/60"
                       }`}
                     >
                       {s.name}
@@ -254,7 +254,7 @@ export default function Capabilities() {
 
           {/* Details */}
           <div className="page-left-edge flex flex-1 flex-col justify-center px-6 pb-8 sm:px-10 md:pb-0 md:pr-12">
-            <h2 className="mb-8 text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl md:mb-10 lg:text-7xl">
+            <h2 className="mb-8 text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl md:mb-10 lg:text-6xl">
               Our Capabilities
             </h2>
             <div key={current.slug} className="max-w-2xl animate-fade-up">

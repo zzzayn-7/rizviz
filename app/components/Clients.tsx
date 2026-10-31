@@ -79,7 +79,7 @@ export default function Clients() {
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 sm:px-10 md:min-h-[38rem] md:flex-row md:items-center md:gap-0">
         <div className="md:flex-1 md:pr-10">
           <div className="max-w-xl">
-            <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
+            <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
               Our Clients
             </h2>
             <p className="mt-8 text-base leading-relaxed text-brand-navy/80 sm:text-lg">

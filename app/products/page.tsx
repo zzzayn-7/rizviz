@@ -1,3 +1,4 @@
+import LivelyBackdrop from "../components/LivelyBackdrop";
 import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import ContactCta from "../components/ContactCta";
@@ -68,6 +69,7 @@ export default function ProductsPage() {
               ].join(", "),
             }}
           />
+          <LivelyBackdrop />
           <ProductCards />
         </div>
       </div>

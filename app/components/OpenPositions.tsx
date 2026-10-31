@@ -51,7 +51,7 @@ export default function OpenPositions() {
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
         <div className="max-w-2xl text-left">
-          <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
+          <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
             Open Positions
           </h2>
           <p className="mt-8 text-base leading-relaxed text-brand-navy/80 sm:text-lg">

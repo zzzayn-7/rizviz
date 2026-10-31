@@ -234,7 +234,7 @@ export default function HiringProcess() {
         <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] md:gap-6 lg:gap-12">
           {/* The heading sits on the left, about halfway down the staircase. */}
           <div className="text-left">
-            <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
+            <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
               Our Hiring Process
             </h2>
           </div>

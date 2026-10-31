@@ -1,3 +1,5 @@
+import Industries from "./components/Industries";
+import LivelyBackdrop from "./components/LivelyBackdrop";
 ﻿import Link from "next/link";
 import Image from "next/image";
 import heroSkyline from "./images/hero-skyline.png";
@@ -52,27 +54,39 @@ export default function Home() {
           </div>
         </section>
 
+      </div>
+
+      {/* "Who we are", Clients, Capabilities, Featured Products and How We Work share one continuous
+          backdrop, so there is no join between them: the ice-blue white page with navy glowing in from
+          alternating sides, fading to navy at the top where the dark hero ends and at the bottom where
+          the closing call to action begins. */}
+      <div className="relative isolate flex flex-col gap-6 sm:gap-8">
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10"
+          style={{
+            background: [
+              "linear-gradient(0deg, #0b1d2d 0px, transparent 200px)",
+              "linear-gradient(180deg, #0b1d2d 0px, transparent 90px)",
+              "radial-gradient(800px 700px at 0% 6%, rgba(11,29,45,0.2), transparent 70%)",
+              "radial-gradient(800px 700px at 100% 18%, rgba(11,29,45,0.2), transparent 70%)",
+              "radial-gradient(800px 700px at 0% 34%, rgba(11,29,45,0.2), transparent 70%)",
+              "radial-gradient(800px 700px at 100% 50%, rgba(11,29,45,0.2), transparent 70%)",
+              "radial-gradient(800px 700px at 0% 66%, rgba(11,29,45,0.2), transparent 70%)",
+              "radial-gradient(800px 700px at 100% 80%, rgba(11,29,45,0.2), transparent 70%)",
+              "radial-gradient(800px 700px at 0% 94%, rgba(11,29,45,0.2), transparent 70%)",
+              "linear-gradient(180deg, #f4faff 0%, #e4f2fc 50%, #f4faff 100%)",
+            ].join(", "),
+          }}
+        />
+        <LivelyBackdrop behind />
         <section
           id="about"
-          className="relative isolate z-[2] w-full overflow-hidden"
+          className="relative w-full"
         >
-          {/* Ice-blue white page, with navy glowing in from both sides. It fades to navy at the top, where it meets the
-            dark hero, and runs straight on into the next section below. */}
-          <div
-            aria-hidden
-            className="absolute inset-0 -z-10"
-            style={{
-              background: [
-                "linear-gradient(180deg, #0b1d2d 0%, transparent 10%)",
-                "radial-gradient(650px 520px at 0% 38%, rgba(11,29,45,0.22), transparent 70%)",
-                "radial-gradient(650px 520px at 100% 45%, rgba(11,29,45,0.22), transparent 70%)",
-                "linear-gradient(180deg, #f4faff 0%, #e4f2fc 100%)",
-              ].join(", "),
-            }}
-          />
           <div className="mx-auto grid max-w-7xl px-6 sm:px-10 md:min-h-[44rem] md:grid-cols-2">
             <div className="flex flex-col justify-center py-16 md:py-24 md:pr-8">
-              <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
+              <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
                 Who we are
               </h2>
               <p className="mt-8 text-sm leading-relaxed text-brand-navy/80 sm:text-base">
@@ -96,32 +110,12 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </div>
 
-      {/* Clients, Capabilities, Featured Products and How We Work share one continuous backdrop:
-          the same ice-blue white as "Who we are", with navy glowing in from alternating sides, running
-          straight on from the section above and fading to navy at the bottom, where the closing call to
-          action begins. */}
-      <div className="relative isolate">
-        <div
-          aria-hidden
-          className="absolute inset-0 -z-10"
-          style={{
-            background: [
-              "linear-gradient(0deg, #0b1d2d 0px, transparent 200px)",
-              "radial-gradient(800px 700px at 0% 8%, rgba(11,29,45,0.2), transparent 70%)",
-              "radial-gradient(800px 700px at 100% 22%, rgba(11,29,45,0.2), transparent 70%)",
-              "radial-gradient(800px 700px at 0% 40%, rgba(11,29,45,0.2), transparent 70%)",
-              "radial-gradient(800px 700px at 100% 58%, rgba(11,29,45,0.2), transparent 70%)",
-              "radial-gradient(800px 700px at 0% 76%, rgba(11,29,45,0.2), transparent 70%)",
-              "radial-gradient(800px 700px at 100% 92%, rgba(11,29,45,0.2), transparent 70%)",
-              "linear-gradient(180deg, #e4f2fc 0%, #f4faff 50%, #e4f2fc 100%)",
-            ].join(", "),
-          }}
-        />
         <Clients />
 
         <Capabilities />
+
+        <Industries />
 
         <FeaturedProducts />
 

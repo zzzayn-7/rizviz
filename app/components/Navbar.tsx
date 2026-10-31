@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import logoMark from "../images/logo-mark.png";
 import ContactButton from "./ContactButton";
@@ -50,6 +51,18 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
+  const pathname = usePathname();
+
+  // "Apply now" goes to the application form at the bottom of Careers. When you are already on that
+  // page it scrolls there every time, which a plain "#apply" link does not do a second time.
+  function goToApply(event: React.MouseEvent<HTMLAnchorElement>) {
+    setOpen(false);
+    if (pathname !== "/careers") return;
+    const form = document.getElementById("apply");
+    if (!form) return;
+    event.preventDefault();
+    form.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
   const contactClass =
     tone === "dark"
       ? "border-brand-sky/40 bg-brand-navy text-white hover:border-brand-ice hover:bg-brand-steel"
@@ -136,11 +149,21 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
           ))}
         </div>
 
-        <ContactButton
-          className={`hidden rounded-full border-2 px-6 py-2.5 text-sm font-semibold transition duration-500 ease-in-out md:inline-block md:justify-self-end ${contactClass}`}
-        >
-          Contact Us
-        </ContactButton>
+        {/* The two buttons on the right: apply for a job, or get in touch. */}
+        <div className="hidden items-center gap-3 md:flex md:justify-self-end">
+          <Link
+            href="/careers#apply"
+            onClick={goToApply}
+            className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold transition duration-500 ease-in-out ${contactClass}`}
+          >
+            Apply now
+          </Link>
+          <ContactButton
+            className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold transition duration-500 ease-in-out ${contactClass}`}
+          >
+            Contact Us
+          </ContactButton>
+        </div>
 
         <button
           type="button"
@@ -280,6 +303,15 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/careers#apply"
+                onClick={goToApply}
+                className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold transition duration-500 ease-in-out ${contactClass}`}
+              >
+                Apply now
+              </Link>
+            </li>
             <li>
               <ContactButton
                 onClick={() => setOpen(false)}

@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import logo from "../images/logo.png";
+import logoDark from "../images/logo-light.png";
+import logoFooter from "../images/logo-footer.png";
 import CopyrightYear from "./CopyrightYear";
 
 const company = [
@@ -122,8 +123,8 @@ export default function Footer() {
           <div className="max-w-xs">
             <Link href="/" aria-label="Rizviz home" className="inline-block">
               <Image
-                src={logo}
-                alt="Rizviz"
+                src={t === themes.light ? logoFooter : logoDark}
+                alt="Rizviz International"
                 sizes="260px"
                 className="h-14 w-auto"
               />

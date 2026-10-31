@@ -1,3 +1,4 @@
+import LivelyBackdrop from "./LivelyBackdrop";
 import Image, { type StaticImageData } from "next/image";
 import heroSkyline from "../images/hero-skyline.png";
 import ContactCta from "./ContactCta";
@@ -98,6 +99,7 @@ export default function ServicePage({
                 ].join(", "),
               }}
             />
+            <LivelyBackdrop />
             {children}
           </div>
         </div>

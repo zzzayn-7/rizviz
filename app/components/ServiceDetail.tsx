@@ -45,7 +45,7 @@ type Props = {
 // The big extra-bold section title, as on the Home and About pages, with the section's own line
 // under it in a smaller navy.
 const title =
-  "text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl";
+  "text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl";
 const subtitle = "mt-8 text-2xl font-semibold leading-snug text-brand-navy sm:text-3xl";
 const bodyText = "mt-5 text-base leading-relaxed text-brand-navy/80 sm:text-lg";
 

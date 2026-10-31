@@ -1,3 +1,4 @@
+import LivelyBackdrop from "../components/LivelyBackdrop";
 import type { Metadata } from "next";
 import ScrollButton from "../components/ScrollButton";
 import ApplySection from "../components/ApplySection";
@@ -73,6 +74,7 @@ export default function CareersPage() {
               ].join(", "),
             }}
           />
+          <LivelyBackdrop />
           <OpenPositions />
 
           <HiringProcess />

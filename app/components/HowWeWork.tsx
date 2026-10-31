@@ -258,7 +258,7 @@ function Bubble({
       </h3>
       <p
         className={`relative mt-1.5 leading-snug text-brand-ice/85 ${
-          small ? "text-[0.8rem]" : "text-[0.86rem]"
+          small ? "text-[0.74rem]" : "text-[0.8rem]"
         }`}
       >
         {step.description}
@@ -311,10 +311,16 @@ export default function HowWeWork() {
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
         <div className="grid items-center gap-14 lg:grid-cols-[40%_60%] lg:gap-6">
-          <div className="max-w-md">
-            <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
+          <div className="max-w-lg">
+            <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
               How We Work
             </h2>
+            <p className="mt-6 text-base leading-relaxed text-brand-navy/80 sm:text-lg">
+              Rizviz and its team of professionals follow one clear roadmap,
+              from the first conversation to long-term support. We plan, build,
+              test, and launch alongside you, so every delivery is seamless and
+              dependable.
+            </p>
           </div>
 
           {/* Wide screens: the circles gather round the middle one. */}
@@ -322,7 +328,7 @@ export default function HowWeWork() {
             className="relative hidden lg:block"
             style={
               {
-                "--u": "1.15rem",
+                "--u": "1.06rem",
                 height: "calc(var(--u) * 40)",
               } as CSSProperties
             }
@@ -374,7 +380,7 @@ export default function HowWeWork() {
 
           {/* Phones and tablets: a simple stack. */}
           <ol
-            style={{ "--u": "1.1rem" } as CSSProperties}
+            style={{ "--u": "1.02rem" } as CSSProperties}
             className="flex flex-col items-center gap-8 lg:hidden"
           >
             {steps.map((step) => (

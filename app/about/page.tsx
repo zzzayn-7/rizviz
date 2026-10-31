@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+﻿import LivelyBackdrop from "../components/LivelyBackdrop";
+import type { Metadata } from "next";
 import Image from "next/image";
 import heroSkyline from "../images/hero-skyline.png";
 import Navbar from "../components/Navbar";
@@ -72,6 +73,7 @@ export default function AboutPage() {
               ].join(", "),
             }}
           />
+          <LivelyBackdrop />
 
           <section
             id="who-we-are"
@@ -82,7 +84,7 @@ export default function AboutPage() {
                 left, and the screen filling the full height of the right. */}
               <div className="grid gap-10 md:grid-cols-2 md:items-stretch md:gap-16">
                 <div className="max-w-xl">
-                  <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
+                  <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
                     Who we are
                   </h2>
                   <p className="mt-8 text-sm leading-relaxed text-brand-navy/80 sm:text-base">
@@ -117,7 +119,7 @@ export default function AboutPage() {
 
             <div className="mx-auto w-full max-w-7xl px-6 pb-28 pt-[28rem] sm:px-10 md:py-44">
               <div className="max-w-3xl md:max-w-[min(42rem,calc(62vw_-_5rem))]">
-                <h2 className="text-5xl font-extrabold leading-none tracking-tight text-brand-navy sm:text-6xl lg:text-7xl">
+                <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
                   Our Reach
                 </h2>
                 <p className="mt-8 text-base leading-relaxed text-brand-navy/80">
