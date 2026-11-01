@@ -1,6 +1,7 @@
 import LivelyBackdrop from "./LivelyBackdrop";
 import Image, { type StaticImageData } from "next/image";
 import heroSkyline from "../images/hero-skyline.png";
+import ContactButton from "./ContactButton";
 import ContactCta from "./ContactCta";
 import Navbar from "./Navbar";
 
@@ -15,6 +16,8 @@ export default function ServicePage({
   heroAlt = "",
   scene,
   cta,
+  intro,
+  heroButton,
   children,
 }: {
   // Shown as the small label above the headline.
@@ -27,6 +30,9 @@ export default function ServicePage({
   scene?: React.ReactNode;
   // The closing call to action under a scene hero: its line and its button.
   cta?: { headline: string; button: string };
+  // An optional line under the headline, and a button that opens the contact form.
+  intro?: string;
+  heroButton?: string;
   // Sections shown below the hero.
   children?: React.ReactNode;
 }) {
@@ -79,6 +85,16 @@ export default function ServicePage({
                   </>
                 )}
               </h1>
+              {intro && (
+                <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">
+                  {intro}
+                </p>
+              )}
+              {heroButton && (
+                <ContactButton className="glass-navy btn-glow mt-10 inline-block rounded-full px-8 py-3.5 font-semibold text-white">
+                  {heroButton}
+                </ContactButton>
+              )}
             </div>
           </section>
 

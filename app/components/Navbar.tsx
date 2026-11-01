@@ -20,9 +20,9 @@ const linksAfterServices = [
 ];
 
 const linkTone = {
-  dark: "text-white/90 hover:text-brand-sky",
+  dark: "text-white/90",
   // For pages whose top is light, such as the home page.
-  light: "text-brand-navy/80 hover:text-brand-blue",
+  light: "text-brand-navy/80",
 };
 
 function Chevron({
@@ -68,7 +68,8 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
     tone === "dark"
       ? "glass-navy btn-glow border-transparent text-white"
       : "glass-navy btn-glow border-transparent text-white";
-  const linkClass = `text-sm font-medium transition-colors duration-300 ${linkTone[tone]}`;
+  // the same cursor-following glow as the buttons, on a pill that stays invisible until you point at it
+  const linkClass = `btn-glow rounded-full px-3.5 py-1.5 text-sm font-medium ${linkTone[tone]}`;
 
   return (
     <header
@@ -113,7 +114,7 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
           />
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
             <Link
               key={l.href}

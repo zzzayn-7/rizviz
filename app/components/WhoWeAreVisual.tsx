@@ -212,7 +212,6 @@ function SoftwareScene() {
       aria-label="Software and mobile apps"
     >
       <Defs />
-      <circle cx="600" cy="640" r="420" fill="url(#wv-glow)" />
 
       {/* Code window */}
       <g>
@@ -327,7 +326,6 @@ function ScalingScene() {
       aria-label="Business scaling"
     >
       <Defs />
-      <circle cx="700" cy="380" r="420" fill="url(#wv-glow)" />
 
       {/* Gridlines */}
       {[0, 1, 2, 3, 4].map((i) => (

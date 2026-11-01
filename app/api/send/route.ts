@@ -1,7 +1,7 @@
 // Receives the site's forms and emails them. Where each one goes is decided
 // here, on the server, from the kind of form, never from anything the browser
 // sends: job applications go to the careers inbox; contact messages and demo
-// requests go to the info inbox.
+// requests and newsletter sign-ups go to the info inbox.
 //
 // Mail is sent through Resend (https://resend.com). It needs two settings in
 // the environment: RESEND_API_KEY, and MAIL_FROM, an address on a domain
@@ -11,6 +11,7 @@ const INBOX = {
   application: "careers@rizviz.com.pk",
   contact: "info@rizviz.com.pk",
   demo: "info@rizviz.com.pk",
+  newsletter: "info@rizviz.com.pk",
 } as const;
 
 type Kind = keyof typeof INBOX;
@@ -19,6 +20,7 @@ const SUBJECT: Record<Kind, string> = {
   application: "New job application",
   contact: "New contact message",
   demo: "New demo request",
+  newsletter: "New newsletter subscriber",
 };
 
 const MAX_CV_BYTES = 5 * 1024 * 1024;

@@ -22,14 +22,19 @@ export const servicesMenu = [
     blurb: "Enterprise workflows, made simple.",
   },
   {
-    name: "Software Development",
-    href: "/services/software-development",
-    blurb: "Custom systems built around your processes.",
+    name: "Business Development",
+    href: "/services/business-development",
+    blurb: "Growth built on partnerships and clear plans.",
   },
   {
     name: "Mobile App Development",
     href: "/services/mobile-app-development",
     blurb: "Your services, accessible on the go.",
+  },
+  {
+    name: "PCB Engineering",
+    href: "/services/pcb-engineering",
+    blurb: "Precise boards, from schematic to production.",
   },
   {
     name: "Web Development",

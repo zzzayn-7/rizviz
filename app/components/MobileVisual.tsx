@@ -87,7 +87,6 @@ function AppScene() {
       aria-label="Three screens of a mobile app"
     >
       <Defs />
-      <circle cx="600" cy="400" r="440" fill="url(#mb-glow)" />
 
       {/* Sign in */}
       <g className="wv-rise" style={delay(0.2)}>
@@ -385,7 +384,6 @@ function BackendScene() {
       aria-label="A mobile app connected to the systems behind it"
     >
       <Defs />
-      <circle cx="600" cy="420" r="440" fill="url(#mb-glow)" />
 
       <g className="wv-rise" style={delay(0.2)}>
         <g className="wv-bob">

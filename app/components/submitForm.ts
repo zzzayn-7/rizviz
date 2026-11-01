@@ -1,8 +1,8 @@
 // Sends a form to /api/send. The server chooses the inbox from the kind:
-// applications go to careers@, contact messages and demo requests to info@.
+// applications go to careers@; contact messages, demo requests and newsletter sign-ups to info@.
 // Returns an error message to show, or null when it was sent.
 export async function submitForm(
-  kind: "application" | "contact" | "demo",
+  kind: "application" | "contact" | "demo" | "newsletter",
   data: FormData,
 ): Promise<string | null> {
   data.set("kind", kind);

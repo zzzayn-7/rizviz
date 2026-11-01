@@ -723,3 +723,13 @@ body {
 :lang(ar) {
   letter-spacing: 0 !important;
 }
+
+/* The white call-to-action buttons: the same cursor-following glow, in navy, so it shows on white. */
+.btn-glow-navy::before {
+  background:
+    radial-gradient(circle 70px at var(--mx, 50%) var(--my, 50%), rgb(11 29 45 / 0.5), transparent 70%),
+    radial-gradient(circle 120px at var(--mx, 50%) var(--my, 50%), rgb(40 91 122 / 0.4), transparent 75%),
+    radial-gradient(circle 170px at var(--mx, 50%) var(--my, 50%), rgb(11 29 45 / 0.18), transparent 80%);
+}
+
+/* r17 */

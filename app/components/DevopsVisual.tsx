@@ -51,7 +51,6 @@ function PipelineScene() {
       aria-label="A delivery pipeline from code to live"
     >
       <Defs />
-      <circle cx="600" cy="380" r="440" fill="url(#dv-glow)" />
 
       {/* The pipeline: stages joined by a line that the light runs along */}
       <line
@@ -298,7 +297,6 @@ function CloudScene() {
       aria-label="Servers and their health in the cloud"
     >
       <Defs />
-      <circle cx="400" cy="450" r="440" fill="url(#dv-glow)" />
 
       {/* A cloud, with light running down to the servers */}
       <g className="wv-pop" style={delay(0.2)}>
@@ -541,30 +539,6 @@ export default function DevopsVisual() {
   return (
     // A pane of blue glass, with everything drawn on it in white.
     <div className="relative isolate flex h-full min-h-[22rem] flex-col overflow-hidden glass-navy rounded-3xl p-3 sm:p-4">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{
-          background: [
-            "linear-gradient(125deg, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.08) 34%, rgba(255,255,255,0) 52%, rgba(255,255,255,0.14) 100%)",
-            "radial-gradient(60% 60% at 80% 85%, rgba(255,255,255,0.16), transparent 70%)",
-            "radial-gradient(50% 50% at 10% 8%, rgba(255,255,255,0.28), transparent 70%)",
-          ].join(", "),
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.12]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-          maskImage:
-            "radial-gradient(70% 70% at 60% 60%, black, transparent 80%)",
-          WebkitMaskImage:
-            "radial-gradient(70% 70% at 60% 60%, black, transparent 80%)",
-        }}
-      />
 
       <div className="mb-2 flex shrink-0 items-center justify-between gap-4 sm:mb-3">
         <p className="rounded-full border border-white/40 bg-white/[0.14] px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-white sm:px-4 sm:text-xs">

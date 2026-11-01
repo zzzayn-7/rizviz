@@ -3,9 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import logoDark from "../images/logo-light.png";
-import logoFooter from "../images/logo-footer.png";
+import logoDark from "../images/logo-light-tight.png";
+import logoFooter from "../images/logo-footer-tight.png";
 import CopyrightYear from "./CopyrightYear";
+import NewsletterForm from "./NewsletterForm";
 
 const company = [
   { label: "Home", href: "/" },
@@ -19,8 +20,9 @@ const services = [
   { label: "DevOps", href: "/services/devops" },
   { label: "Data Engineering", href: "/services/data-engineering" },
   { label: "ServiceNow", href: "/services/servicenow" },
-  { label: "Software Development", href: "/services/software-development" },
+  { label: "Business Development", href: "/services/business-development" },
   { label: "Mobile App Development", href: "/services/mobile-app-development" },
+  { label: "PCB Engineering", href: "/services/pcb-engineering" },
   { label: "Web Development", href: "/services/website-development" },
 ];
 
@@ -65,8 +67,8 @@ const themes = {
     inner: "pt-32 sm:pt-36",
     link: "text-brand-slate hover:text-brand-blue",
     social:
-      "border-brand-navy/15 text-brand-slate hover:border-brand-blue hover:text-brand-blue",
-    heading: "text-brand-blue",
+      "border-brand-navy/20 text-brand-navy",
+    heading: "text-brand-navy",
     text: "text-brand-slate",
     muted: "text-brand-slate/70",
     rule: "border-brand-navy/10",
@@ -76,7 +78,7 @@ const themes = {
     inner: "pt-16",
     link: "text-brand-ice/70 hover:text-brand-sky",
     social:
-      "border-white/15 text-brand-ice/70 hover:border-brand-sky hover:text-brand-sky",
+      "border-white/20 text-brand-ice",
     heading: "text-brand-sky",
     text: "text-brand-ice/70",
     muted: "text-brand-ice/50",
@@ -104,7 +106,7 @@ export default function Footer() {
         : "dark"
     ];
   const linkClass = `text-sm transition-colors duration-300 ${t.link}`;
-  const headingClass = `text-xs font-semibold uppercase tracking-widest ${t.heading}`;
+  const headingClass = `text-sm font-extrabold uppercase leading-none tracking-widest ${t.heading}`;
 
   return (
     <footer
@@ -118,60 +120,37 @@ export default function Footer() {
       <div
         className={`mx-auto max-w-7xl px-6 pb-8 sm:px-10 ${fromNavy ? "pt-16" : t.inner}`}
       >
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.25fr_0.65fr_1.05fr_1fr_1.2fr] lg:gap-8">
-          <div className="max-w-xs">
-            <Link href="/" aria-label="Rizviz home" className="inline-block">
-              <Image
-                src={t === themes.light ? logoFooter : logoDark}
-                alt="Rizviz International"
-                sizes="260px"
-                className="h-14 w-auto"
-              />
-            </Link>
-            <p className={`mt-5 text-sm leading-relaxed ${t.text}`}>
-              Technology built around business. Software, AI, data, and cloud
-              solutions for real business needs.
-            </p>
-            <ul className="mt-6 flex gap-3">
-              {socials.map((x) => (
-                <li key={x.label}>
-                  <a
-                    href={x.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Rizviz on ${x.label}`}
-                    className={`flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-300 ${t.social}`}
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      aria-hidden
-                      className="h-[1.15rem] w-[1.15rem]"
-                      fill={x.stroke ? "none" : "currentColor"}
-                      stroke={x.stroke ? "currentColor" : "none"}
-                      strokeWidth={1.8}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d={x.path} />
-                    </svg>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="grid items-start gap-12 text-left sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+          {/* Left: the logo, what Rizviz does, and the company links under it. */}
+          <div>
+            <div className="max-w-xs">
+              <Link href="/" aria-label="Rizviz home" className="inline-block">
+                <Image
+                  src={t === themes.light ? logoFooter : logoDark}
+                  alt="Rizviz International"
+                  sizes="260px"
+                  className="h-12 w-auto"
+                />
+              </Link>
+              <p className={`mt-5 text-sm leading-relaxed ${t.text}`}>
+                Technology built around business. Software, AI, data, and cloud
+                solutions for real business needs.
+              </p>
+            </div>
 
-          <nav aria-label="Company">
-            <h2 className={headingClass}>Company</h2>
-            <ul className="mt-5 space-y-3">
-              {company.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className={linkClass}>
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+            <nav aria-label="Company" className="mt-10">
+              <h2 className={headingClass}>Company</h2>
+              <ul className="mt-5 space-y-3">
+                {company.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className={linkClass}>
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
 
           <nav aria-label="Services">
             <h2 className={headingClass}>Services</h2>
@@ -186,8 +165,9 @@ export default function Footer() {
             </ul>
           </nav>
 
+          {/* Locations, with the phone number and the emails below them. */}
           <div>
-            <h2 className={headingClass}>Our offices</h2>
+            <h2 className={headingClass}>Locations</h2>
             <ul className="mt-5 space-y-3">
               {offices.map((office) => (
                 <li key={office} className={`text-sm ${t.text}`}>
@@ -195,10 +175,8 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
 
-          <div>
-            <h2 className={headingClass}>Contact us</h2>
+            <h2 className={`${headingClass} mt-10`}>Contact us</h2>
             <ul className="mt-5 space-y-3">
               <li>
                 <a href={phone.href} className={linkClass}>
@@ -213,6 +191,42 @@ export default function Footer() {
                 <li key={email}>
                   <a href={`mailto:${email}`} className={linkClass}>
                     {email}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right-most: the newsletter, with the social links attached underneath. */}
+          <div>
+            <h2 className={headingClass}>Newsletter</h2>
+            <p className={`mt-5 text-2xl font-bold leading-tight ${t === themes.light ? "text-brand-navy" : "text-white"}`}>
+              Stay in touch!
+            </p>
+            <NewsletterForm tone={t === themes.light ? "light" : "dark"} />
+
+            <ul className="mt-8 flex gap-3">
+              {socials.map((x) => (
+                <li key={x.label}>
+                  <a
+                    href={x.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Rizviz on ${x.label}`}
+                    className={`btn-glow flex h-10 w-10 items-center justify-center rounded-full border ${t.social}`}
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden
+                      className="h-[1.15rem] w-[1.15rem]"
+                      fill={x.stroke ? "none" : "currentColor"}
+                      stroke={x.stroke ? "currentColor" : "none"}
+                      strokeWidth={1.8}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d={x.path} />
+                    </svg>
                   </a>
                 </li>
               ))}

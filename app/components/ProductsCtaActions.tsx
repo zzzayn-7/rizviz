@@ -20,11 +20,11 @@ export default function ProductsCtaActions() {
             y: rect.top + rect.height / 2,
           });
         }}
-        className="inline-block rounded-full border-2 border-white bg-white px-8 py-3.5 font-semibold text-brand-navy transition-colors duration-500 ease-in-out hover:bg-transparent hover:text-white"
+        className="btn-glow btn-glow-navy inline-block rounded-full bg-white px-8 py-3.5 font-semibold text-brand-navy"
       >
         Request a Demo
       </button>
-      <ContactButton className="inline-block rounded-full border-2 border-white px-8 py-3.5 font-semibold text-white transition-colors duration-500 ease-in-out hover:bg-white hover:text-brand-navy">
+      <ContactButton className="btn-glow btn-glow-navy inline-block rounded-full bg-white px-8 py-3.5 font-semibold text-brand-navy">
         Discuss Your Idea
       </ContactButton>
 

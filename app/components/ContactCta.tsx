@@ -48,7 +48,7 @@ export default function ContactCta({
           {body}
         </p>
         {actions ?? (
-          <ContactButton className="mt-10 inline-block rounded-full border-2 border-white bg-white px-8 py-3.5 font-semibold text-brand-navy transition-colors duration-500 ease-in-out hover:bg-transparent hover:text-white">
+          <ContactButton className="btn-glow btn-glow-navy mt-10 inline-block rounded-full bg-white px-8 py-3.5 font-semibold text-brand-navy">
             {button}
           </ContactButton>
         )}

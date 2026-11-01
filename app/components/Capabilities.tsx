@@ -46,26 +46,35 @@ const services: Service[] = [
     name: "Data Engineering",
     slug: "data-engineering",
     orbit: 2,
-    angle: -62,
+    angle: -64,
     headline: "Turn Data Into Decisions",
     description:
       "Data pipelines and platforms that make business information accessible and usable.",
   },
   {
-    name: "Software Development",
-    slug: "software-development",
+    name: "Business Development",
+    slug: "business-development",
     orbit: 2,
-    angle: -22,
-    headline: "Built Around Your Business",
+    angle: -32,
+    headline: "Growth Built on Relationships",
     description:
-      "Custom software designed around your business processes and requirements.",
+      "Market research, outreach, and partnerships that turn opportunities into lasting business.",
+  },
+  {
+    name: "PCB Engineering",
+    slug: "pcb-engineering",
+    orbit: 2,
+    angle: 0,
+    headline: "Precision Behind Every Connection",
+    description:
+      "Rizviz designs, analyzes, and optimizes printed circuit boards, supporting your product from initial schematics through prototype validation and manufacturing handover.",
   },
   {
     name: "Mobile App Development",
     slug: "app-development",
     page: "mobile-app-development",
     orbit: 2,
-    angle: 22,
+    angle: 32,
     headline: "Your Business, Within Reach",
     description:
       "Mobile applications with intuitive interfaces and dependable functionality.",
@@ -74,7 +83,7 @@ const services: Service[] = [
     name: "Web Development",
     slug: "website-development",
     orbit: 2,
-    angle: 62,
+    angle: 64,
     headline: "Make Every Visit Count",
     description:
       "Responsive websites built for usability, performance, and your brand.",

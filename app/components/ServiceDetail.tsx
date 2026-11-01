@@ -12,7 +12,8 @@ type Props = {
   achieve: {
     label: string;
     headline: string[]; // one entry per line
-    body: string;
+    // One paragraph, or several.
+    body: string | string[];
     image?: StaticImageData;
     imageAlt?: string;
     visual?: ReactNode;
@@ -21,8 +22,17 @@ type Props = {
   deliver: {
     label: string;
     headline: string;
-    intro: string;
+    intro?: string;
     items: { title: string; description: string }[];
+  };
+  // An optional section between the two: what the work is checked against, and what you receive.
+  handover?: {
+    label: string;
+    headline: string;
+    body: string;
+    listIntro: string;
+    items: string[];
+    note?: string;
   };
   // "Featured project": a navy section with a link to the project.
   featured: {
@@ -52,6 +62,7 @@ const bodyText = "mt-5 text-base leading-relaxed text-brand-navy/80 sm:text-lg";
 export default function ServiceDetail({
   achieve,
   deliver,
+  handover,
   featured,
 }: Props) {
   return (
@@ -73,7 +84,11 @@ export default function ServiceDetail({
                 </span>
               ))}
             </p>
-            <p className={bodyText}>{achieve.body}</p>
+            {(Array.isArray(achieve.body) ? achieve.body : [achieve.body]).map((para) => (
+              <p key={para} className={bodyText}>
+                {para}
+              </p>
+            ))}
           </div>
 
           {achieve.visual ? (
@@ -100,7 +115,7 @@ export default function ServiceDetail({
           <div className="max-w-md md:sticky md:top-32 md:self-start">
             <h2 className={title}>{deliver.label}</h2>
             <p className={subtitle}>{deliver.headline}</p>
-            <p className={bodyText}>{deliver.intro}</p>
+            {deliver.intro && <p className={bodyText}>{deliver.intro}</p>}
           </div>
 
           <ul className="flex flex-col gap-6 md:gap-8">
@@ -124,6 +139,50 @@ export default function ServiceDetail({
           </ul>
         </div>
       </section>
+
+      {handover && (
+        <section className="relative w-full py-16 sm:py-24">
+          <div className="mx-auto grid max-w-7xl gap-12 px-6 sm:px-10 md:grid-cols-2 md:gap-16">
+            <div>
+              <h2 className={title}>{handover.label}</h2>
+              <p className={subtitle}>{handover.headline}</p>
+              <p className={bodyText}>{handover.body}</p>
+            </div>
+
+            <div className="glass-navy rounded-3xl p-7 text-white sm:p-9">
+              <p className="text-base font-medium leading-relaxed text-brand-ice sm:text-lg">
+                {handover.listIntro}
+              </p>
+              <ul className="mt-6 space-y-4">
+                {handover.items.map((item) => (
+                  <li key={item} className="flex items-start gap-4">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/40 bg-white/[0.1] text-brand-ice">
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden
+                        className="h-3.5 w-3.5"
+                      >
+                        <path d="m4.5 10.5 3.5 3.5 7.5-8" />
+                      </svg>
+                    </span>
+                    <span className="text-base leading-relaxed text-white/95">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              {handover.note && (
+                <p className="mt-7 border-t border-white/20 pt-6 text-sm font-semibold leading-relaxed text-white sm:text-base">
+                  {handover.note}
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Featured project */}
       <section className="relative w-full pb-32 pt-16 sm:pb-52 sm:pt-24">

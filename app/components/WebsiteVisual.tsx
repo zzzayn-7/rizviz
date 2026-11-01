@@ -40,7 +40,6 @@ function ResponsiveScene() {
       aria-label="A website adapting from desktop to phone"
     >
       <Defs />
-      <circle cx="560" cy="420" r="440" fill="url(#wb-glow)" />
 
       {/* The desktop site */}
       <g className="wv-rise" style={delay(0.2)}>
@@ -372,7 +371,6 @@ function CmsScene() {
       aria-label="A team updating a page and publishing it"
     >
       <Defs />
-      <circle cx="600" cy="420" r="440" fill="url(#wb-glow)" />
 
       <g className="wv-rise" style={delay(0.2)}>
         <rect
