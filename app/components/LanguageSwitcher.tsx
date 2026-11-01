@@ -36,10 +36,10 @@ export default function LanguageSwitcher({ tone = "dark" }: { tone?: "dark" | "l
         aria-haspopup="listbox"
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
-        className={`flex h-11 w-11 items-center justify-center rounded-full border bg-transparent transition-colors duration-300 ${
+        className={`flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-300 ${
           tone === "dark"
-            ? "border-white/40 hover:border-white/80"
-            : "border-brand-navy/30 hover:border-brand-navy/70"
+            ? "border border-white/40 bg-transparent hover:border-white/80"
+            : "border border-brand-navy/30 bg-transparent hover:border-brand-navy/70"
         }`}
       >
         <Flag code={lang} className="h-7 w-7" />

@@ -1,8 +1,6 @@
 ﻿import LivelyBackdrop from "../components/LivelyBackdrop";
 import type { Metadata } from "next";
 import Image from "next/image";
-import missionImage from "../images/about-hero.png";
-import visionImage from "../images/products-hero.png";
 import heroSkyline from "../images/hero-skyline.png";
 import Navbar from "../components/Navbar";
 import ContactCta from "../components/ContactCta";
@@ -108,48 +106,6 @@ export default function AboutPage() {
                   <WhoWeAreVisual />
                 </div>
               </div>
-            </div>
-          </section>
-
-          <section id="mission-vision" className="relative w-full pb-8 pt-4 sm:pb-12">
-            <div className="mx-auto grid max-w-7xl gap-6 px-6 sm:px-10 md:grid-cols-2 md:gap-8">
-              {[
-                {
-                  title: "Our Mission",
-                  image: missionImage,
-                  position: "object-[70%_center]",
-                  text: "To build practical technology around real business needs, working closely with our clients and delivering solutions that are dependable, clear, and built to last.",
-                },
-                {
-                  title: "Our Vision",
-                  image: visionImage,
-                  position: "object-[75%_center]",
-                  text: "To be a trusted technology partner for organizations in Pakistan and around the world, known for turning complex challenges into solutions that help businesses grow.",
-                },
-              ].map((card) => (
-                <article
-                  key={card.title}
-                  className="group relative isolate flex min-h-[26rem] flex-col justify-end overflow-hidden rounded-3xl border border-brand-navy/15 shadow-[0_24px_50px_-26px_rgba(11,29,45,0.5)] sm:min-h-[30rem]"
-                >
-                  <Image
-                    src={card.image}
-                    alt=""
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className={`-z-20 object-cover ${card.position} transition-transform duration-[1200ms] ease-out group-hover:scale-105`}
-                  />
-                  {/* one even navy tint over the photograph, so the words stay easy to read */}
-                  <div aria-hidden className="absolute inset-0 -z-10 bg-brand-navy/55" />
-                  <div className="p-8 sm:p-10">
-                    <h2 className="text-3xl font-medium leading-tight tracking-tight text-white sm:text-4xl">
-                      {card.title}
-                    </h2>
-                    <p className="mt-4 max-w-md text-base leading-relaxed text-white/90 sm:text-lg">
-                      {card.text}
-                    </p>
-                  </div>
-                </article>
-              ))}
             </div>
           </section>
 
