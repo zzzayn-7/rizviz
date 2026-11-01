@@ -90,7 +90,6 @@ export default function ServicePage({
               className="pointer-events-none absolute inset-0"
               style={{
                 background: [
-                  "linear-gradient(0deg, #0b1d2d 0px, transparent 200px)",
                   "radial-gradient(800px 700px at 0% 10%, rgba(11,29,45,0.2), transparent 70%)",
                   "radial-gradient(800px 700px at 100% 36%, rgba(11,29,45,0.2), transparent 70%)",
                   "radial-gradient(800px 700px at 0% 62%, rgba(11,29,45,0.2), transparent 70%)",

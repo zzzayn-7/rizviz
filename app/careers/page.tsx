@@ -52,7 +52,7 @@ export default function CareersPage() {
             </h1>
             <ScrollButton
               target="open-roles"
-              className="mt-10 inline-block rounded-full border-2 border-brand-sky/40 bg-brand-navy px-8 py-3.5 font-semibold text-white transition-colors duration-500 ease-in-out hover:border-brand-ice hover:bg-brand-steel"
+              className="mt-10 inline-block rounded-full glass-navy btn-glow px-8 py-3.5 font-semibold text-white"
             >
               View Open Roles
             </ScrollButton>

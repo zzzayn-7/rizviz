@@ -60,7 +60,6 @@ export default function ProductsPage() {
             className="pointer-events-none absolute inset-0"
             style={{
               background: [
-                "linear-gradient(0deg, #0b1d2d 0px, transparent 200px)",
                 "radial-gradient(800px 700px at 0% 12%, rgba(11,29,45,0.2), transparent 70%)",
                 "radial-gradient(800px 700px at 100% 40%, rgba(11,29,45,0.2), transparent 70%)",
                 "radial-gradient(800px 700px at 0% 68%, rgba(11,29,45,0.2), transparent 70%)",

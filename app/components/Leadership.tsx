@@ -31,7 +31,7 @@ export default function Leadership() {
     >
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 sm:px-10 md:grid-cols-[minmax(0,1fr)_auto] md:gap-16">
         <div className="max-w-md text-left">
-          <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
+          <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy shine-heading sm:text-5xl lg:text-6xl">
             Our Core Leadership
           </h2>
           <p className="mt-8 text-base leading-relaxed text-brand-navy/80 sm:text-lg">

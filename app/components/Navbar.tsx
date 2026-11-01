@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import logoMark from "../images/logo-mark.png";
 import ContactButton from "./ContactButton";
+import LanguageSwitcher from "./LanguageSwitcher";
 import { servicesMenu } from "./servicesMenu";
 
 const links = [
@@ -65,8 +66,8 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
   }
   const contactClass =
     tone === "dark"
-      ? "border-brand-sky/40 bg-brand-navy text-white hover:border-brand-ice hover:bg-brand-steel"
-      : "border-transparent bg-origin-border bg-[linear-gradient(90deg,#3a7f80_0%,#0b1d2d_12%,#0b1d2d_66%,#285b7a_93%,#3a7f80_100%)] text-white hover:brightness-150";
+      ? "glass-navy btn-glow border-transparent text-white"
+      : "glass-navy btn-glow border-transparent text-white";
   const linkClass = `text-sm font-medium transition-colors duration-300 ${linkTone[tone]}`;
 
   return (
@@ -154,26 +155,30 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
           <Link
             href="/careers#apply"
             onClick={goToApply}
-            className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold transition duration-500 ease-in-out ${contactClass}`}
+            className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold ${contactClass}`}
           >
             Apply now
           </Link>
           <ContactButton
-            className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold transition duration-500 ease-in-out ${contactClass}`}
+            className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold ${contactClass}`}
           >
             Contact Us
           </ContactButton>
+          <LanguageSwitcher tone={tone} />
         </div>
 
+        <div className="flex items-center gap-3 md:hidden">
+          <LanguageSwitcher tone={tone} />
         <button
           type="button"
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
-          className={`text-2xl md:hidden ${tone === "light" ? "text-brand-navy" : "text-white"}`}
+          className={`text-2xl ${tone === "light" ? "text-brand-navy" : "text-white"}`}
         >
           {open ? "✕" : "☰"}
         </button>
+        </div>
       </nav>
 
       {/* The services menu: a wide panel under the navbar, in the same ice-blue white as the pages, with
@@ -307,7 +312,7 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
               <Link
                 href="/careers#apply"
                 onClick={goToApply}
-                className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold transition duration-500 ease-in-out ${contactClass}`}
+                className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold ${contactClass}`}
               >
                 Apply now
               </Link>
@@ -315,7 +320,7 @@ export default function Navbar({ tone = "dark" }: { tone?: "dark" | "light" }) {
             <li>
               <ContactButton
                 onClick={() => setOpen(false)}
-                className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold transition duration-500 ease-in-out ${contactClass}`}
+                className={`inline-block rounded-full border-2 px-6 py-2.5 text-sm font-semibold ${contactClass}`}
               >
                 Contact Us
               </ContactButton>

@@ -254,10 +254,10 @@ export default function Capabilities() {
 
           {/* Details */}
           <div className="page-left-edge flex flex-1 flex-col justify-center px-6 pb-8 sm:px-10 md:pb-0 md:pr-12">
-            <h2 className="mb-8 text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl md:mb-10 lg:text-6xl">
+            <h2 className="mb-8 text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy shine-heading sm:text-5xl md:mb-10 lg:text-6xl">
               Our Capabilities
             </h2>
-            <div key={current.slug} className="max-w-2xl animate-fade-up">
+            <div key={current.slug} className="max-w-2xl animate-fade-up capabilities-text md:min-h-[18rem]">
               <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-steel sm:text-sm">
                 {current.name}
               </p>
@@ -267,31 +267,35 @@ export default function Capabilities() {
               <p className="mt-5 text-base leading-relaxed text-brand-navy/75 sm:text-lg">
                 {current.description}
               </p>
+            </div>
+
+            {/* "Explore more" with the skip arrow right beside it */}
+            <div className="mt-8 flex items-center gap-3">
               <Link
                 href={`/services/${current.page ?? current.slug}`}
-                className="glass-navy mt-8 inline-block rounded-full px-8 py-3 font-semibold text-white transition duration-500 ease-in-out hover:brightness-125"
+                className="glass-navy btn-glow inline-block rounded-full px-8 py-3 font-semibold text-white"
               >
                 Explore more
               </Link>
-            </div>
 
-            <button
-              type="button"
-              onClick={pointsUp ? skipUp : skip}
-              aria-label={
-                pointsUp ? "Back above capabilities" : "Skip capabilities"
-              }
-              className="mt-12 flex h-12 w-12 items-center justify-center glass-navy rounded-full text-xl text-white transition duration-500 ease-in-out hover:brightness-125 md:mt-16"
-            >
-              <span
-                aria-hidden
-                className={`transition-transform duration-500 ${
-                  pointsUp ? "rotate-180" : ""
-                }`}
+              <button
+                type="button"
+                onClick={pointsUp ? skipUp : skip}
+                aria-label={
+                  pointsUp ? "Back above capabilities" : "Skip capabilities"
+                }
+                className="glass-navy btn-glow flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-xl text-white"
               >
-                ↓
-              </span>
-            </button>
+                <span
+                  aria-hidden
+                  className={`transition-transform duration-500 ${
+                    pointsUp ? "rotate-180" : ""
+                  }`}
+                >
+                  ↓
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

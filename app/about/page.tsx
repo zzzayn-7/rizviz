@@ -63,7 +63,6 @@ export default function AboutPage() {
             className="pointer-events-none absolute inset-0"
             style={{
               background: [
-                "linear-gradient(0deg, #0b1d2d 0px, transparent 200px)",
                 "radial-gradient(800px 700px at 0% 10%, rgba(11,29,45,0.2), transparent 70%)",
                 "radial-gradient(800px 700px at 100% 30%, rgba(11,29,45,0.2), transparent 70%)",
                 "radial-gradient(800px 700px at 0% 52%, rgba(11,29,45,0.2), transparent 70%)",
@@ -84,7 +83,7 @@ export default function AboutPage() {
                 left, and the screen filling the full height of the right. */}
               <div className="grid gap-10 md:grid-cols-2 md:items-stretch md:gap-16">
                 <div className="max-w-xl">
-                  <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
+                  <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy shine-heading sm:text-5xl lg:text-6xl">
                     Who we are
                   </h2>
                   <p className="mt-8 text-sm leading-relaxed text-brand-navy/80 sm:text-base">
@@ -119,7 +118,7 @@ export default function AboutPage() {
 
             <div className="mx-auto w-full max-w-7xl px-6 pb-28 pt-[28rem] sm:px-10 md:py-44">
               <div className="max-w-3xl md:max-w-[min(42rem,calc(62vw_-_5rem))]">
-                <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
+                <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy shine-heading sm:text-5xl lg:text-6xl">
                   Our Reach
                 </h2>
                 <p className="mt-8 text-base leading-relaxed text-brand-navy/80">

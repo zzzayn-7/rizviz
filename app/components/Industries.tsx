@@ -224,7 +224,7 @@ export default function Industries() {
   return (
     <section id="industries" className="relative w-full pb-0 pt-20 sm:pt-28">
       <div className="mx-auto flex max-w-7xl items-end justify-between gap-6 px-6 sm:px-10">
-        <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
+        <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy shine-heading sm:text-5xl lg:text-6xl">
           Industries we serve
         </h2>
         {/* the arrows that slide the row sit at the top right */}
@@ -235,7 +235,7 @@ export default function Industries() {
               type="button"
               onClick={() => slide(d)}
               aria-label={d === 1 ? "Next industries" : "Previous industries"}
-              className="glass-navy flex h-11 w-11 items-center justify-center rounded-full text-white transition duration-300 hover:brightness-125"
+              className="glass-navy btn-glow flex h-11 w-11 items-center justify-center rounded-full text-white"
             >
               <Arrow className={d === -1 ? "rotate-180" : ""} />
             </button>

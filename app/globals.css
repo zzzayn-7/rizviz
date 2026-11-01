@@ -642,3 +642,84 @@ body {
     scroll-padding-left: max(2.5rem, calc((100% - 80rem) / 2 + 2.5rem));
   }
 }
+
+/* ---------- Metallic section headings (see HeadingShine) ---------- */
+/* The letters are a slightly brushed-metal navy, lighter at the top edge and bottom, with a soft pale
+   band of light on top that HeadingShine slides across as the page scrolls. */
+.shine-heading {
+  background-image:
+    linear-gradient(
+      105deg,
+      rgb(190 222 245 / 0) 42%,
+      rgb(190 222 245 / 0.75) 50%,
+      rgb(190 222 245 / 0) 58%
+    ),
+    linear-gradient(180deg, #28506d 0%, #0b1d2d 42%, #0b1d2d 62%, #1b3d57 100%);
+  background-size: 250% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 120% 0, 0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* r13 */
+
+/* ---------- The one hover effect for the site's navy buttons ---------- */
+/* A soft light blooms under the cursor and follows it across the button, like the paint in the "How We
+   Work" circles. Only the spot where the pointer is reacts; the rest of the button stays as it is.
+   ButtonGlow supplies the pointer position as --mx and --my. */
+.btn-glow {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.btn-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease-out;
+  background:
+    radial-gradient(circle 70px at var(--mx, 50%) var(--my, 50%), rgb(112 199 244 / 0.75), transparent 70%),
+    radial-gradient(circle 120px at var(--mx, 50%) var(--my, 50%), rgb(50 159 224 / 0.5), transparent 75%),
+    radial-gradient(circle 170px at var(--mx, 50%) var(--my, 50%), rgb(72 214 190 / 0.3), transparent 80%);
+}
+.btn-glow:hover::before {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-glow::before {
+    transition: none;
+  }
+}
+
+/* r14 */
+
+/* A see-through tile with fine, light navy horizontal lines behind its logo */
+.tile-lines {
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgb(11 29 45 / 0.13) 0,
+    rgb(11 29 45 / 0.13) 1.5px,
+    transparent 1.5px,
+    transparent 10px
+  );
+}
+
+/* r16 */
+
+/* Japanese and Chinese have no spaces, so a heading could otherwise break in the middle of a word.
+   Chrome's phrase breaking keeps words whole and balances the lines. */
+:lang(ja) :is(h1, h2, h3, p),
+:lang(zh) :is(h1, h2, h3, p) {
+  word-break: auto-phrase;
+  text-wrap: balance;
+  line-break: strict;
+}
+:lang(ar) {
+  letter-spacing: 0 !important;
+}

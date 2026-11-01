@@ -84,10 +84,9 @@ const themes = {
   },
 };
 
-// White at 38% of the footer's height, and navy-to-white before it, picking up
-// the blue the CTA ends on.
-const LIGHT_BACKGROUND =
-  "linear-gradient(180deg, #4a8ec2 0.0%, #68a5d4 3.8%, #93c0e4 7.6%, #b4d5ef 11.4%, #d0e6f7 15.2%, #dfeffa 19.0%, #ecf5fc 22.8%, #f4f9fd 26.6%, #fafcfe 30.4%, #fefeff 34.2%, #ffffff 38.0%, #ffffff 100%)";
+// The footer is the plain ice-blue white of the pages. The call to action above it is a photograph with
+// no gradient, so there is no blue change for the footer to carry on.
+const LIGHT_BACKGROUND = "#f4faff";
 
 // Careers has no call to action above the footer, and its page is the ice-blue white all the way
 // down, so the footer simply carries on in the same colour, with no change of colour at the join.

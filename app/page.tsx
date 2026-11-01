@@ -47,7 +47,7 @@ export default function Home() {
             </h1>
             <a
               href="#capabilities"
-              className="mt-10 inline-block rounded-full border-2 border-brand-sky/40 bg-brand-navy px-8 py-3.5 font-semibold text-white transition-colors duration-500 ease-in-out hover:border-brand-ice hover:bg-brand-steel"
+              className="mt-10 inline-block rounded-full glass-navy btn-glow px-8 py-3.5 font-semibold text-white"
             >
               Explore our capabilities
             </a>
@@ -66,7 +66,6 @@ export default function Home() {
           className="absolute inset-0 -z-10"
           style={{
             background: [
-              "linear-gradient(0deg, #0b1d2d 0px, transparent 200px)",
               "linear-gradient(180deg, #0b1d2d 0px, transparent 90px)",
               "radial-gradient(800px 700px at 0% 6%, rgba(11,29,45,0.2), transparent 70%)",
               "radial-gradient(800px 700px at 100% 18%, rgba(11,29,45,0.2), transparent 70%)",
@@ -86,7 +85,7 @@ export default function Home() {
         >
           <div className="mx-auto grid max-w-7xl px-6 sm:px-10 md:min-h-[44rem] md:grid-cols-2">
             <div className="flex flex-col justify-center py-16 md:py-24 md:pr-8">
-              <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
+              <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy shine-heading sm:text-5xl lg:text-6xl">
                 Who we are
               </h2>
               <p className="mt-8 text-sm leading-relaxed text-brand-navy/80 sm:text-base">
@@ -99,7 +98,7 @@ export default function Home() {
               </p>
               <Link
                 href="/about"
-                className="glass-navy mt-8 inline-block self-start rounded-full px-8 py-3.5 font-semibold text-white transition duration-500 ease-in-out hover:brightness-125"
+                className="glass-navy btn-glow mt-8 inline-block self-start rounded-full px-8 py-3.5 font-semibold text-white"
               >
                 More about us
               </Link>

@@ -45,7 +45,7 @@ type Props = {
 // The big extra-bold section title, as on the Home and About pages, with the section's own line
 // under it in a smaller navy.
 const title =
-  "text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl";
+  "text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy shine-heading sm:text-5xl lg:text-6xl";
 const subtitle = "mt-8 text-2xl font-semibold leading-snug text-brand-navy sm:text-3xl";
 const bodyText = "mt-5 text-base leading-relaxed text-brand-navy/80 sm:text-lg";
 
@@ -149,13 +149,13 @@ export default function ServiceDetail({
             )}
             {featured.body && <p className={bodyText}>{featured.body}</p>}
             {featured.href === "contact" ? (
-              <ContactButton className="glass-navy mt-10 inline-block rounded-full px-8 py-3.5 font-semibold text-white transition duration-500 ease-in-out hover:brightness-125">
+              <ContactButton className="glass-navy btn-glow mt-10 inline-block rounded-full px-8 py-3.5 font-semibold text-white">
                 {featured.cta}
               </ContactButton>
             ) : (
               <Link
                 href={featured.href}
-                className="glass-navy mt-10 inline-block rounded-full px-8 py-3.5 font-semibold text-white transition duration-500 ease-in-out hover:brightness-125"
+                className="glass-navy btn-glow mt-10 inline-block rounded-full px-8 py-3.5 font-semibold text-white"
               >
                 {featured.cta}
               </Link>

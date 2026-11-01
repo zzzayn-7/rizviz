@@ -234,9 +234,14 @@ export default function HiringProcess() {
         <div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] md:gap-6 lg:gap-12">
           {/* The heading sits on the left, about halfway down the staircase. */}
           <div className="text-left">
-            <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
+            <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy shine-heading sm:text-5xl lg:text-6xl">
               Our Hiring Process
             </h2>
+            <p className="mt-6 text-base leading-relaxed text-brand-navy/80 sm:text-lg">
+              Rizviz offers full support and cooperation throughout your
+              hiring period, with clear communication and guidance from your
+              application to your first day.
+            </p>
           </div>
 
           {/* Wide screens: the staircase is always in place; each checkpoint shows its picture and

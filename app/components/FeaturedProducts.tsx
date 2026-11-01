@@ -16,12 +16,12 @@ export default function FeaturedProducts() {
         <div className="grid gap-8 md:grid-cols-2 md:gap-16">
           {/* the heading on the left, with the button right under it */}
           <div>
-            <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
+            <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy shine-heading sm:text-5xl lg:text-6xl">
               Featured Products
             </h2>
             <Link
               href="/products"
-              className="glass-navy mt-8 inline-block rounded-full px-8 py-3.5 font-semibold text-white transition duration-500 ease-in-out hover:brightness-125"
+              className="glass-navy btn-glow mt-8 inline-block rounded-full px-8 py-3.5 font-semibold text-white"
             >
               View more
             </Link>

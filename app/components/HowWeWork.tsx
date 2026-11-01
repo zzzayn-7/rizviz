@@ -312,7 +312,7 @@ export default function HowWeWork() {
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
         <div className="grid items-center gap-14 lg:grid-cols-[40%_60%] lg:gap-6">
           <div className="max-w-lg">
-            <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy sm:text-5xl lg:text-6xl">
+            <h2 className="text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy shine-heading sm:text-5xl lg:text-6xl">
               How We Work
             </h2>
             <p className="mt-6 text-base leading-relaxed text-brand-navy/80 sm:text-lg">

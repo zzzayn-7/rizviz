@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ContactDialogHost from "./components/ContactDialogHost";
 import Footer from "./components/Footer";
+import ButtonGlow from "./components/ButtonGlow";
+import PageTranslator from "./components/PageTranslator";
+import HeadingShine from "./components/HeadingShine";
+import SmoothScroll from "./components/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RIZVIZ",
+  title: "Rizviz International",
   description:
     "Rizviz builds software, AI, data, and cloud solutions around real business needs, from custom applications and DevOps to data engineering and ServiceNow.",
 };
@@ -31,6 +35,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <Footer />
         <ContactDialogHost />
+        <HeadingShine />
+        <PageTranslator />
+        <ButtonGlow />
+        <SmoothScroll />
       </body>
     </html>
   );

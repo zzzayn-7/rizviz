@@ -277,7 +277,7 @@ export default function ApplyForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="glass-navy rounded-full px-8 py-3 text-sm font-semibold text-white transition duration-500 ease-in-out hover:brightness-125 disabled:opacity-60"
+          className="glass-navy btn-glow rounded-full px-8 py-3 text-sm font-semibold text-white disabled:opacity-60"
         >
           {status === "sending" ? "Sending…" : "Submit Application"}
         </button>

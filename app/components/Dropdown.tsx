@@ -28,7 +28,7 @@ const tones = {
     placeholder: "text-brand-slate/60",
     chevron: "text-brand-slate",
     panel:
-      "border border-[#D3DFE9] bg-white shadow-[0_24px_60px_-16px_rgba(11,29,45,0.35)]",
+      "border border-brand-navy/15 bg-[#f4faff] shadow-[0_24px_60px_-16px_rgba(11,29,45,0.35)]",
     option:
       "text-brand-navy ring-transparent hover:ring-brand-blue data-[active=true]:ring-brand-blue",
     selected: "text-brand-blue",
@@ -41,12 +41,13 @@ const tones = {
       "h-11 rounded-xl border border-brand-navy/25 bg-transparent px-4 text-sm text-brand-navy hover:border-brand-navy/50 focus-visible:border-brand-navy focus-visible:ring-2 focus-visible:ring-brand-navy/15 data-[open=true]:border-brand-navy",
     placeholder: "text-brand-navy/50",
     chevron: "text-brand-navy/70",
-    // The site's navy, fully opaque so the fields behind the list never show through.
-    panel: "glass-navy-solid",
+    // The page's own ice-blue white, fully opaque so the fields behind the list never show through.
+    panel:
+      "border border-brand-navy/20 bg-[#f4faff] shadow-[0_24px_60px_-16px_rgba(11,29,45,0.4)]",
     option:
-      "text-white/90 hover:text-white ring-transparent hover:ring-brand-ice/70 data-[active=true]:ring-brand-ice/70",
-    selected: "text-brand-ice",
-    tick: "text-brand-ice",
+      "text-brand-navy ring-transparent hover:ring-brand-navy/60 data-[active=true]:ring-brand-navy/60",
+    selected: "text-brand-steel",
+    tick: "text-brand-steel",
   },
 } as const;
 
