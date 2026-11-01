@@ -1,4 +1,4 @@
-const founder = { name: "Syed Adnan Saeed", role: "Founder & CEO" };
+const founder = { name: "Syed Adnan Saeed", role: "Chairman" };
 
 const team = [
   { name: "Syed Imran Saeed", role: "Chief Finance Officer" },
@@ -6,7 +6,7 @@ const team = [
   { name: "Syed Jibran Zaidi", role: "Director Operations" },
   { name: "Hussain Adnan", role: "Head IT" },
   { name: "Hassan Adnan", role: "Head Engineering" },
-  { name: "Mian Zaid", role: "Head HR" },
+  { name: "Zaid Azhar", role: "Head HR" },
 ];
 
 function Avatar({ large = false }: { large?: boolean }) {

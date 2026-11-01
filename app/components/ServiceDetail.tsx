@@ -56,6 +56,9 @@ type Props = {
 // under it in a smaller navy.
 const title =
   "text-4xl font-medium leading-[1.08] tracking-tight text-brand-navy shine-heading sm:text-5xl lg:text-6xl";
+// "What we help you achieve" is a small label like the "Our Services → name" line in the hero, with
+// the section's headline under it.
+const eyebrow = "text-xs font-semibold uppercase tracking-widest text-brand-navy";
 const subtitle = "mt-8 text-2xl font-semibold leading-snug text-brand-navy sm:text-3xl";
 const bodyText = "mt-5 text-base leading-relaxed text-brand-navy/80 sm:text-lg";
 
@@ -75,8 +78,8 @@ export default function ServiceDetail({
           }`}
         >
           <div>
-            <h2 className={title}>{achieve.label}</h2>
-            <p className={subtitle}>
+            <h2 className={eyebrow}>{achieve.label}</h2>
+            <p className="shine-hover mt-4 text-3xl font-semibold leading-snug sm:text-4xl lg:text-[2.6rem]">
               {achieve.headline.map((line, i) => (
                 <span key={line}>
                   {i > 0 && <br />}

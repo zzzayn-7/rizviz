@@ -664,6 +664,29 @@ body {
   color: transparent;
 }
 
+/* The same brushed-metal letters, but the band of light only crosses when you point at the text. */
+.shine-hover {
+  background-image:
+    linear-gradient(
+      105deg,
+      rgb(190 222 245 / 0) 42%,
+      rgb(190 222 245 / 0.85) 50%,
+      rgb(190 222 245 / 0) 58%
+    ),
+    linear-gradient(180deg, #28506d 0%, #0b1d2d 42%, #0b1d2d 62%, #1b3d57 100%);
+  background-size: 250% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 120% 0, 0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  transition: background-position 1.2s ease-in-out;
+}
+.shine-hover:hover {
+  background-position: -30% 0, 0 0;
+}
+
 /* r13 */
 
 /* ---------- The one hover effect for the site's navy buttons ---------- */
@@ -734,3 +757,5 @@ body {
 
 /* r17 */
 /* r18 */
+/* r19 */
+/* r20 */

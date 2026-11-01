@@ -5,44 +5,50 @@ import { useRef } from "react";
 type Industry = {
   name: string;
   description: string;
-  art: 0 | 1 | 2 | 3 | 4;
+  art: 0 | 1 | 2 | 3 | 4 | 5;
 };
 
 const industries: Industry[] = [
   {
-    name: "Finance & Accounting",
+    name: "Finance, accounting and taxation",
     description:
-      "Systems that automate reporting, reconciliation, and approvals, so finance teams get accurate numbers faster.",
+      "Systems that automate bookkeeping, reporting, and tax filing, so finance teams close faster and stay compliant.",
     art: 0,
   },
   {
-    name: "Technology & digital",
+    name: "Digital banking and insurance",
     description:
-      "Software, cloud, and AI engineering for teams that build, run, and scale digital products.",
+      "Secure platforms for accounts, claims, and policies, built to meet the standards of regulated institutions.",
     art: 1,
   },
   {
-    name: "Sales & Marketing",
+    name: "Fintech and digital payments",
     description:
-      "Tools that connect leads, campaigns, and customer data, helping teams reach and keep their customers.",
+      "Payment, wallet, and transaction software designed for speed, reliability, and trust at scale.",
     art: 2,
   },
   {
-    name: "Operations & Administration",
-    description:
-      "Workflow and process systems that cut manual handoffs and keep daily operations running smoothly.",
-    art: 3,
-  },
-  {
-    name: "Healthcare",
+    name: "Digital healthcare",
     description:
       "Secure, dependable systems for records, scheduling, and billing, built around how clinical teams work.",
     art: 4,
   },
+  {
+    name: "Digital marketing and sales",
+    description:
+      "Tools that connect leads, campaigns, and customer data, helping teams reach and keep their customers.",
+    art: 3,
+  },
+  {
+    name: "Automobile and maintenance",
+    description:
+      "Software for dealerships, fleets, and service workshops, from inventory and bookings to connected vehicle data.",
+    art: 5,
+  },
 ];
 
 // Soft, glassy shapes at the foot of each card, drawn in the site's navy, steel, blue and grey. Each
-// card gets its own: flowing waves, rings, a peak, ripples and overlapping discs.
+// card gets its own: flowing waves, rings, a peak, ripples, overlapping discs and a sweeping road.
 function Art({ kind }: { kind: Industry["art"] }) {
   const id = `ind-art-${kind}`;
   return (
@@ -181,6 +187,37 @@ function Art({ kind }: { kind: Industry["art"] }) {
             cx="120"
             cy="190"
             r="95"
+            fill="none"
+            stroke="#fff"
+            strokeOpacity="0.5"
+            strokeWidth="1.5"
+          />
+        </>
+      )}
+
+      {kind === 5 && (
+        <>
+          <path
+            d="M0 150 C90 70 230 70 400 150 L400 230 L0 230Z"
+            fill={`url(#${id}-b)`}
+          />
+          <path
+            d="M0 185 C100 115 250 115 400 185 L400 230 L0 230Z"
+            fill={`url(#${id}-a)`}
+          />
+          <path
+            d="M0 215 C110 165 260 165 400 215 L400 230 L0 230Z"
+            fill={`url(#${id}-c)`}
+          />
+          <path
+            d="M0 150 C90 70 230 70 400 150"
+            fill="none"
+            stroke="#fff"
+            strokeOpacity="0.75"
+            strokeWidth="1.5"
+          />
+          <path
+            d="M0 185 C100 115 250 115 400 185"
             fill="none"
             stroke="#fff"
             strokeOpacity="0.5"
