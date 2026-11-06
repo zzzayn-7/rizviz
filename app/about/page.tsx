@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import heroSkyline from "../images/hero-skyline.png";
+import Board from "../components/Board";
 import Navbar from "../components/Navbar";
 import ContactCta from "../components/ContactCta";
 import Leadership from "../components/Leadership";
@@ -147,6 +148,8 @@ export default function AboutPage() {
           </section>
 
           <Leadership />
+
+          <Board />
         </div>
       </div>
 

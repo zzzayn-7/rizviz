@@ -33,6 +33,7 @@
   --animate-bob: bob 6s ease-in-out infinite;
   --animate-float: float 7s ease-in-out infinite;
   --animate-marquee-y: marquee-y 45s linear infinite;
+  --animate-marquee-x: marquee-x 40s linear infinite;
   --animate-breathe: breathe 4s ease-in-out infinite;
   --animate-breathe-line: breathe-line 4s ease-in-out infinite;
 
@@ -76,6 +77,15 @@
     }
     to {
       transform: translateY(-50%);
+    }
+  }
+
+  @keyframes marquee-x {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
     }
   }
 

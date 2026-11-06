@@ -1,33 +1,14 @@
-const founder = { name: "Syed Adnan Saeed", role: "Chairman" };
+import PersonAvatar from "./PersonAvatar";
 
+// Six cards in a grid of three columns, all the same size. The chairman comes first.
 const team = [
+  { name: "Syed Adnan Saeed", role: "Chief Executive Officer" },
   { name: "Syed Imran Saeed", role: "Chief Finance Officer" },
-  { name: "Syed Faraz Mehdi", role: "Chief Operations Officer" },
+  { name: "Syed Faraz Mehdi", role: "Chief Operating Officer" },
   { name: "Syed Jibran Zaidi", role: "Director Operations" },
-  { name: "Hussain Adnan", role: "Head IT" },
-  { name: "Hassan Adnan", role: "Head Engineering" },
-  { name: "Zaid Azhar", role: "Head HR" },
+  { name: "Hussain Adnan", role: "Head of IT" },
+  { name: "Hassan Adnan", role: "Head of Engineering" },
 ];
-
-function Avatar({ large = false }: { large?: boolean }) {
-  return (
-    <div
-      className={`glass-navy flex items-center justify-center rounded-full ${
-        large ? "h-32 w-32 sm:h-36 sm:w-36" : "h-28 w-28 sm:h-32 sm:w-32"
-      }`}
-    >
-      <svg
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        aria-hidden
-        className={`text-brand-ice ${large ? "h-[4.5rem] w-[4.5rem] sm:h-20 sm:w-20" : "h-16 w-16 sm:h-20 sm:w-20"}`}
-      >
-        <circle cx="12" cy="8.25" r="3.5" />
-        <path d="M5 19.25c0-3.1 2.7-5.25 7-5.25s7 2.15 7 5.25c0 .55-.45 1-1 1H6c-.55 0-1-.45-1-1Z" />
-      </svg>
-    </div>
-  );
-}
 
 export default function Leadership() {
   return (
@@ -47,35 +28,22 @@ export default function Leadership() {
           </p>
         </div>
 
-        {/* On the right, as before: the founder in the middle at the top, and the six below him. */}
-        <div className="flex flex-col items-center md:justify-self-end">
-          <div className="flex flex-col items-center text-center">
-            <Avatar large />
-            <h3 className="mt-4 text-lg font-semibold text-brand-navy">
-              {founder.name}
-            </h3>
-            <p className="mt-1 text-sm font-medium text-brand-steel">
-              {founder.role}
-            </p>
-          </div>
-
-          <ul className="mt-12 grid grid-cols-2 gap-x-10 gap-y-10 sm:grid-cols-3">
-            {team.map((d) => (
-              <li
-                key={d.name}
-                className="flex w-36 flex-col items-center text-center sm:w-40"
-              >
-                <Avatar />
-                <h3 className="mt-4 text-base font-semibold text-brand-navy">
-                  {d.name}
-                </h3>
-                <p className="mt-1 text-sm font-medium text-brand-steel">
-                  {d.role}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="grid grid-cols-3 gap-x-6 gap-y-10 sm:gap-x-10 md:justify-self-end">
+          {team.map((p) => (
+            <li
+              key={p.name}
+              className="flex w-28 flex-col items-center text-center sm:w-40"
+            >
+              <PersonAvatar />
+              <h3 className="mt-4 text-base font-semibold text-brand-navy">
+                {p.name}
+              </h3>
+              <p className="mt-1 text-sm font-medium text-brand-steel">
+                {p.role}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
